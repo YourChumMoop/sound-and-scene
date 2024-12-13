@@ -4,13 +4,14 @@ dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import routes from './routes/index.js';
 import { sequelize } from './models/index.js';
 import { UserFactory } from './models/user.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const forceDatabaseRefresh = false
+const forceDatabaseRefresh = false;
 
 // Load API keys from environment variables
 const TM_API_KEY = process.env.TICKETMASTER_API_KEY || '';
@@ -20,6 +21,10 @@ if (!TM_API_KEY) console.warn('Warning: Ticketmaster API key is not set.');
 if (!FS_API_KEY) console.warn('Warning: Foursquare API key is not set.');
 
 const User = UserFactory(sequelize);
+
+// Create __dirname equivalent for ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Middleware for parsing JSON
 app.use(express.json());

@@ -11,11 +11,16 @@ const FS_API_KEY = process.env.FOURSQUARE_API_KEY;
 router.get('/', async (req, res) => {
   const { lat, lng } = req.query;
 
-  try {
-    if (!FS_API_KEY) {
-      return res.status(500).json({ error: 'Foursquare API key is missing' });
-    }
+  // Validate latitude and longitude
+  if (!lat || !lng) {
+    return res.status(400).json({ error: 'Latitude and longitude are required' });
+  }
 
+  if (!FS_API_KEY) {
+    return res.status(500).json({ error: 'Foursquare API key is missing' });
+  }
+
+  try {
     const response = await axios.get('https://api.foursquare.com/v3/places/search', {
       headers: {
         Authorization: FS_API_KEY,
@@ -28,12 +33,11 @@ router.get('/', async (req, res) => {
       },
     });
 
-    res.json(response.data.results);
-  } catch (error) {
-    console.error('Error fetching venues:', error);
-    res.status(500).json({ error: 'Error fetching venues from Foursquare' });
+    return res.json(response.data.results); // Ensure a return statement here
+  } catch (error: any) {
+    console.error('Error fetching venues:', error.message);
+    return res.status(500).json({ error: 'Error fetching venues from Foursquare' }); // Ensure a return statement here
   }
-  return res.status(400).json({ error: 'Invalid request' });
 });
 
 export default router;

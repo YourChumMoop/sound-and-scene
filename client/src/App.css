@@ -1,0 +1,147 @@
+/* Import Bootstrap */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css');
+
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  color: #343a40;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #343a40;
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+  color: #fff !important;
+}
+
+.navbar-brand:hover, .navbar-nav .nav-link:hover {
+  color: #ffc107 !important;
+}
+
+/* Header and Footer */
+.header, .footer {
+  background-color: #343a40;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+/* Search Bar Styles */
+.search-bar {
+  margin: 2rem auto;
+  max-width: 500px;
+}
+
+/* Home Page */
+.home-banner {
+  background: url('https://source.unsplash.com/1600x400/?concert') no-repeat center center;
+  background-size: cover;
+  height: 400px;
+  position: relative;
+}
+
+.home-banner .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 2rem;
+}
+
+/* Event Cards */
+.event-card {
+  transition: transform 0.2s ease;
+}
+
+.event-card:hover {
+  transform: scale(1.03);
+}
+
+.event-card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.event-card .card-body {
+  min-height: 150px;
+}
+
+/* Venue Cards */
+.venue-card {
+  transition: transform 0.2s ease;
+}
+
+.venue-card:hover {
+  transform: scale(1.03);
+}
+
+.venue-card img {
+  height: 150px;
+  object-fit: cover;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Forms */
+.form-control {
+  border-radius: 0.25rem;
+}
+
+/* Login Page */
+.login-container {
+  max-width: 400px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .home-banner {
+    height: 300px;
+  }
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+  }
+  
+  .form-input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+  }

@@ -33,6 +33,7 @@ router.get('/', async (req, res) => {
     console.error('Error fetching venues:', error);
     res.status(500).json({ error: 'Error fetching venues from Foursquare' });
   }
+  return res.status(400).json({ error: 'Invalid request' });
 });
 
 export default router;

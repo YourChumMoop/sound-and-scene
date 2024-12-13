@@ -1,0 +1,72 @@
+.nav-tabs {
+    font-weight: 500;
+
+    // vertical
+    &[class*="-column"] {
+        padding-left: 70px;
+        margin-right: -11px;
+        margin-bottom: -11px;
+        font-size: em(24px);
+
+        .nav-link {
+            position: relative;
+            padding-top: 11px;
+            padding-bottom: 11px;
+
+            .badge {
+                padding: 0;
+                margin-top: -4px;
+                font-size: em(12px, 24px);
+                font-weight: 500;
+                opacity: 0;
+                will-change: opacity;
+                transition: opacity .2s ease-in-out;
+            }
+
+            &::before,
+            &::after {
+                content: "";
+                display: inline-block;
+            }
+
+            // line
+            &::after {
+                position: absolute;
+                top: 50%;
+                left: -70px;
+                width: 40px;
+                border-top: 1px solid currentColor;
+                will-change: transform;
+                transition: transform .2s ease-in-out;
+                transform: scaleX(0);
+                transform-origin: left center;
+            }
+
+            // shift
+            &::before {
+                width: 0;
+                will-change: width;
+                transition: width .2s ease-in-out;
+            }
+
+            &.active {
+                &::after {
+                    transform: scaleX(1);
+                }
+                &::before {
+                    width: 20px;
+                }
+
+                .badge {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.nav-pills {
+    .nav-link {
+        padding: 7px 20px;
+    }
+}

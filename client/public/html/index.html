@@ -1,0 +1,406 @@
+{% set page_title = 'Demo Landing' %}
+{% set navbar_fixed = true %}
+{% set navbar_dark = true %}
+{% set navbar_social = false %}
+{% set navbar_purchase = true %}
+{% set navbar_mobile = 'style-2' %}
+{% set navbar_mobile_dark = true %}
+{% set footer = false %}
+
+{% extends 'layouts/layout-1.html' %}
+
+
+{% block content %}
+
+
+{% macro card_demo(title="", image="", href="", classes="", shadow="") %}
+<a href="{{ href }}" class="card card-demo{{ ' ' + classes if classes }}">
+    <span class="card-img{{ ' box-shadow' if shadow }}">
+        <img src="assets/images/demos/{{ image }}" alt="">
+    </span>
+
+    <span class="card-body">
+        <span class="card-title h5">{{ title }}</span>
+    </span>
+</a>
+{% endmacro %}
+
+{% macro card_demo_cols(icon="", href="", classes="") %}
+<a href="{{ href }}" class="card card-demo{{ ' ' + classes if classes }}">
+    <span class="card-img d-flex align-items-center justify-content-center flex-column">
+        <span class="p-18">
+            {{ icon | safe }}
+        </span>
+    </span>
+</a>
+{% endmacro %}
+
+<div class="py-160 bg-dark text-center">
+    <div class="container shape-parent">
+        <div class="shape ms-60">
+            <svg class="mt-n160" data-rellax-speed="1" width="500" height="318" viewBox="0 0 500 318" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="250" cy="68" r="250" fill="#202020"/>
+            </svg>
+        </div>
+
+        <div class="row justify-content-center text-white mb-100">
+            <div class="col-12 col-lg-8 col-xl-6">
+                <h1 class="display-4 mb-20 text-white show-on-scroll" data-show-duration="500" data-show-distance="10">Themebau.</h1>
+                <p class="mb-4 show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="100">Themebau is a stylish universal template for all your projects & creative output. Minimalistic and easy to use, it has everything you need to launch your website.</p>
+            </div>
+        </div>
+
+        <div class="row gh-1 gv-4">
+            <div class="col-12 col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="50">
+                {{ card_demo('Main Home', 'main-home-740-600.jpg', 'home.html', 'text-white') }}
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="150">
+                {{ card_demo('Simple Portfolio', 'simple-portfolio-740-600.jpg', 'simple-portfolio.html', 'text-white') }}
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="250">
+                {{ card_demo('Creative Agency', 'creative-agency-740-600.jpg', 'creative-agency.html', 'text-white') }}
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="50">
+                {{ card_demo('Freelancer Portfolio', 'freelancer-portfolio-740-600.jpg', 'freelancer-portfolio.html', 'text-white') }}
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="150">
+                {{ card_demo('Interactive Dark', 'interactive-dark-740-600.jpg', 'interactive-links-dark.html', 'text-white') }}
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="250">
+                {{ card_demo('Digital Agency', 'digital-agency-740-600.jpg', 'digital-agency.html', 'text-white') }}
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="50">
+                {{ card_demo('Fullscreen Slider', 'fullscreen-slider-740-362.jpg', 'fullscreen-showcase.html', 'text-white') }}
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="150">
+                {{ card_demo('Carousel Light', 'carousel-light-740-362.jpg', 'carousel-light.html', 'text-white') }}
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="250">
+                {{ card_demo('Carousel Dark', 'carousel-dark-740-362.jpg', 'carousel-dark.html', 'text-white') }}
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="50">
+                {{ card_demo('Interactive Light', 'interactive-light-740-600.jpg', 'interactive-links-light.html', 'text-white') }}
+            </div>
+            <div class="col-12 col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="150">
+                {{ card_demo('Left Menu', 'left-menu-740-600.jpg', 'left-menu.html', 'text-white') }}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="py-160">
+    <div class="container">
+        <div class="row gh-1 gv-2 align-items-center mb-100">
+            <div class="col-12 col-lg-5 d-flex flex-column align-items-lg-end">
+                <img class="w-100 h-100 mb-30 mb-lg-0 box-shadow show-on-scroll" src="assets/images/demos/demo-1-940-602.jpg" alt="" data-show-duration="600" data-show-distance="40" data-show-origin="left" data-show-delay="400">
+                <img class="mw-100 mt-lg-n70 me-lg-n100 box-shadow show-on-scroll" width="370" src="assets/images/demos/demo-2-740-560.jpg" alt="" data-show-duration="600" data-show-distance="40" data-show-origin="left" data-show-delay="550">
+            </div>
+            <div class="col-lg-2 d-none d-lg-block"></div>
+            <div class="col-12 col-lg-4">
+                <h2 class="h3 ms-lg-n100 mb-40 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-origin="right" data-show-delay="50">Present your work in a unique way 💪</h2>
+                <p class="mt-lg-n2 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-origin="right" data-show-delay="150">Themebau has 1/2/3/4 columns layouts to showcase your work and collections. Choose between the 19 types of layouts to create your portfolio.</p>
+                <a href="portfolio-col-2-style-1.html" class="btn btn-dark btn-with-ball show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-origin="right" data-show-delay="200">view pages</a>
+            </div>
+        </div>
+
+        <div class="row gh-1 gv-1 justify-content-center">
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="250">
+                {{ card_demo_cols( href="portfolio-col-1-style-1.html", icon='<svg width="134" height="109" viewBox="0 0 134 109" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M134 0H0V50H134V0ZM134 59H0V109H134V59Z" fill="#E2E2E2"/></svg>' ) }}
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="150">
+                {{ card_demo_cols( href="portfolio-col-2-style-1.html", icon='<svg width="134" height="109" viewBox="0 0 134 109" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M62 0H0V50H62V0ZM62 59H0V109H62V59ZM72 59H134V109H72V59ZM134 0H72V50H134V0Z" fill="#E2E2E2"/></svg>' ) }}
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="50">
+                {{ card_demo_cols( href="portfolio-col-2-style-2.html", icon='<svg width="134" height="109" viewBox="0 0 134 109" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M62 0H0V64H62V0ZM134 45H72V109H134V45ZM72 0H134V36H72V0ZM62 73H0V109H62V73Z" fill="#E2E2E2"/></svg>' ) }}
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="50">
+                {{ card_demo_cols( href="portfolio-col-3-style-1.html", icon='<svg width="134" height="109" viewBox="0 0 134 109" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M38 0H0V50H38V0ZM86 0H47V50H86V0ZM95 0H134V50H95V0ZM38 59H0V109H38V59ZM47 59H86V109H47V59ZM134 59H95V109H134V59Z" fill="#E2E2E2"/></svg>' ) }}
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="150">
+                {{ card_demo_cols( href="portfolio-col-3-style-2.html", icon='<svg width="134" height="109" viewBox="0 0 134 109" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M38 0H0V62H38V0ZM86 0H47V38H86V0ZM95 0H134V62H95V0ZM38 71H0V109H38V71ZM47 47H86V109H47V47ZM134 71H95V109H134V71Z" fill="#E2E2E2"/></svg>' ) }}
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="250">
+                {{ card_demo_cols( href="portfolio-col-4-style-1.html", icon='<svg width="134" height="109" viewBox="0 0 134 109" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M29 0H0V32H29V0ZM29 38H0V71H29V38ZM0 77H29V109H0V77ZM64 0H35V32H64V0ZM35 38H64V71H35V38ZM64 77H35V109H64V77ZM70 0H99V32H70V0ZM99 38H70V71H99V38ZM70 77H99V109H70V77ZM134 0H105V32H134V0ZM105 38H134V71H105V38ZM134 77H105V109H134V77Z" fill="#E2E2E2"/></svg>' ) }}
+            </div>
+        </div>
+
+        <div class="text-center mt-40 pt-10 show-on-scroll" data-show-distance="20" data-show-duration="500" data-show-delay="200">
+            <a href="#" class="font-size-18 fw-medium text-decoration-none">and more... 🔥</a>
+        </div>
+    </div>
+</div>
+
+<div class="py-160 bg-dark shape-parent overflow-hidden">
+    <div class="shape justify-content-end mt-n130">
+        <svg class="mt-n160 me-n60" width="640" height="640" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="320" cy="320" r="320" fill="#202020"/>
+        </svg>
+    </div>
+
+    <div class="container">
+        <h2 class="text-center text-white mt-n10 mb-100 show-on-scroll" data-show-duration="500" data-show-distance="10">Projects Showcase</h2>
+    </div>
+
+    <div class="swiper swiper-dark overflow-hidden mt-n10 show-on-scroll" data-swiper-slides="auto" data-swiper-gap="70" data-swiper-grabCursor="true" data-swiper-breakpoints="620:1" data-show-duration="800" data-show-delay="150">
+        <div class="container">
+            <div class="swiper-container overflow-initial">
+                <div class="swiper-wrapper align-items-center">
+                    <div class="swiper-slide w-sm-auto">
+                        <a href="portfolio-single-style-1.html">
+                            <img class="mw-100" width="500" src="assets/images/demos/portfolio-single-1-1000-958.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide w-sm-auto">
+                        <a href="portfolio-single-style-2.html">
+                            <img class="mw-100" width="330" src="assets/images/demos/portfolio-single-2-660-660.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide w-sm-auto">
+                        <a href="portfolio-single-style-3.html">
+                            <img class="mw-100" width="500" src="assets/images/demos/portfolio-single-3-1000-958.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide w-sm-auto">
+                        <a href="portfolio-single-style-4.html">
+                            <img class="mw-100" width="330" src="assets/images/demos/portfolio-single-4-660-660.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide w-sm-auto">
+                        <a href="portfolio-single-style-5.html">
+                            <img class="mw-100" width="500" src="assets/images/demos/portfolio-single-5-1000-958.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="swiper-slide w-sm-auto">
+                        <a href="portfolio-single-style-6.html">
+                            <img class="mw-100" width="330" src="assets/images/demos/portfolio-single-6-660-660.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-scrollbar"></div>
+        </div>
+    </div>
+</div>
+
+<div class="py-160">
+    <div class="container">
+        <div class="row gh-1 mb-90">
+            <div class="col-lg-1"></div>
+
+            <div class="col-lg-5 col-xl-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="50" data-show-origin="left">
+                <h2 class="h3 mt-n9">Practical Inner pages for everything you may need.</h2>
+            </div>
+
+            <div class="col-lg-2 d-none d-xl-block"></div>
+
+            <div class="col-lg-5 col-xl-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="200" data-show-origin="right">
+                <p class="mt-n6 mb-0">Themebau is packed with a set of practical inner pages for various uses. Choose your favorites & customize them to your needs.</p>
+            </div>
+        </div>
+
+        <div class="row gh-1 gv-3 text-center">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 show-on-scroll" data-show-duration="400" data-show-distance="20" data-show-delay="100">
+                {{ card_demo('About Us', 'about-us-540-460.jpg', 'about-us.html', shadow=true) }}
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 show-on-scroll" data-show-duration="400" data-show-distance="20" data-show-delay="150">
+                {{ card_demo('About Us V.2', 'about-us-2-540-460.jpg', 'about-us-2.html', shadow=true) }}
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 show-on-scroll" data-show-duration="400" data-show-distance="20" data-show-delay="200">
+                {{ card_demo('About Me', 'about-me-540-460.jpg', 'about-me.html', shadow=true) }}
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 show-on-scroll" data-show-duration="400" data-show-distance="20" data-show-delay="250">
+                {{ card_demo('Services', 'services-540-460.jpg', 'services.html', shadow=true) }}
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 show-on-scroll" data-show-duration="400" data-show-distance="20" data-show-delay="300">
+                {{ card_demo('Single Service', 'single-service-540-460.jpg', 'single-service.html', shadow=true) }}
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 show-on-scroll" data-show-duration="400" data-show-distance="20" data-show-delay="350">
+                {{ card_demo('Contact Us', 'contact-us-540-460.jpg', 'contact-1.html', shadow=true) }}
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 show-on-scroll" data-show-duration="400" data-show-distance="20" data-show-delay="400">
+                {{ card_demo('Contact Us V.2', 'contact-us-2-540-460.jpg', 'contact-2.html', shadow=true) }}
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 show-on-scroll" data-show-duration="400" data-show-distance="20" data-show-delay="450">
+                {{ card_demo('404 Page', '404-540-460.jpg', '404.html', shadow=true) }}
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 show-on-scroll" data-show-duration="400" data-show-distance="20" data-show-delay="500">
+                {{ card_demo('Blog', 'blog-540-460.jpg', 'blog-col-3.html', shadow=true) }}
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 show-on-scroll" data-show-duration="400" data-show-distance="20" data-show-delay="550">
+                {{ card_demo('Blog V.2', 'blog-2-540-460.jpg', 'blog-col-1.html', shadow=true) }}
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 show-on-scroll" data-show-duration="400" data-show-distance="20" data-show-delay="600">
+                {{ card_demo('Single Post', 'single-post-540-460.jpg', 'single-post.html', shadow=true) }}
+            </div>
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3 show-on-scroll" data-show-duration="400" data-show-distance="20" data-show-delay="650">
+                {{ card_demo('Coming Soon', 'coming-soon-540-264.jpg', 'coming-soon.html', shadow=true) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="py-160 bg-dark text-center">
+    <div class="container">
+        <h2 class="mt-n10 text-white mb-70 show-on-scroll" data-show-duration="500" data-show-distance="10">Menu Styles</h2>
+
+        <div class="swiper swiper-dark show-on-scroll" data-swiper-slides="3" data-swiper-gap="30" data-swiper-grabCursor="true" data-swiper-breakpoints="460:1, 828:2" data-show-duration="800" data-show-delay="100">
+            <div class="swiper-container">
+                <div class="swiper-wrapper pt-20">
+                    <div class="swiper-slide">
+                        {{ card_demo('Classic Menu', 'classic-menu-740-362.jpg', 'home.html', 'text-white') }}
+                    </div>
+                    <div class="swiper-slide">
+                        {{ card_demo('White Left Menu', 'white-left-menu-740-362.jpg', 'left-menu.html', 'text-white') }}
+                    </div>
+                    <div class="swiper-slide">
+                        {{ card_demo('Dark Center Menu', 'dark-center-menu-740-362.jpg', 'creative-agency.html', 'text-white') }}
+                    </div>
+                    <div class="swiper-slide">
+                        {{ card_demo('Left Menu', 'left-menu-740-362.jpg', 'left-menu.html', 'text-white') }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-scrollbar"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="pt-70 overflow-hidden" style="background-color: #f5f5f5;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1 d-none d-lg-block order-lg-2"></div>
+            <div class="col-lg-5 col-xl-4 pt-100 pb-60 pb-lg-160 order-lg-3">
+                <h2 class="h3 show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="50">Fully responsive and retina ready 👑</h2>
+                <p class="mb-12 show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="150">Themebau is designed to look great on desktop computers, tablets and mobile devices. Every element 100% responsive & retina ready.</p>
+            </div>
+            <div class="col-lg-6 order-lg-1 show-on-scroll" data-show-duration="800" data-show-distance="50" data-show-delay="200">
+                <img class="w-100 mb-n60" src="assets/images/demos/responsive-1200-1070.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="py-160">
+    <div class="container">
+        <div class="row gh-1 gv-3">
+            <div class="col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="50">
+                {{ feature(
+                    '', features.icon_frame, '<svg width="17" height="23" viewBox="0 0 17 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 11.5H10.2308C11.4548 11.5 12.6288 10.9469 13.4943 9.96231C14.3599 8.97774 14.8462 7.64239 14.8462 6.25C14.8462 4.85761 14.3599 3.52226 13.4943 2.53769C12.6288 1.55312 11.4548 1 10.2308 1H1V11.5ZM1 11.5H11.3846C12.6087 11.5 13.7826 12.0531 14.6482 13.0377C15.5137 14.0223 16 15.3576 16 16.75C16 18.1424 15.5137 19.4777 14.6482 20.4623C13.7826 21.4469 12.6087 22 11.3846 22H1V11.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                    'Bootstrap 4', 'Themebau based on Bootstrap 4, so layout changes is so much easily.'
+                ) }}
+            </div>
+            <div class="col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="150">
+                {{ feature(
+                    '', features.icon_frame, '<svg width="25" height="21" viewBox="0 0 25 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.39014 19.6899V12.6899M4.39014 8.68994V1.68994M12.3901 19.6899V10.6899M12.3901 6.68994V1.68994M20.3901 19.6899V14.6899M20.3901 10.6899V1.68994M1.39014 12.6899H7.39014M9.39014 6.68994H15.3901M17.3901 14.6899H23.3901" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                    'Sass Available', 'Easy customization with SASS variables. You can change colors, typography and more.'
+                ) }}
+            </div>
+            <div class="col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="250">
+                {{ feature(
+                    '', features.icon_frame, '<svg width="17" height="25" viewBox="0 0 17 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.5 1H4.75C3.75544 1 2.80161 1.40387 2.09835 2.12276C1.39509 2.84165 1 3.81667 1 4.83333C1 5.85 1.39509 6.82502 2.09835 7.54391C2.80161 8.2628 3.75544 8.66667 4.75 8.66667M8.5 1V8.66667M8.5 1H12.25C12.7425 1 13.2301 1.09915 13.6851 1.2918C14.14 1.48444 14.5534 1.7668 14.9017 2.12276C15.2499 2.47872 15.5261 2.9013 15.7145 3.36638C15.903 3.83146 16 4.32993 16 4.83333C16 5.33673 15.903 5.83521 15.7145 6.30029C15.5261 6.76537 15.2499 7.18795 14.9017 7.54391C14.5534 7.89987 14.14 8.18223 13.6851 8.37487C13.2301 8.56751 12.7425 8.66667 12.25 8.66667M8.5 8.66667H4.75M8.5 8.66667H12.25M8.5 8.66667V16.3333M4.75 8.66667C3.75544 8.66667 2.80161 9.07053 2.09835 9.78942C1.39509 10.5083 1 11.4833 1 12.5C1 13.5167 1.39509 14.4917 2.09835 15.2106C2.80161 15.9295 3.75544 16.3333 4.75 16.3333M12.25 8.66667C11.7575 8.66667 11.2699 8.76582 10.8149 8.95846C10.36 9.1511 9.94657 9.43347 9.59835 9.78942C9.25013 10.1454 8.97391 10.568 8.78545 11.033C8.597 11.4981 8.5 11.9966 8.5 12.5C8.5 13.0034 8.597 13.5019 8.78545 13.967C8.97391 14.432 9.25013 14.8546 9.59835 15.2106C9.94657 15.5665 10.36 15.8489 10.8149 16.0415C11.2699 16.2342 11.7575 16.3333 12.25 16.3333C12.7425 16.3333 13.2301 16.2342 13.6851 16.0415C14.14 15.8489 14.5534 15.5665 14.9017 15.2106C15.2499 14.8546 15.5261 14.432 15.7145 13.967C15.903 13.5019 16 13.0034 16 12.5C16 11.9966 15.903 11.4981 15.7145 11.033C15.5261 10.568 15.2499 10.1454 14.9017 9.78942C14.5534 9.43347 14.14 9.1511 13.6851 8.95846C13.2301 8.76582 12.7425 8.66667 12.25 8.66667ZM4.75 16.3333C3.75544 16.3333 2.80161 16.7372 2.09835 17.4561C1.39509 18.175 1 19.15 1 20.1667C1 21.1833 1.39509 22.1584 2.09835 22.8772C2.80161 23.5961 3.75544 24 4.75 24C5.74456 24 6.69839 23.5961 7.40165 22.8772C8.10491 22.1584 8.5 21.1833 8.5 20.1667V16.3333M4.75 16.3333H8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                    'Figma Files Included', 'We provided a source Figma file with Themebau.'
+                ) }}
+            </div>
+            <div class="col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="350">
+                {{ feature(
+                    '', features.icon_frame, '<svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.3807 2.59133C19.8676 2.08683 19.2583 1.68663 18.5878 1.41358C17.9172 1.14054 17.1985 1 16.4727 1C15.7468 1 15.0281 1.14054 14.3576 1.41358C13.687 1.68663 13.0778 2.08683 12.5646 2.59133L11.4997 3.63785L10.4348 2.59133C9.39834 1.57276 7.99258 1.00053 6.52679 1.00053C5.06099 1.00053 3.65523 1.57276 2.61876 2.59133C1.58229 3.6099 1 4.99139 1 6.43187C1 7.87235 1.58229 9.25383 2.61876 10.2724L11.4997 19L20.3807 10.2724C20.8941 9.76814 21.3013 9.16942 21.5791 8.51045C21.857 7.85148 22 7.14517 22 6.43187C22 5.71857 21.857 5.01225 21.5791 4.35328C21.3013 3.69431 20.8941 3.09559 20.3807 2.59133Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                    'Modern Design', 'High usability, organizing content, fully responsive design as per latest design trends.'
+                ) }}
+            </div>
+            <div class="col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="450">
+                {{ feature(
+                    '', features.icon_frame, '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.799 8.7C9.05761 7.96483 9.56807 7.34492 10.24 6.95005C10.9118 6.55518 11.7018 6.41083 12.4699 6.54258C13.238 6.67433 13.9347 7.07368 14.4366 7.66988C14.9385 8.26609 15.2132 9.02067 15.212 9.8C15.212 12 11.912 13.1 11.912 13.1M12 17.5H12.011M23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                    'Customer Support', 'We are here to help you if you have any queries about template.'
+                ) }}
+            </div>
+            <div class="col-md-6 col-lg-4 show-on-scroll" data-show-duration="500" data-show-distance="20" data-show-delay="550">
+                {{ feature(
+                    '', features.icon_frame, '<svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 1.9979V7.99947M22 7.99947H16.2727M22 7.99947L17.5709 3.63833C16.545 2.56276 15.2758 1.77704 13.8818 1.3545C12.4877 0.931957 11.0142 0.886355 9.59882 1.22195C8.1834 1.55755 6.87217 2.2634 5.78749 3.27365C4.70281 4.2839 3.88002 5.56562 3.39591 6.99921M1 18.0021V12.0005M1 12.0005H6.72727M1 12.0005L5.42909 16.3617C6.45499 17.4372 7.72417 18.223 9.11823 18.6455C10.5123 19.068 11.9858 19.1136 13.4012 18.778C14.8166 18.4425 16.1278 17.7366 17.2125 16.7263C18.2972 15.7161 19.12 14.4344 19.6041 13.0008" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                    'Regular Updates', 'Lifetime reliable and regular updates with your purchase.'
+                ) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="py-130 bg-dark overflow-hidden shape-parent">
+    <div class="shape justify-content-end mt-n130">
+        <svg class="mt-n160 me-n60" width="640" height="640" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="320" cy="320" r="320" fill="#202020"/>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="row gh-1 gv-xs mt-n30">
+            {% macro demo_feature( title="" ) %}
+            <div class="row gh-xs mt-25">
+                <div class="col-auto">
+                    <svg class="mt-n4" width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.5 1L12.1265 6.26604L18 7.11567L13.75 11.2124L14.753 17L9.5 14.266L4.247 17L5.25 11.2124L1 7.11567L6.8735 6.26604L9.5 1Z" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="col">
+                    <h6 class="font-size-16 mb-5 text-white">{{ title }}</h6>
+                </div>
+            </div>
+            {% endmacro %}
+
+            <div class="col-12 col-md-6 col-lg-4 show-on-scroll" data-show-duration="650" data-show-distance="20" data-show-delay="50">
+                {{ demo_feature( "11 Homepage variations" ) }}
+                {{ demo_feature( "19 Portfolio styles & 6 Single Projects pages" ) }}
+                {{ demo_feature( "4 Menu & 3 Footer styles" ) }}
+                {{ demo_feature( "Creative Blog & Inner pages" ) }}
+                {{ demo_feature( "100% Responsive & Retina ready" ) }}
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 show-on-scroll" data-show-duration="650" data-show-distance="20" data-show-delay="150">
+                {{ demo_feature( "Gulp Tooling to automate the Workflow" ) }}
+                {{ demo_feature( "W3C valid HTML" ) }}
+                {{ demo_feature( "Easy customization via HTML classes & attributes" ) }}
+                {{ demo_feature( "Smooth Animations" ) }}
+                {{ demo_feature( "Smooth Parallax for images & videos" ) }}
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 show-on-scroll" data-show-duration="650" data-show-distance="20" data-show-delay="250">
+                {{ demo_feature( "Developers ready: Webpack, Gulp, SCSS, Nunjucks, NPM" ) }}
+                {{ demo_feature( "Google Fonts" ) }}
+                {{ demo_feature( "Included generated HTML version (ready to use without developer tools)" ) }}
+                {{ demo_feature( "Google Maps" ) }}
+            </div>
+        </div>
+
+        <div class="text-center mt-70 pt-3 mb-n8 show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="350">
+            <a href="#" class="text-white font-size-18 fw-medium text-decoration-none">and more... 🔥</a>
+        </div>
+    </div>
+</div>
+
+<div class="pt-100 mt-3 pb-130 text-center text-md-start">
+    <div class="container">
+        <div class="row gv-1 align-items-center justify-content-center justify-content-md-between">
+            <div class="col-md-10 me-md-auto">
+                <div class="interactive-links">
+                    <img class="interactive-links-image" src="assets/images/demos/themebau-460-520.jpg" width="230" alt="">
+                    <a href="https://themes.getbootstrap.com/product/themebau/" class="nav-link display-4"><u>Get Themebau</u></a>
+                </div>
+            </div>
+            <div class="col-auto">
+                <a href="home.html" class="btn btn-clean me-xl-100">
+                    <svg class="icon-arrow icon-arrow-right" width="69" height="30" viewBox="0 0 69 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M54 2L67 15L54 28" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 15L67 15" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

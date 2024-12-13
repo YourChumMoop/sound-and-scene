@@ -1,0 +1,13 @@
+.number-box {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.number-box-title {
+    margin-bottom: 0;
+}
+
+.number-box-subtitle {
+    font-weight: 500;
+}

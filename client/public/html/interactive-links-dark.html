@@ -1,0 +1,51 @@
+{% set page_title = 'Interactive Links Dark' %}
+{% set body_class = 'bg-dark' %}
+{% set navbar_expand = true %}
+{% set navbar_dark = true %}
+    {% set navbar_mobile = 'style-2' %}
+{% set navbar_mobile_dark = true %}
+{% set footer = 'default-3' %}
+{% set footer_dark = true %}
+
+{% extends 'layouts/layout-1.html' %}
+
+
+{% block content %}
+<div class="shape align-items-end justify-content-end">
+    <svg data-rellax-speed="-1" class="mb-160" width="390" height="641" viewBox="0 0 390 641" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="320.5" cy="320.5" r="320.5" fill="#202020"/>
+    </svg>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10">
+            <div class="pt-100 pb-160">
+                <ul class="nav flex-column interactive-links interactive-links-style-2 text-white">
+                    {% macro portfolio_interactive_link(name="", delay="") %}
+                    <li class="nav-item">
+                        <img class="interactive-links-image" src="{{ portfolio[name].image.md }}" alt="">
+                        <a href="{{ portfolio[name].href }}" class="nav-link h1">
+                            {{- portfolio[name].title -}}
+                        </a>
+                        <p class="subtitle">{{ portfolio[name].category[0] }}</p>
+                    </li>
+                    {% endmacro %}
+
+                    {{ portfolio_interactive_link('fashion_model') }}
+                    {{ portfolio_interactive_link('funny_dog') }}
+                    {{ portfolio_interactive_link('creative_branding') }}
+                    {{ portfolio_interactive_link('colibri') }}
+                    {{ portfolio_interactive_link('luxury_car') }}
+                    {{ portfolio_interactive_link('portrait_inspiration') }}
+                </ul>
+            </div>
+
+            <div class="mt-30 pb-100 ps-lg-3 position-relative">
+                <h3 class="text-white mb-60">Do you have a project?<br>Send us a message and let's connect 👋</h3>
+                <a href="contact-2.html" class="btn btn-white btn-with-ball">let’s work</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

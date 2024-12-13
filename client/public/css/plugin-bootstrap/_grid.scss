@@ -1,0 +1,40 @@
+// Custom Gap
+$gap: (
+    xs: 20px,
+    1: 30px,
+    2: 40px,
+    3: 60px,
+    4: 80px,
+    5: 100px,
+    6: 140px
+) !default;
+
+@each $number, $gap in $gap {
+    // horizontal
+    .row.gh-#{$number} {
+        margin-left: -#{$gap};
+
+        > [class*="col"] {
+            padding-left: $gap;
+        }
+    }
+
+    // vertical
+    .row.gv-#{$number} {
+        margin-top: -#{$gap};
+
+        > [class*="col"] {
+            padding-top: $gap;
+        }
+    }
+}
+
+
+// container
+@include media-breakpoint-down(sm) {
+    .container,
+    .container-fluid {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+}

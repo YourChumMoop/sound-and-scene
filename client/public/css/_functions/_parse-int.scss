@@ -1,0 +1,5 @@
+@use "sass:math";
+
+@function parse-int($number) {
+    @return math.div($number, ($number * 0 + 1));
+}

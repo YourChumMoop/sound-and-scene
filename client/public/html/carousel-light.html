@@ -1,0 +1,38 @@
+{% set page_title = 'Carousel Light' %}
+{% set navbar_fixed = true %}
+{% set navbar_expand = true %}
+{% set navbar_mobile = 'style-3' %}
+{% set footer = false %}
+
+{% extends 'layouts/layout-1.html' %}
+
+
+{% block content %}
+<div class="swiper swiper-full swiper-full-horizontal swiper-portfolio-animejs" data-swiper-slides="auto" data-swiper-gap="100" data-swiper-speed="600" data-swiper-loop="true" data-swiper-center="true" data-swiper-breakpoints="500:auto">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {% macro slide_project(name="") %}
+            <div class="swiper-slide" data-cursor-style="cursor-circle" data-cursor-text="view">
+                {{ card_project_overlay_global(name=name, image_size="lg", title_size="h2", classes="card-image-sm card-bg-show text-white text-center", style="swiper-full-horizontal", bg="rgba(14, 14, 14, .2)") }}
+            </div>
+            {% endmacro %}
+            {{ slide_project('cool_photography') }}
+            {{ slide_project('colibri_project') }}
+            {{ slide_project('bag_design') }}
+            {{ slide_project('dog_photoset') }}
+            {{ slide_project('breakfast') }}
+        </div>
+    </div>
+
+    <div class="swiper-button-wrapper container">
+        <div class="swiper-button-prev">
+            {{- icon.arrow_left | safe -}}
+        </div>
+        <div class="swiper-button-next">
+            {{- icon.arrow_right | safe -}}
+        </div>
+    </div>
+
+    <div class="swiper-pagination"></div>
+</div>
+{% endblock %}

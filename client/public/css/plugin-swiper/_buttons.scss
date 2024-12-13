@@ -1,0 +1,69 @@
+.swiper-button-prev,
+.swiper-button-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-image: none;
+
+    &::after {
+        display: none;
+    }
+
+    svg {
+        @extend .icon-arrow;
+    }
+}
+
+.swiper-button-prev {
+    left: 0;
+
+    svg {
+        @extend .icon-arrow-left;
+    }
+
+    &:hover svg {
+        @extend .icon-arrow-left-hover;
+    }
+}
+
+.swiper-button-next {
+    right: 0;
+
+    svg {
+        @extend .icon-arrow-right;
+    }
+
+    &:hover svg {
+        @extend .icon-arrow-right-hover;
+    }
+}
+
+
+// style 1
+.swiper-button-style-1 {
+    @include media-breakpoint-down(sm) {
+        .swiper-button-prev,
+        .swiper-button-next {
+            top: auto;
+            bottom: 0;
+        }
+    }
+}
+
+
+// style 3
+.swiper-button-style-3 {
+    .swiper-button-next {
+        top: auto;
+        bottom: 0;
+    }
+
+    .swiper-button-prev {
+        top: auto;
+        right: 60px;
+        bottom: 0;
+        left: auto;
+    }
+}

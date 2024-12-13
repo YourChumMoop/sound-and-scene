@@ -4,10 +4,72 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" /> <!--TODO REPLACE ICON WITH UNIQUE ICON-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- START: Styles -->
+
+    <!-- Swiper -->
+    <link rel="stylesheet" href="assets/vendor/swiper/dist/css/swiper.min.css" />
+
+    <!-- Fancybox -->
+    <link rel="stylesheet" href="assets/vendor/fancybox/dist/jquery.fancybox.min.css" />
+
+    <!-- Themebau -->
+    <link rel="stylesheet" href="assets/css/{{ template_name }}.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/custom.css">
+    {% if custom_css %}<link rel="stylesheet" href="{{ custom_css }}">{% endif %}
+    <!-- END: Styles -->
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery/dist/jquery.min.js"></script>
     <title>Sound & Scene</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- START: Scripts -->
+
+    <!-- Object Fit Polyfill -->
+    <script src="assets/vendor/object-fit-images/dist/ofi.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- ImagesLoaded -->
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+
+    <!-- Swiper -->
+    <script src="assets/vendor/swiper/dist/js/swiper.min.js"></script>
+
+    <!-- Animejs -->
+    <script src="assets/vendor/animejs/lib/anime.min.js"></script>
+
+    <!-- Rellax -->
+    <script src="assets/vendor/rellax/rellax.min.js"></script>
+
+    <!-- Countdown -->
+    <script src="assets/vendor/jquery-countdown/dist/jquery.countdown.min.js"></script>
+
+    <!-- Moment.js -->
+    <script src="assets/vendor/moment/min/moment.min.js"></script>
+    <script src="assets/vendor/moment-timezone/builds/moment-timezone-with-data.min.js"></script>
+
+    <!-- Isotope -->
+    <script src="assets/vendor/isotope-layout/dist/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-packery/packery-mode.pkgd.min.js"></script>
+
+    <!-- Jarallax -->
+    <script src="assets/vendor/jarallax/dist/jarallax.min.js"></script>
+    <script src="assets/vendor/jarallax/dist/jarallax-video.min.js"></script>
+
+    <!-- Fancybox -->
+    <script src="assets/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
+
+    <!-- Themebau -->
+    <script src="assets/js/{{ template_name }}.min.js"></script>
   </body>
 </html>

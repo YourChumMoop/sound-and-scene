@@ -1,0 +1,25 @@
+.shape {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+
+    @include media-breakpoint-up(xl) {
+        display: flex;
+    }
+    @include media-breakpoint-down(xl) {
+        display: none;
+    }
+
+    svg {
+        transition: transform 1.3s cubic-bezier(.2, 1, .2, 1);
+        z-index: -1;
+    }
+}
+
+.shape-parent {
+    position: relative;
+    z-index: 0;
+}

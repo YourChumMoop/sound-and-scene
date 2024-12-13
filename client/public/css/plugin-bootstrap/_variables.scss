@@ -1,0 +1,83 @@
+// stylelint-disable scss/dollar-variable-default
+// body
+$font-family-base: "Inter", sans-serif;
+$line-height-base: 1.6;
+
+// headings
+$headings-font-family: $font-family-base;
+$headings-font-weight: 500;
+
+// lead
+$lead-font-size: em(20px);
+
+
+$dark: $color-dark;
+$black: $dark;
+
+$body-color: $dark;
+
+$gray-600: #969696;
+$light: #f5f5f5;
+
+$border-radius: 0;
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 620px,
+    md: 828px,
+    lg: 1024px,
+    xl: 1200px,
+    xxl: 1400px
+) !default;
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1170px
+) !default;
+
+// paddings and margins
+$spacer: 3.33333rem;
+$enable-negative-margins: true;
+
+$spacers: (
+    0: 0,
+    1: 1px,
+    2: 2px,
+    3: 3px,
+    4: 4px,
+    5: 5px,
+    6: 6px,
+    7: 7px,
+    8: 8px,
+    9: 9px,
+    10: 10px,
+    11: 11px,
+    12: 12px,
+    13: 13px,
+    15: 15px,
+    17: 17px,
+    18: 18px,
+    20: 20px,
+    25: 25px,
+    30: 30px,
+    40: 40px,
+    60: 60px,
+    70: 70px,
+    90: 90px,
+    100: 100px,
+    110: 110px,
+    130: 130px,
+    160: 160px
+);
+
+// grid
+$grid-gutter-width: 0;
+
+// navs
+$nav-link-padding-y: 0;
+$nav-link-padding-x: 0;
+$nav-tabs-border-width: 0;
+$nav-tabs-link-active-bg: transparent;
+$nav-tabs-link-active-color: inherit;

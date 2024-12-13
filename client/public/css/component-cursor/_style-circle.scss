@@ -1,0 +1,43 @@
+@use "sass:math";
+
+$cursor_circle_size: 90px !default;
+
+.cursor-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: #{math.div($cursor_circle_size, -2)};
+    left: #{math.div($cursor_circle_size, -2)};
+    width: $cursor_circle_size;
+    height: $cursor_circle_size;
+    font-size: em(15px);
+    font-weight: 500;
+    color: $dark;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        border-radius: 100%;
+        will-change: transform;
+        transition: transform .2s ease;
+        transform: scale(.5);
+        z-index: -1;
+    }
+}
+
+.cursor-hover {
+    &::after {
+        transform: scale(1);
+    }
+}
+
+
+.cursor-enabled [data-cursor-style="cursor-circle"],
+.cursor-enabled [data-cursor-style="cursor-circle"] * {
+    cursor: none !important; // stylelint-disable-line
+}

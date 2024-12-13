@@ -1,0 +1,6 @@
+.show-on-scroll {
+    opacity: 0;
+    transition-timing-function: cubic-bezier(2, .1, 2, .1);
+    transition-property: transform, opacity;
+    will-change: opacity, transform;
+}

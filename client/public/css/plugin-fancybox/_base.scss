@@ -1,0 +1,11 @@
+body.compensate-for-scrollbar {
+    margin-right: 0;
+}
+
+.fancybox-bg {
+    background-color: $dark;
+}
+
+.fancybox-is-open .fancybox-bg {
+    opacity: .2;
+}

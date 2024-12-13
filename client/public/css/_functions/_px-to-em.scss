@@ -1,0 +1,11 @@
+@use "sass:math";
+
+// @usage: em(24px, .875em) => 1.71429em
+//         em(24px, 16px) => 1,5em
+@function em($value: 14px, $default: 1em, $body: 16px) {
+    @if (unit($default) == "em") {
+        $default: parse-int($default) * $body;
+    }
+
+    @return #{math.div($value, $default)}em;
+}

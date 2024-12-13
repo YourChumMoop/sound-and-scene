@@ -1,0 +1,51 @@
+.brand {
+    display: block;
+    filter: brightness(1);
+    will-change: filter;
+    transition: filter .15s ease-in-out;
+
+    &.text-grey {
+        &:hover,
+        &:focus {
+            filter: brightness(.8);
+        }
+    }
+
+    &.text-grey-dark {
+        &:hover,
+        &:focus {
+            filter: brightness(1.4);
+        }
+    }
+}
+
+
+.brand-bordered {
+    display: flex;
+    justify-content: center;
+    min-width: 178px;
+    min-height: 130px;
+    border: 1px solid $color-border;
+    transition: border-color .15s ease-in-out;
+
+    svg {
+        display: block;
+        align-self: center;
+    }
+
+    @include is-ie {
+        position: relative;
+
+        svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    &:hover,
+    &:focus {
+        border-color: $dark;
+    }
+}

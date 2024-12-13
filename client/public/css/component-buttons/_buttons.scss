@@ -1,0 +1,161 @@
+.btn {
+    padding: $input-btn-padding-y $input-btn-padding-x;
+    font-weight: 500;
+
+    &:hover,
+    &:focus {
+        .icon-arrow-left {
+            @extend .icon-arrow-left-hover;
+        }
+        .icon-arrow-right {
+            @extend .icon-arrow-right-hover;
+        }
+    }
+}
+
+.btn-name ~ svg {
+    margin-left: 10px;
+}
+
+.show > .btn.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+
+// Custom
+
+// ball
+.btn-with-ball .btn-ball {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-left: 20px;
+    vertical-align: middle;
+    background-color: currentColor;
+    border-radius: 100%;
+}
+
+// clean
+.btn-clean {
+    padding: 0;
+    background-color: transparent;
+
+    .icon-arrow-right {
+        margin-left: 17px;
+    }
+
+    .icon-arrow-left {
+        margin-right: 17px;
+    }
+}
+
+// circle
+.btn-circle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-size: em(15px);
+    border-radius: 100%;
+
+    &.btn-lg {
+        width: 110px;
+        height: 110px;
+    }
+
+    &.btn-md {
+        width: 70px;
+        height: 70px;
+    }
+
+    &.btn-sm {
+        width: 50px;
+        height: 50px;
+    }
+
+    &.btn-xs {
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: inherit;
+        border-radius: 100%;
+        will-change: transform;
+        transition: transform .6s cubic-bezier(.2, 1, .2, 1);
+        z-index: -1;
+    }
+
+    &:hover,
+    &:focus {
+        &::before {
+            transform: scale(1.1);
+        }
+    }
+}
+
+
+// link
+.btn-link {
+    font-weight: 500;
+
+    &.btn-white {
+        color: #fff;
+        background-color: transparent;
+    }
+
+    &.btn-dark,
+    &.btn-dark:hover,
+    &.btn-dark:focus,
+    &.btn-dark.focus,
+    &.btn-dark:not(:disabled):not(.disabled):active,
+    &.btn-dark:not(:disabled):not(.disabled).active {
+        color: $dark;
+        background-color: transparent;
+    }
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+
+// white
+.btn-white {
+    color: $dark;
+    background-color: #fff;
+}
+
+// light
+.btn-light {
+    &:hover,
+    &:focus,
+    &.focus,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        color: $dark;
+        background-color: $light;
+    }
+}
+
+// dark
+.btn-dark {
+    &:hover,
+    &:focus,
+    &.focus,
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+        color: #fff;
+        background-color: $dark;
+    }
+}

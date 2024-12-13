@@ -1,0 +1,95 @@
+.card-wrapper {
+    position: relative;
+}
+
+.card {
+    color: $dark;
+
+    .card-title,
+    .card-title-decoration,
+    .btn,
+    ~ .card-social li,
+    ~ .card-social-container li  {
+        will-change: transform, opacity;
+    }
+
+    .card-title,
+    .btn {
+        color: inherit;
+    }
+
+    > .background {
+        z-index: 1;
+    }
+
+    .background-color {
+        opacity: 0;
+        will-change: opacity;
+        transition: opacity .25s ease-in-out;
+    }
+
+    &.card-bg-show .background-color {
+        opacity: 1;
+    }
+
+    &.card-image-sm,
+    &.card-image-md,
+    &.card-image-lg,
+    &.card-image-xl {
+        .card-img {
+            position: relative;
+            display: block;
+            overflow: hidden;
+
+            &::before {
+                content: "";
+                display: block;
+            }
+        }
+
+        img {
+            @extend .object-fit-image;
+        }
+    }
+
+    &.card-image-sm .card-img::before {
+        padding-top: 50%;
+    }
+    &.card-image-md .card-img::before {
+        padding-top: 65%;
+    }
+    &.card-image-lg .card-img::before {
+        padding-top: 100%;
+    }
+    &.card-image-xl .card-img::before {
+        padding-top: 130%;
+    }
+
+    &:hover .background-color,
+    &:focus .background-color {
+        opacity: 1;
+    }
+}
+
+
+// Zoom
+.card-hover-zoom {
+    .card-img {
+        display: block;
+        overflow: hidden;
+    }
+
+    img {
+        will-change: transform;
+        transition: transform 1.8s cubic-bezier(.2, 1, .2, 1);
+    }
+
+    &:hover,
+    &:focus,
+    .card-img:hover,
+    .card-img:focus {
+        img {
+            transform: scale(1.05);
+        }
+    }
+}

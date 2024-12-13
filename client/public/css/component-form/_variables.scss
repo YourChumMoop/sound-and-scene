@@ -1,0 +1,20 @@
+// stylelint-disable scss/dollar-variable-default
+$input-padding-y: 0;
+$input-padding-x: 0;
+$input-height: auto;
+$input-border-width: 1px;
+$input-bg: transparent;
+$input-color: $dark;
+$input-placeholder-color: $dark;
+$input-border-color: rgba(0, 0, 0, .2);
+$input-focus-border-color: $dark;
+$input-focus-box-shadow: 0;
+$input-btn-focus-width: 0;
+$input-btn-focus-box-shadow: none;
+
+// lg
+$input-height-lg: auto;
+$input-padding-y-lg: 0;
+$input-padding-x-lg: 0;
+$input-font-size-lg: 20px;
+$input-border-radius-lg: 0;

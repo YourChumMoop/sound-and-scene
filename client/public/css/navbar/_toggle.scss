@@ -1,0 +1,36 @@
+.navbar-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    > span {
+        width: 24px;
+        height: 2px;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        background-color: currentColor;
+        will-change: transform, opacity;
+        transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+        transform-origin: center right;
+
+        &:nth-child(3) {
+            transform: scaleX(.5);
+        }
+    }
+
+    &:hover > span:nth-child(3) {
+        transform: scaleX(1);
+    }
+}
+
+.fancybox-open .navbar-toggle > span {
+    &:nth-child(1) {
+        transform: rotate(-45deg) translateX(.5px);
+    }
+    &:nth-child(2) {
+        opacity: 0;
+    }
+    &:nth-child(3) {
+        transform: rotate(45deg) translateX(.5px);
+    }
+}

@@ -1,0 +1,191 @@
+{% macro card_project(href="", image="", title="", category="", classes="", title_size="h4", data="") %}
+<a class="card card-portfolio card-default{% if classes %} {{ classes }}{% endif %}" href="{{ href }}"{% if data %} {{ data }}{% endif %}>
+    <span class="card-img" data-cursor-style="cursor-circle" data-cursor-text="view">
+        <img src="{{ image }}" alt="">
+    </span>
+    <span class="card-body">
+        <span class="card-title {{ title_size }}">{{ title }}</span>
+        <span class="card-category subtitle">{{ category[0] }}</span>
+    </span>
+</a>
+{% endmacro %}
+
+{% macro card_project_horizontal(href="", image="", title="", category="", text="", button="", button_icon="", swap="", classes="", title_size="h2") %}
+<div class="card card-portfolio card-horizontal{{ ' card-swap' if swap }}{% if classes %} {{ classes }}{% endif %}">
+    {% if category %}
+    <a href="{{ category[1] }}" class="card-category subtitle">{{ category[0] }}</a>
+    {% endif %}
+
+    <a href="{{ href }}" class="card-img">
+        <img src="{{ image }}" alt="">
+    </a>
+
+    <div class="card-body">
+        <a href="{{ href }}" class="card-title {{ title_size }}">{{ title }}</a>
+        <div class="card-text">{{ text }}</div>
+        <a href="{{ href }}" class="btn btn-clean">{{ button }}{{ button_icon | safe }}</a>
+    </div>
+</div>
+{% endmacro %}
+
+{% macro card_project_overlay(href="", image="", title="", category="", card_logo="", swiper_parallax="20", title_size="h4", classes="", style="", bg="") %}
+    {% if not style %}
+    <a class="card card-portfolio card-overlay{% if classes %} {{ classes }}{% endif %}" href="{{ href }}">
+        <span class="card-img">
+            <img src="{{ image }}" alt="">
+            {% if bg %}
+            <span class="background-color" style="background-color: {{ bg }};"></span>
+            {% endif %}
+        </span>
+        <span class="card-img-overlay">
+            <span class="card-title {{ title_size }}">{{ title }}</span>
+            <span class="card-category subtitle">{{ category[0] }}</span>
+        </span>
+    </a>
+    {% endif %}
+    {% if style == 'only-image' %}
+    <a class="card card-portfolio card-overlay{% if classes %} {{ classes }}{% endif %}" href="{{ href }}">
+        <span class="card-img">
+            <img src="{{ image }}" alt="">
+        </span>
+    </a>
+    {% endif %}
+    {% if style == 'with-logo' %}
+    <a class="card card-portfolio card-overlay{% if classes %} {{ classes }}{% endif %}" href="{{ href }}">
+        <span class="card-img">
+            <img src="{{ image }}" alt="">
+            {% if bg %}
+            <span class="background-color" style="background-color: {{ bg }};"></span>
+            {% endif %}
+        </span>
+        <span class="card-img-overlay">
+            {{ card_logo | safe }}
+            <span class="card-title {{ title_size }}">{{ title }}</span>
+            <span class="card-category subtitle">{{ category[0] }}</span>
+        </span>
+    </a>
+    {% endif %}
+    {% if style == 'swiper-horizontal' %}
+    <a class="card card-portfolio card-overlay{% if classes %} {{ classes }}{% endif %}" href="{{ href }}">
+        <span class="card-img{{ ' swiper-image' if swiper_parallax }}"{% if swiper_parallax %} data-swiper-parallax-x="{{ swiper_parallax }}%"{% endif %}>
+            <img src="{{ image }}" alt="">
+            {% if bg %}
+            <span class="background-color" style="background-color: {{ bg }};"></span>
+            {% endif %}
+        </span>
+        <span class="card-img-overlay">
+            <span class="card-title {{ title_size }}"><span class="card-title-decoration"></span>{{ title }}</span>
+        </span>
+    </a>
+    {% endif %}
+    {% if style == 'swiper-full-horizontal' %}
+    <a class="card card-portfolio card-overlay{% if classes %} {{ classes }}{% endif %}" href="{{ href }}">
+        <span class="card-img">
+            <img src="{{ image }}" alt="">
+            {% if bg %}
+            <span class="background-color" style="background-color: {{ bg }};"></span>
+            {% endif %}
+        </span>
+        <span class="card-img-overlay">
+            <span class="card-title {{ title_size }}">{{ title }}</span>
+            <span class="card-category subtitle">{{ category[0] }}</span>
+        </span>
+    </a>
+    {% endif %}
+{% endmacro %}
+
+
+{% macro card_service_overlay(href="", image="", icon="", title="", button="", button_icon="", classes="", bg="", title_size="h5") %}
+<a class="card card-service{% if classes %} {{ classes }}{% endif %}" href="{{ href }}">
+    <span class="card-img">
+        <img src="{{ image }}" alt="">
+        {% if bg %}
+        <span class="background-color" style="{{ bg }};"></span>
+        {% endif %}
+    </span>
+    <span class="card-img-overlay">
+        <span class="card-icon">{{ icon | safe }}</span>
+        <span class="card-title {{ title_size }}">{{ title }}</span>
+        <span class="btn btn-clean">{{ button }}{{ button_icon | safe }}</span>
+    </span>
+</a>
+{% endmacro %}
+
+
+{% macro card_blog(href="", image="", title="", date="", text="", button="", button_icon="", title_size="h5", classes="", data="", style="") %}
+{% if not style %}
+<a class="card card-blog card-vertical{{ ' ' + classes if classes }}"{% if data %} {{ data }}{% endif %} href="{{ href }}">
+    <span class="card-img">
+        <img src="{{ image }}" alt="">
+    </span>
+    <span class="card-body">
+        <span class="card-title {{ title_size }}">{{ title }}</span>
+        <span class="card-date">{{ date }}</span>
+    </span>
+</a>
+{% endif %}
+{% if style == 'horizontal' %}
+<a class="card card-blog card-horizontal{{ ' ' + classes if classes }}"{% if data %} {{ data }}{% endif %} href="{{ href }}">
+    <span class="card-img">
+        <img src="{{ image }}" alt="">
+    </span>
+    <span class="card-body">
+        <span class="card-date">{{ date }}</span>
+        <span class="card-title {{ title_size }}">{{ title }}</span>
+        <span class="btn btn-clean">{{ button }}{{ button_icon | safe }}</span>
+    </span>
+</a>
+{% endif %}
+{% if style == 'horizontal-full' %}
+<div class="card card-blog card-horizontal{{ ' ' + classes if classes }}"{% if data %} {{ data }}{% endif %}>
+    <a href="{{ href }}" class="card-img">
+        <img src="{{ image }}" alt="">
+    </a>
+    <div class="card-body">
+        <a href="{{ href }}" class="card-title {{ title_size }}">{{ title }}</a>
+        <div class="card-date">{{ date }}</div>
+        <p class="card-text">{{ text }}</p>
+        <a href="{{ href }}" class="btn btn-clean">{{ button }}{{ button_icon | safe }}</a>
+    </div>
+</div>
+{% endif %}
+{% if style == 'full' %}
+<div class="card card-blog card-vertical{{ ' ' + classes if classes }}"{% if data %} {{ data }}{% endif %}>
+    <a href="{{ href }}" class="card-img">
+        <img src="{{ image }}" alt="">
+    </a>
+    <div class="card-body">
+        <a href="{{ href }}" class="card-title {{ title_size }}">{{ title }}</a>
+        <div class="card-date">{{ date }}</div>
+        <p class="card-text">{{ text }}</p>
+        <a href="{{ href }}" class="btn btn-clean">{{ button }}{{ button_icon | safe }}</a>
+    </div>
+</div>
+{% endif %}
+{% endmacro %}
+
+
+{% macro card_person(href="", image="", title="", subtitle="", social="", title_size="", classes="") %}
+<div class="card card-person{{ ' ' + classes if classes }}">
+    <a href="{{ href }}" class="card-img">
+        <img src="{{ image }}" alt="">
+    </a>
+    <div class="card-body">
+        <a href="{{ href }}" class="card-title {{ title_size }}">{{ title }}</a>
+        <div class="card-subtitle">{{ subtitle }}</div>
+        {% if social %}
+        <div class="card-social">
+            <ul class="nav nav-gap-sm align-items-center">
+                {% for social_href, social_icon in social %}
+                <li class="nav-item">
+                    <a href="{{ social_href }}" class="nav-link">
+                        {{ social_icon | safe }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}

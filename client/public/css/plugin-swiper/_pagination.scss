@@ -1,0 +1,48 @@
+// pagination
+.swiper-pagination {
+    display: flex;
+    align-items: center;
+    font-size: em(14px);
+    font-weight: 500;
+    color: $dark;
+    pointer-events: none;
+
+    &::before {
+        content: "";
+        display: block;
+        order: 11;
+        width: 20px;
+        margin-left: 15px;
+        border-top: 1px solid currentColor;
+    }
+
+    &::after {
+        content: attr(data-swiper-total);
+        display: block;
+        order: 12;
+        margin-left: 15px;
+    }
+}
+
+.swiper-pagination-bullet {
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    will-change: transform, opacity;
+    transition: transform .35s ease, opacity .3s ease;
+
+    &:not(:first-child) {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    &:not(.swiper-pagination-bullet-active) {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+.swiper-pagination-bullet-active ~ .swiper-pagination-bullet {
+    transform: translateY(100%);
+}

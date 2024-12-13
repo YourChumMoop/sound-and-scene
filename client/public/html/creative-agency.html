@@ -1,0 +1,126 @@
+{% set page_title = 'Creative Agency' %}
+
+{% set navbar_fixed = true %}
+{% set navbar_dark = true %}
+{% set navbar_expand = true %}
+{% set navbar_mobile = 'style-2' %}
+{% set navbar_mobile_dark = true %}
+{% set footer_dark = true %}
+
+{% extends 'layouts/layout-1.html' %}
+
+
+{% block content %}
+<div class="pt-160 pb-100 position-relative">
+    <div class="background">
+        <div class="background-video bg-dark jarallax" data-jarallax-video="mp4:assets/videos/creative-branding-studio.mp4"></div>
+        <div class="background-color" style="background-image: linear-gradient(180deg, rgba(14, 14, 14, 0) 0%, #0e0e0e 100%);"></div>
+    </div>
+
+    <div class="container py-lg-2">
+        <div class="row gh-1 gv-2 text-white">
+            <div class="col-lg-5 me-auto show-on-scroll" data-show-duration="900">
+                <h1 class="display-4 text-white mb-0">Creative branding studio.</h1>
+            </div>
+
+            <div class="col-lg-2"></div>
+
+            <div class="col-lg me-xl-n30 show-on-scroll" data-show-duration="900" data-show-delay="150">
+                <hr class="mt-0 border-white">
+                <p class="lead fw-normal">Over 10 years of combined experience, and know a thing or two about designing websites and mobile apps.</p>
+                <a href="contact-2.html" class="btn btn-white btn-with-ball">let’s work</a>
+            </div>
+
+            <div class="d-none d-xl-block col-1"></div>
+        </div>
+    </div>
+</div>
+
+<div class="pb-160 bg-dark">
+    <div class="container overflow-hidden">
+        <div class="row">
+            <div class="col-12 mb-100 pb-5 show-on-scroll" data-show-duration="800" data-show-delay="100">
+                {{ card_project_horizontal_global(name="funny_dog", image_size="md", classes="card-image-md card-hover-frame text-white") }}
+            </div>
+            <div class="col-12 mb-100 pb-5 show-on-scroll" data-show-duration="800" data-show-delay="100">
+                {{ card_project_horizontal_global(name="creative_branding", image_size="md", swap="true", classes="card-image-md card-hover-frame text-white") }}
+            </div>
+            <div class="col-12 mb-130 show-on-scroll" data-show-duration="800" data-show-delay="100">
+                {{ card_project_horizontal_global(name="identity_design", image_size="md", classes="card-image-md card-hover-frame text-white") }}
+            </div>
+            <div class="col-12 mt-n10 text-center show-on-scroll" data-show-duration="800" data-show-delay="100">
+                <a href="portfolio-col-1-style-1.html" class="btn btn-white btn-with-ball">all work</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="py-160 shape-parent overflow-hidden">
+    <div class="shape mt-n160">
+        <svg class="mt-n160" data-rellax-speed="-1" width="518" height="641" viewBox="0 0 518 641" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="197.5" cy="320.5" r="320.5" fill="#F5F5F5"/>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-xl-center gh-1 gv-5 mb-n7">
+            <div class="col-12 col-lg-4 me-lg-auto me-xl-0 show-on-scroll" data-show-duration="900">
+                <div class="subtitle mt-n10">who we are</div>
+                <h2 class="h3">We've worked with 50+ brands</h2>
+                <a href="about-us-2.html" class="btn btn-dark btn-with-ball mt-30">about us</a>
+            </div>
+
+            <div class="d-none d-xl-block col-1"></div>
+
+            <div class="col-12 col-lg-6 col-xl-5 show-on-scroll" data-show-delay="150" data-show-duration="900">
+                <p class="lead fw-normal mt-n7 mb-30">Over 10 years of combined experience, and know a thing or two about.</p>
+                <p>Won't seasons, appear days them stars replenish divided. All second forth. Him place was seas man and gathering creepeth called fly. Them sea place lights, midst bearing fourth above.</p>
+                <hr>
+                <div class="row gh-2 gv-2 justify-content-around justify-content-sm-center text-center text-sm-start">
+                    <div class="col-auto col-sm-4">
+                        <div class="number-box">
+                            <div class="number-box-title h2">106</div>
+                            <div class="number-box-subtitle">projects</div>
+                        </div>
+                    </div>
+                    <div class="col-auto col-sm-4">
+                        <div class="number-box">
+                            <div class="number-box-title h2">12</div>
+                            <div class="number-box-subtitle">years</div>
+                        </div>
+                    </div>
+                    <div class="col-auto col-sm-4">
+                        <div class="number-box">
+                            <div class="number-box-title h2">9</div>
+                            <div class="number-box-subtitle">awards</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a class="gallery-item gallery-item-sm mt-160 mb-60 show-on-scroll" href="https://www.youtube.com/watch?v=AT6oSIDbGkw" data-fancybox data-cursor-style="cursor-circle" data-cursor-text="play" data-show-duration="900">
+            <img src="assets/images/portfolio/video-1920-1080.jpg" alt="">
+            <span class="d-flex d-md-none btn btn-md btn-circle btn-white">play</span>
+        </a>
+
+        <div class="pt-30 mt-n10">
+            <div class="row align-items-center justify-content-between text-center gh-1 gv-3">
+                {% macro brand_col(name="", delay="") %}
+                <div class="col-6 col-sm-4 col-lg-auto show-on-scroll" data-show-delay="{{ delay }}" data-show-duration="300" data-show-distance="20">
+                    <a href="#" class="brand text-grey">
+                        {{ brands[name] | safe }}
+                    </a>
+                </div>
+                {% endmacro %}
+                {{ brand_col('natural', '50') }}
+                {{ brand_col('wave', '100') }}
+                {{ brand_col('retro', '150') }}
+                {{ brand_col('hub', '200') }}
+                {{ brand_col('iconic', '250') }}
+                {{ brand_col('hipster', '300') }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

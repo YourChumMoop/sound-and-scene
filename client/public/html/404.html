@@ -1,0 +1,36 @@
+{% set page_title = '404' %}
+{% set navbar_fixed = true %}
+{% set navbar_expand = true %}
+{% set navbar_mobile = 'style-2' %}
+{% set navbar_mobile_dark = true %}
+{% set footer = 'default-2' %}
+{% set footer_dark = true %}
+
+{% extends 'layouts/layout-1.html' %}
+
+
+{% block content %}
+
+<div class="py-160 text-center">
+    <div class="container shape-parent">
+        <div class="shape mt-n160 ms-30">
+            <svg class="mt-n160" width="500" height="318" viewBox="0 0 500 318" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="250" cy="68" r="250" fill="#F5F5F5"/>
+            </svg>
+        </div>
+
+        <div class="lines-style-6">
+            <div class="line show-on-scroll" data-show-duration="500" data-show-distance="140" data-show-delay="400" data-show-origin="right"></div>
+            <div class="line show-on-scroll" data-show-duration="500" data-show-distance="120" data-show-delay="200"></div>
+        </div>
+
+        <h1 class="display-3 mb-12 mt-2 show-on-scroll" data-show-duration="600" data-show-distance="10">404</h1>
+
+        <p class="h3 mb-10 show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="100">Page not found 😿</p>
+        <p class="mb-40 pb-2 show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="200">Perhaps you would like to go to our home page?</p>
+
+        <a href="home.html" class="btn btn-dark btn-with-ball mb-15 show-on-scroll" data-show-duration="400" data-show-distance="10" data-show-delay="230">go to home</a>
+    </div>
+</div>
+
+{% endblock %}

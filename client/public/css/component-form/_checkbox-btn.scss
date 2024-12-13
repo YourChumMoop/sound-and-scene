@@ -1,0 +1,54 @@
+.checkbox-btn {
+    display: none;
+
+    + label {
+        display: inline-flex;
+        padding: 13.5px 40px;
+        margin-bottom: 0;
+        font-weight: 500;
+        color: rgba(#fff, .4);
+        cursor: pointer;
+        border: 1px solid $color-border-dark;
+        transition: border-color .15s, color .15s, background-color .15s;
+
+        > span {
+            will-change: transform;
+            transition: transform .15s;
+            transform: translateX(0);
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            align-self: center;
+            right: 27px;
+            width: 13px;
+            height: 10px;
+            background-image: #{escape-svg("url('data:image/svg+xml;utf8,<svg width='13' height='10' viewBox='0 0 13 10' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M12 1L4.4375 9L1 5.36364' stroke='white' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>')")};
+            background-size: cover;
+            opacity: 0;
+            will-change: opacity;
+            transition: opacity .15s;
+        }
+    }
+
+    &:checked + label,
+    &.checked + label {
+        color: #fff;
+        background-color: $color-border-dark;
+
+        &::after {
+            opacity: 1;
+        }
+
+        > span {
+            transform: translateX(-13px);
+        }
+    }
+
+    &:hover + label,
+    &:focus + label {
+        color: #fff;
+        background-color: $color-border-dark;
+    }
+}

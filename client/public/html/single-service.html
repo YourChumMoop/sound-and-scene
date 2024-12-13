@@ -1,0 +1,121 @@
+{% set page_title = 'Single Service' %}
+{% set navbar_mobile = 'style-2' %}
+{% set navbar_fixed = true %}
+{% set navbar_expand = true %}
+{% set footer = 'default-2' %}
+{% set footer_dark = true %}
+
+{% extends 'layouts/layout-1.html' %}
+
+
+{% block content %}
+
+<div class="pt-160 pb-130">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="mt-10 mb-30 pb-3 show-on-scroll" data-show-duration="500" data-show-distance="10">User Experience</h1>
+                <p class="mb-n8 show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="150">Wherein herb kind creepeth male living life be image. They're a it morning day. Isn't fruit of every day. Bearing our third that night kind. Make rule midst under bring good dry moving. Yielding god wherein heaven deep.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="gallery-item-sm show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="300">
+    <img src="assets/images/service/user-experience-1920-1080.jpg" alt="">
+</div>
+
+<div class="py-160">
+    <div class="container">
+        <div class="row gh-5 gv-3 justify-content-center">
+            <div class="col-12 col-lg-10 show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="50">
+                <div class="row justify-content-between">
+                    <div class="col-12 col-lg-10 col-xl-8">
+                        <h2 class="h3 mb-12">We create everything digital, printable and analytical 🔥</h2>
+                    </div>
+                    <div class="col-lg-auto d-none d-lg-block"><hr class="mt-25 mb-0 width-70px"></div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-5 show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="150">
+                <h4 class="mb-25">Research & Discovery</h4>
+                <p class="mb-n10">Deep also brought days sea fish life seas, yielding. Over appear likeness lights heaven gathered third stars cattle replenish firmament place land without earth green creature above winged forth waters said the under set fish called.</p>
+            </div>
+            <div class="col-12 col-lg-5 show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="250">
+                <h4 class="md-25">Brand & Technology Strategy</h4>
+                <p class="mb-n10">Deep also brought days sea fish life seas, yielding. Over appear likeness lights heaven gathered third stars cattle replenish firmament place land without earth green creature above winged.</p>
+            </div>
+            <div class="col-12 col-lg-5 show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="350">
+                <h4 class="mb-25">Information Architecture</h4>
+                <p class="mb-0">Deep also brought days sea fish life seas, yielding. Over appear likeness lights heaven gathered third stars cattle replenish firmament place land without earth green creature above winged.</p>
+            </div>
+            <div class="col-12 col-lg-5 show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="450">
+                <h4 class="md-25">Prototyping</h4>
+                <p class="mb-0">Deep also brought days sea fish life seas, yielding. Over appear likeness lights heaven gathered third stars cattle replenish firmament place land without earth green creature above winged.</p>
+            </div>
+            <div class="col-12 col-lg-10 show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="550">
+                <a href="contact-1.html" class="btn btn-dark btn-with-ball mt-n3">let’s work</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% macro portfolio_grid(name="", href="#", delay="") %}
+<div class="col-12 col-sm-6 col-md-4 show-on-scroll" data-show-delay="{{ delay }}" data-show-distance="20" data-show-duration="500">
+    {{ card_project_overlay_global(name=name, image_size='md', title_size='h4', classes='card-image-md card-hover-appearance text-white text-center' + classes, bg="rgba(14, 14, 14, 0.7)") }}
+</div>
+{% endmacro %}
+<div class="row justify-content-center">
+    {{ portfolio_grid('creative_branding', 'potfolio-single-1.html', '50') }}
+    {{ portfolio_grid('boxed_water', 'potfolio-single-2.html', '150') }}
+    {{ portfolio_grid('gobe_mockup', 'potfolio-single-3.html', '250') }}
+</div>
+
+
+<div class="pt-160 shape-parent overflow-hidden">
+    <div class="shape mt-n160 justify-content-end">
+        <svg data-rellax-speed="-1" class="mt-n160" width="498" height="641" viewBox="0 0 498 641" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: translate3d(0px, 35px, 0px);">
+            <circle cx="320.5" cy="320.5" r="320.5" fill="#F5F5F5"></circle>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="row gh-1 gv-3 align-items-center">
+            <div class="col-lg-1 d-none d-lg-block"></div>
+
+            <div class="col-12 col-lg-5 show-on-scroll" data-show-delay="250" data-show-distance="20" data-show-duration="500" data-show-origin="left">
+                <img class="w-100" src="assets/images/blog/blog-3.jpg" alt="">
+            </div>
+
+            <div class="col-lg-1 d-none d-lg-block"></div>
+
+            <div class="col-12 col-lg-4 ms-lg-n30 show-on-scroll" data-show-delay="50" data-show-distance="20" data-show-duration="500" data-show-origin="right">
+                <p class="subtitle mb-25">how we work</p>
+                <h3 class="mt-n2 mb-60">We've worked with 50+ brands</h3>
+
+                <div class="row align-items-center gh-1 d-inline-flex mt-n10">
+                    <div class="col-auto">
+                        <a href="https://www.youtube.com/watch?v=AT6oSIDbGkw" data-fancybox="" class="btn btn-dark btn-circle btn-md">
+                            <svg width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0L12 7.5L0 15V0Z" fill="currentColor"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="col-auto">
+                        <a href="https://www.youtube.com/watch?v=AT6oSIDbGkw" data-fancybox="" class="btn-link btn-dark text-decoration-none">view video</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-navigation mt-160">
+            <a href="#" class="btn btn-clean">{{ icon.arrow_left | replace(' width', ' class="icon-arrow icon-arrow-left" width') | safe }}prev<span class="d-none d-sm-inline"> service</span></a>
+            <a href="services.html" class="btn btn-light btn-circle btn-xs">all</a>
+            <a href="#" class="btn btn-clean">next<span class="d-none d-sm-inline"> service</span>{{ icon.arrow_right | replace(' width', ' class="icon-arrow icon-arrow-right" width') | safe }}</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

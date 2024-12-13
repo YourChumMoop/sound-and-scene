@@ -1,0 +1,68 @@
+{% set page_title = 'Blog 1' %}
+{% set navbar_sticky = true %}
+{% set navbar_expand = true %}
+{% set navbar_mobile = 'style-2' %}
+{% set footer = 'default-2' %}
+{% set footer_dark = true %}
+
+{% extends 'layouts/layout-1.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="pt-60 pb-60 mt-10 mb-2 text-center">
+        <h1 class="mt-10 show-on-scroll" data-show-duration="600" data-show-distance="10">Our blog</h1>
+    </div>
+
+    <div class="isotope">
+        <ul class="nav justify-content-center isotope-options mb-60 pb-30 show-on-scroll" data-show-duration="500" data-show-delay="50">
+            <li class="nav-item active show-on-scroll" data-show-duration="400" data-show-distance="10" data-show-delay="100">
+                <a href="#" data-filter="all" class="nav-link"><div class="nav-link-name">all posts</div></a>
+            </li>
+            <li class="nav-item show-on-scroll" data-show-duration="400" data-show-distance="10" data-show-delay="150">
+                <a href="#" data-filter="lifestyle" class="nav-link"><div class="nav-link-name">lifestyle</div></a>
+            </li>
+            <li class="nav-item show-on-scroll" data-show-duration="400" data-show-distance="10" data-show-delay="200">
+                <a href="#" data-filter="design" class="nav-link"><div class="nav-link-name">design</div></a>
+            </li>
+            <li class="nav-item show-on-scroll" data-show-duration="400" data-show-distance="10" data-show-delay="250">
+                <a href="#" data-filter="business" class="nav-link"><div class="nav-link-name">business</div></a>
+            </li>
+            <li class="nav-item show-on-scroll" data-show-duration="400" data-show-distance="10" data-show-delay="300">
+                <a href="#" data-filter="company" class="nav-link"><div class="nav-link-name">company</div></a>
+            </li>
+        </ul>
+
+        <div class="row justify-content-center gh-1 show-on-scroll" data-show-duration="700" data-show-delay="250">
+            <div class="col-12 col-lg-10 isotope-grid">
+                {% macro card_blog_column(name="", filter="") %}
+                    {{ card_blog_global(name, 'card-md isotope-item', data='data-filters=' + filter, style="horizontal-full") }}
+                {% endmacro %}
+                {{ card_blog_column('01', 'lifestyle') }}
+                {{ card_blog_column('02', 'design') }}
+                {{ card_blog_column('03', 'business') }}
+                {{ card_blog_column('04', 'company') }}
+            </div>
+        </div>
+
+        <div class="text-center mt-100">
+            <a href="blog-col-3.html" class="btn btn-light btn-circle btn-lg">more</a>
+        </div>
+    </div>
+
+    <div class="pt-130 pb-160 mt-30">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-6">
+                <h3 class="mt-n10">Subscribe to our newsletter 👋</h3>
+                <p class="pt-5">Subscribe to our newsletter to get the latest news, updates and special offers delivered directly in your inbox.</p>
+            </div>
+            <div class="col-lg-7 mt-4">
+                <form action="#" class="form-group-overlay">
+                    <input class="form-control" type="email" placeholder="Your Email *">
+                    <button class="btn btn-clean btn-with-ball">send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

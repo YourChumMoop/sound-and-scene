@@ -1,0 +1,43 @@
+{% set page_title = 'Left Menu' %}
+{% set navbar = 'left' %}
+{% set navbar_mobile = 'style-4' %}
+{% set footer = 'default-2' %}
+{% set footer_dark = true %}
+
+{% extends 'layouts/layout-1.html' %}
+
+
+{% block content %}
+<div class="isotope">
+    <div class="row isotope-grid">
+        {% macro card_project(name="", delay="") %}
+        <div class="col-12 col-sm-6 col-lg-4 isotope-item">
+            <span class="d-block show-on-scroll" data-show-delay="{{ delay }}" data-show-duration="400" data-show-distance="10">
+                {{ card_project_overlay_global(name=name, image_size='md', title_size='h4', classes='card-image-md text-dark text-center card-hover-appearance', bg="#fff") }}
+            </span>
+        </div>
+        {% endmacro %}
+
+        {% macro card_project_vertical(name="", delay="") %}
+        <div class="col-12 col-sm-6 col-lg-4 isotope-item">
+            <span class="d-block show-on-scroll" data-show-delay="{{ delay }}" data-show-duration="400" data-show-distance="10">
+                {{ card_project_overlay_global(name=name, image_size='md_vertical', title_size='h4', classes='card-image-lg text-dark text-center card-hover-appearance', bg="#fff") }}
+            </span>
+        </div>
+        {% endmacro %}
+
+        {{ card_project('identity_design', '50') }}
+        {{ card_project_vertical('app_photography', '100') }}
+        {{ card_project('creative_branding', '150') }}
+        {{ card_project_vertical('package_design', '200') }}
+        {{ card_project_vertical('watch_design', '250') }}
+        {{ card_project('gobe_mockup', '300') }}
+        {{ card_project('bag_design', '350') }}
+        {{ card_project_vertical('app_design', '400') }}
+        {{ card_project('creative_socks', '450') }}
+        {{ card_project_vertical('boxed_water', '500') }}
+        {{ card_project_vertical('funny_dog', '550') }}
+        {{ card_project('sport_today', '600') }}
+    </div>
+</div>
+{% endblock %}

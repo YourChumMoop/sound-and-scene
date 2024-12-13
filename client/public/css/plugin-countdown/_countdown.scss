@@ -1,0 +1,39 @@
+.countdown {
+    flex-wrap: wrap;
+
+    @include media-breakpoint-down(md) {
+        margin-top: -30px;
+    }
+}
+
+.countdown-item {
+    display: flex;
+    @include create-col(auto);
+    flex-direction: column;
+    align-items: center;
+
+    > span {
+        display: block;
+
+        &:nth-child(2) {
+            font-size: 16px;
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        @include create-col(6);
+        padding-top: 30px;
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+}
+
+.countdown-separator {
+    margin-top: -2px;
+    margin-right: 45px;
+    margin-left: 45px;
+
+    @include media-breakpoint-down(md) {
+        display: none;
+    }
+}

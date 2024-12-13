@@ -1,0 +1,34 @@
+// arrows left and right
+.icon-arrow {
+    will-change: transform;
+    transition: transform .2s ease-in-out;
+
+    path:last-child {
+        will-change: transform;
+        transition: transform .2s ease-in-out;
+    }
+}
+
+.icon-arrow-left path:last-child {
+    transform-origin: left center;
+}
+
+.icon-arrow-right path:last-child {
+    transform-origin: right center;
+}
+
+.icon-arrow-left-hover {
+    transform: translateX(-22%);
+
+    path:last-child {
+        transform: scaleX(1.3);
+    }
+}
+
+.icon-arrow-right-hover {
+    transform: translateX(22%);
+
+    path:last-child {
+        transform: scaleX(1.3);
+    }
+}

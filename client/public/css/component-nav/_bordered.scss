@@ -1,0 +1,18 @@
+.nav.nav-bordered {
+    margin-bottom: 0;
+
+    .nav-link {
+        padding-top: 17px;
+        padding-bottom: 17px;
+    }
+}
+
+.nav-bordered {
+    .nav-link {
+        border-bottom: 1px solid currentColor;
+    }
+
+    .nav-item + .nav-item {
+        margin-top: 15px;
+    }
+}

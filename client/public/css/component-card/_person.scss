@@ -1,0 +1,44 @@
+.card-person {
+    .card-img {
+        margin-bottom: -45px;
+    }
+
+    .card-body {
+        padding: 32px 0 0;
+        background-color: inherit;
+        will-change: transform;
+        transition: transform .65s cubic-bezier(.2, 1, .2, 1);
+        transform: translateY(45px);
+    }
+
+    .card-title {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    // Bootstrap 5 migration fixes
+    a.card-title { text-decoration: none; }
+
+    .card-social {
+        margin-top: 30px;
+        opacity: 0;
+        will-change: opacity;
+        transition: opacity .2s ease-in-out;
+
+        li {
+            will-change: opacity;
+        }
+    }
+
+
+    &:hover,
+    &:focus {
+        .card-body {
+            transform: translateY(0);
+        }
+
+        .card-social {
+            opacity: 1;
+        }
+    }
+}

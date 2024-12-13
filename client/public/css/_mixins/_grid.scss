@@ -1,0 +1,31 @@
+@use "sass:math";
+
+@mixin create-col($size: 0, $column: $grid-columns) {
+    @if $size == auto {
+        flex: 0 0 auto;
+        max-width: 100%;
+    } @else if $size == grow {
+        flex-basis: 0;
+        flex-grow: 1;
+        max-width: 100%;
+    } @else {
+        flex: 0 0 #{math.div($size, $column) * 100%};
+        max-width: #{math.div($size, $column) * 100%};
+    }
+}
+
+@mixin flex-order {
+    @for $i from 6 through 12 {
+        @if $i == 6 or $i == 7 {
+            .order-lg-#{$i} {
+                @media (min-width: 1024px) {
+                    order: #{$i} !important; //stylelint-disable-line
+                }
+            }
+        }
+
+        .order-#{$i} {
+            order: #{$i};
+        }
+    }
+}

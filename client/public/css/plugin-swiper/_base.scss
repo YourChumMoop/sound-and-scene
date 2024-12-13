@@ -1,0 +1,25 @@
+.swiper {
+    position: relative;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: $dark;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    // white
+    &.text-white {
+        .swiper-button-prev,
+        .swiper-button-next,
+        .swiper-pagination {
+            color: #fff;
+        }
+    }
+
+    .card .background-color {
+        opacity: 1;
+    }
+}

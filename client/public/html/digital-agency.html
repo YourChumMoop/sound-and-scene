@@ -1,0 +1,209 @@
+{% set page_title = 'Digital Agency' %}
+{% set navbar_dark = true %}
+{% set navbar_fixed = true %}
+{% set navbar_expand = true %}
+{% set navbar_mobile_dark = true %}
+{% set footer_dark = true %}
+
+{% extends 'layouts/layout-1.html' %}
+
+
+{% block content %}
+<div class="py-160 min-vh-100 d-flex align-items-center position-relative lines-style-3">
+    <div class="line text-white"></div>
+
+    <div class="background">
+        <div class="background-image jarallax" data-jarallax data-speed="0.8">
+            <img src="assets/images/service/degital-agency-1920-1080.jpg" class="jarallax-img" alt="">
+        </div>
+
+        <div class="background-color" style="background-color: rgb(14, 14, 14, .2);"></div>
+    </div>
+
+
+    <div class="container text-center">
+        <h1 class="display-4 text-white show-on-scroll" data-show-duration="1000">Themebau.</h1>
+
+        <div class="row align-items-center gh-1 d-inline-flex">
+            <div class="col-auto show-on-scroll" data-show-delay="200" data-show-duration="500" data-show-distance="20" data-show-origin="left">
+                <a href="https://www.youtube.com/watch?v=AT6oSIDbGkw" data-fancybox class="btn btn-white btn-circle btn-md">
+                    <svg width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0L12 7.5L0 15V0Z" fill="currentColor"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="col-auto show-on-scroll" data-show-delay="400" data-show-distance="20" data-show-duration="500" data-show-origin="right">
+                <a href="https://www.youtube.com/watch?v=AT6oSIDbGkw" data-fancybox class="btn-link btn-white text-decoration-none">view showreel</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="py-160 shape-parent overflow-hidden">
+    <div class="shape mt-n160 justify-content-end">
+        <svg data-rellax-speed="-1" class="mt-n160" width="498" height="641" viewBox="0 0 498 641" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="320.5" cy="320.5" r="320.5" fill="#F5F5F5"/>
+        </svg>
+    </div>
+
+    <div class="container mt-n10 overflow-hidden">
+        <div class="row justify-content-center align-items-center gh-5 gv-5">
+            <div class="col-12 col-lg-6 col-xl-5 show-on-scroll" data-show-duration="800">
+                <div class="subtitle">our services</div>
+                <h2 class="h3">We create everything digital, printable and analytical 🔥</h2>
+                <p>Won't seasons, appear days them stars replenish divided. All second forth. Him place was seas man andgathering creepeth called fly.</p>
+                <a href="services.html" class="btn btn-dark btn-with-ball">all services</a>
+            </div>
+
+            <div class="col-12 col-lg-6 col-xl-5 show-on-scroll" data-show-delay="200" data-show-duration="800">
+                <ul class="nav nav-md nav-bordered flex-column">
+                    <li class="nav-item">
+                        <a href="single-service.html" class="nav-link">
+                            Web Design & Development
+                            {{ icon.arrow_right | safe | replace('svg width', 'svg class="icon-arrow icon-arrow-right" width') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="single-service.html" class="nav-link">
+                            Packaging & Brand Identity
+                            {{ icon.arrow_right | safe | replace('svg width', 'svg class="icon-arrow icon-arrow-right" width') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="single-service.html" class="nav-link">
+                            Brand Strategy Accelerator
+                            {{ icon.arrow_right | safe | replace('svg width', 'svg class="icon-arrow icon-arrow-right" width') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="single-service.html" class="nav-link">
+                            Content Production
+                            {{ icon.arrow_right | safe | replace('svg width', 'svg class="icon-arrow icon-arrow-right" width') }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pb-160">
+    <div class="container">
+        <div class="row gh-1 gv-1">
+            <div class="col-12 show-on-scroll" data-show-duration="500">
+                {{ card_project_overlay_global(name='luxury_car', image_size='lg', title_size='h3', classes='card-image-sm card-hover-zoom card-bg-show text-white', style='with-logo', bg="rgba(14, 14, 14, .2);") }}
+            </div>
+            <div class="col-12 col-md-6 show-on-scroll" data-show-delay="150" data-show-duration="500">
+                {{ card_project_overlay_global(name='happy_moments', image_size='md', title_size='h3', classes='card-image-lg card-hover-zoom card-bg-show text-white', style='with-logo', bg="rgba(14, 14, 14, .2);") }}
+            </div>
+            <div class="col-12 col-md-6 show-on-scroll" data-show-delay="300" data-show-duration="500">
+                {{ card_project_overlay_global(name='bag_design', image_size='md', title_size='h3', classes='card-image-lg card-hover-zoom card-bg-show text-white', style='with-logo', bg="rgba(14, 14, 14, .2);") }}
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="portfolio-col-2-style-6.html" class="btn btn-dark btn-with-ball mt-100">all work</a>
+        </div>
+    </div>
+</div>
+
+<div class="py-130 bg-dark text-white shape-parent overflow-hidden lines-style-4">
+    <div class="line"></div>
+    <div class="line"></div>
+
+    <div class="shape mt-n160">
+        <svg data-rellax-speed="-1" width="535" height="525" viewBox="0 0 535 525" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="214.5" cy="204.5" r="320.5" fill="#202020"/>
+        </svg>
+    </div>
+    <div class="container">
+        <div class="row gh-1 gv-3">
+            <div class="col-lg-4 col-xl-3">
+                <div class="subtitle">our clients</div>
+                <h2 class="h3 text-white">What our client say about us</h2>
+            </div>
+            <div class="d-none d-lg-block col-lg-1 col-xl-2"></div>
+            <div class="col-lg-6">
+                <div class="swiper swiper-review-2" data-swiper-slides="1" data-swiper-gap="30" data-swiper-grabCursor="true">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            {% macro review_slide(name="") %}
+                            <div class="swiper-slide">
+                                <div class="media media-review d-flex">
+                                    <img src="{{ review[name].avatar }}" class="media-img rounded-circle" alt="">
+                                    <div class="media-body align-self-center">
+                                        <h5 class="media-title mt-0 text-white">{{ review[name].name }}</h5>
+                                        <div class="media-subtitle">{{ review[name].subtitle }}</div>
+                                    </div>
+                                    <p class="media-text mb-0 lead">{{ review[name].text }}</p>
+                                </div>
+                            </div>
+                            {% endmacro %}
+
+                            {{ review_slide('brian_newton') }}
+                            {{ review_slide('june_oliver') }}
+                            {{ review_slide('james_hamilton') }}
+                        </div>
+                    </div>
+                    <div class="swiper-button-next">{{ icon.arrow_right | safe }}</div>
+                    <div class="swiper-button-prev">{{ icon.arrow_left | safe }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-n10">
+    <div class="pt-60 mt-30">
+        <div class="row gh-1 gv-3 align-items-center justify-content-between text-center">
+            {% macro brand_col(name="", delay="0") %}
+            <div class="col-6 col-sm-4 col-lg-auto show-on-scroll" data-show-delay="{{ delay }}" data-show-distance="20" data-show-duration="500">
+                <a href="#" class="brand text-grey">
+                    {{ brands[name] | safe }}
+                </a>
+            </div>
+            {% endmacro %}
+            {{ brand_col('natural', '0') }}
+            {{ brand_col('wave', '70') }}
+            {{ brand_col('retro', '140') }}
+            {{ brand_col('hub', '210') }}
+            {{ brand_col('iconic', '280') }}
+            {{ brand_col('hipster', '350') }}
+        </div>
+    </div>
+
+    <div class="py-160">
+        <div class="row gh-1 gv-5">
+            <div class="col-12 col-lg-5">
+                <h2>What’s new?</h2>
+                <a href="blog-col-3.html" class="btn btn-dark btn-with-ball mt-5">all posts</a>
+            </div>
+            <div class="col-lg">
+                {{ card_blog_global('01', classes='card-sm show-on-scroll', style='horizontal', data='data-show-duration=500 data-show-distance=20 data-show-origin=right') }}
+                {{ card_blog_global('02', classes='card-sm show-on-scroll', style='horizontal', data='data-show-duration=500 data-show-distance=20 data-show-origin=right data-show-delay=150') }}
+                {{ card_blog_global('03', classes='card-sm show-on-scroll', style='horizontal', data='data-show-duration=500 data-show-distance=20 data-show-origin=right data-show-delay=300') }}
+            </div>
+        </div>
+    </div>
+
+    <div class="pb-130 text-center text-md-start">
+        <hr class="mt-0 mb-100 pb-7">
+        <div class="row gv-1 pb-7 mb-n30 align-items-center justify-content-center justify-content-md-between">
+            <div class="col-md-10 col-lg-8 me-md-auto">
+                <div class="interactive-links">
+                    <img class="interactive-links-image" src="assets/images/portfolio/work-together.jpg" width="230" alt="">
+                    <a href="contact-1.html" class="nav-link display-4"><u>Let’s work</u> together</a>
+                </div>
+            </div>
+            <div class="col-auto">
+                <a href="contact-1.html" class="btn btn-clean me-xl-10">
+                    <svg class="icon-arrow icon-arrow-right" width="69" height="30" viewBox="0 0 69 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M54 2L67 15L54 28" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 15L67 15" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

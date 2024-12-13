@@ -1,0 +1,13 @@
+.cursor {
+    position: fixed;
+    pointer-events: none;
+    backface-visibility: hidden;
+    opacity: 0;
+    will-change: transform, width, height, top, left, background-color, opacity;
+    transition: width .2s ease, height .2s ease, top .2s ease, left .2s ease, background-color .2s ease, opacity .15s ease;
+    z-index: 9999999;
+}
+
+.cursor-hover {
+    opacity: 1;
+}

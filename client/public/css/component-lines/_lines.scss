@@ -1,0 +1,103 @@
+@include media-breakpoint-up(lg) {
+    .lines-style-1 {
+        position: relative;
+
+        .line {
+            position: absolute;
+            display: block;
+            border-color: currentColor;
+            border-style: solid;
+            border-width: 0;
+
+            &:nth-of-type(1) {
+                top: 130px;
+                left: 0;
+                width: 170px;
+
+                border-top-width: 1px;
+            }
+
+            &:nth-of-type(2) {
+                right: 200px;
+                bottom: 130px;
+                height: 70px;
+
+                border-right-width: 1px;
+            }
+        }
+    }
+
+    .lines-style-2 .line {
+        position: absolute;
+        display: block;
+        top: 50%;
+        right: -35px;
+        width: 70px;
+        border-top: 1px solid currentColor;
+        z-index: 1;
+    }
+
+    .lines-style-3 .line {
+        position: absolute;
+        display: block;
+        right: 50%;
+        bottom: 0;
+        height: 70px;
+        border-right: 1px solid currentColor;
+        z-index: 1;
+    }
+
+    .lines-style-4 .line {
+        position: absolute;
+        display: block;
+        border-color: currentColor;
+        border-style: solid;
+        border-width: 0;
+        z-index: 1;
+
+        &:nth-of-type(1) {
+            top: 170px;
+            right: 0;
+            width: 170px;
+
+            border-top-width: 1px;
+        }
+
+        &:nth-of-type(2) {
+            bottom: 0;
+            left: 200px;
+            height: 70px;
+
+            border-right-width: 1px;
+        }
+    }
+
+    .lines-style-5 .line {
+        position: absolute;
+        display: block;
+        top: 37px;
+        right: -35px;
+        width: 70px;
+        border-top: 1px solid currentColor;
+        z-index: 1;
+    }
+
+    .lines-style-6 .line {
+        position: absolute;
+        display: block;
+
+        &:nth-child(1) {
+            top: 72px;
+            right: 89px;
+            width: 168px;
+            border-top: 1px solid currentColor;
+        }
+
+        &:nth-child(2) {
+            bottom: -66px;
+            left: 133px;
+            height: 70px;
+            border-left: 1px solid currentColor;
+        }
+    }
+}

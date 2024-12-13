@@ -1,0 +1,11 @@
+@use "sass:math";
+
+// @usage: rem(24px, .875rem) => 1.71429rem
+//         rem(24px, 16px) => 1,5rem
+@function rem($value: 14px, $default: 1rem, $body: 16px) {
+    @if (unit($default) == "rem") {
+        $default: parse-int($default) * $body;
+    }
+
+    @return #{math.div($value, $default)}rem;
+}

@@ -1,0 +1,36 @@
+.media-review {
+    flex-wrap: wrap;
+
+    .media-img {
+        flex: 0 0 80px;
+        min-width: 80px;
+        max-width: 80px;
+        margin-right: 30px;
+
+        ~ .media-text {
+            margin-top: 30px;
+            margin-bottom: 0;
+        }
+    }
+
+    .media-body {
+        flex: 0 0 auto;
+        max-width: 100%;
+    }
+
+    .media-title {
+        margin-bottom: 2px;
+        color: inherit;
+    }
+
+    .media-subtitle {
+        font-size: em(14px);
+    }
+
+    .media-text {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 50px;
+        font-weight: 500;
+    }
+}

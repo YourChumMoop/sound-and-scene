@@ -1,0 +1,187 @@
+.card-blog {
+    position: relative;
+    color: $dark;
+    border: 0;
+
+    &.card-vertical {
+        .card-img::before {
+            padding-top: 80%;
+        }
+
+        .card-title {
+            margin-top: 27px;
+        }
+
+        .card-date {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 11px 16px;
+            font-size: em(14px);
+            color: $dark;
+            background-color: #fff;
+        }
+    }
+
+    &.card-horizontal {
+        flex-direction: row;
+        align-items: center;
+
+        + .card-horizontal {
+            margin-top: 30px;
+        }
+
+        &.card-sm {
+            .card-date {
+                display: block;
+                margin-bottom: 18px;
+                font-size: em(14px);
+            }
+
+            @include media-breakpoint-up(sm) {
+                .card-img {
+                    width: 170px;
+                    margin-right: 40px;
+
+                    &::before {
+                        padding-top: 100%;
+                    }
+                }
+            }
+            @include media-breakpoint-down(sm) {
+                flex-direction: column;
+
+                + .card-horizontal {
+                    margin-top: 60px;
+                }
+
+                .card-img {
+                    margin-bottom: 25px;
+
+                    &::before {
+                        padding-top: 64%;
+                    }
+                }
+
+                .card-body {
+                    flex: 0 0 100%;
+                    width: 100%;
+                }
+            }
+        }
+
+        &.card-md {
+            width: 100%;
+
+            .card-img {
+                &::before {
+                    padding-top: 64%;
+                }
+            }
+
+            @include media-breakpoint-up(lg) {
+                .card-img {
+                    width: 500px;
+                    min-width: 500px;
+                    max-width: 50%;
+                    margin-right: 70px;
+                }
+            }
+
+            @include media-breakpoint-down(lg) {
+                .card-img {
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                }
+
+                .card-body {
+                    margin-left: 70px;
+                }
+            }
+
+            @include media-breakpoint-down(md) {
+                flex-direction: column;
+
+                + .card-horizontal {
+                    margin-top: 60px;
+                }
+
+                .card-img {
+                    flex-shrink: 0;
+                    max-width: 100%;
+                    margin-bottom: 25px;
+                }
+
+                .card-body {
+                    margin-left: 0;
+                }
+            }
+
+            .card-date {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 11px 16px;
+                font-size: em(14px);
+                color: $dark;
+                background-color: #fff;
+            }
+        }
+    }
+
+    &.card-overlay.card-image-sm .card-img {
+        min-height: 400px;
+    }
+
+    .card-img {
+        position: relative;
+        display: block;
+        overflow: hidden;
+
+        &::before {
+            content: "";
+            display: block;
+        }
+
+        img {
+            @extend .object-fit-image;
+
+            will-change: transform;
+            transition: transform .3s ease-in-out;
+            transform: scale(1);
+        }
+    }
+
+    .card-title {
+        display: block;
+        margin-bottom: 0;
+    }
+
+    // Bootstrap 5 migration fixes
+    a.card-title { text-decoration: none; }
+
+    .card-text {
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+
+    .card-body {
+        padding: 0;
+    }
+
+    .btn {
+        margin-top: 18px;
+    }
+
+    &:hover,
+    &:focus {
+        color: $dark;
+
+        .card-img img {
+            transform: scale(1.03);
+        }
+    }
+}
+
+// Bootstrap 5 migration fixes
+a.card-blog { text-decoration: none; }

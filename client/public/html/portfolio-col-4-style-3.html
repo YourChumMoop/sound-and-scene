@@ -1,0 +1,59 @@
+{% set page_title = 'An award-winning digital studio' %}
+{% set navbar_fixed = true %}
+{% set navbar_expand = true %}
+{% set navbar_mobile = 'style-2' %}
+{% set footer = 'default-2' %}
+{% set footer_dark = true %}
+
+{% extends 'layouts/layout-1.html' %}
+
+
+{% block content %}
+<div class="isotope mt-130">
+    <div class="container">
+        <ul class="nav justify-content-center isotope-options mb-60 show-on-scroll" data-show-duration="500">
+            <li class="nav-item active show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="100">
+                <a href="#" data-filter="all" class="nav-link"><div class="nav-link-name">all projects</div></a>
+            </li>
+            <li class="nav-item show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="150">
+                <a href="#" data-filter="branding" class="nav-link"><div class="nav-link-name">branding</div></a>
+            </li>
+            <li class="nav-item show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="200">
+                <a href="#" data-filter="design" class="nav-link"><div class="nav-link-name">design</div></a>
+            </li>
+            <li class="nav-item show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="250">
+                <a href="#" data-filter="photography" class="nav-link"><div class="nav-link-name">photography</div></a>
+            </li>
+            <li class="nav-item show-on-scroll" data-show-duration="500" data-show-distance="10" data-show-delay="300">
+                <a href="#" data-filter="marketing" class="nav-link"><div class="nav-link-name">marketing</div></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="pt-30 show-on-scroll" data-show-duration="800">
+        {% macro portfolio_grid(name="", filter="", classes="", bg="") %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 isotope-item{% if class %} {{ class }}{% endif %}" data-filters="{{ filter }}">
+            {{ card_project_overlay_global(name=name, image_size="xs", title_size='h4', classes='card-image-md card-hover-appearance text-dark', bg="#fff") }}
+        </div>
+        {% endmacro %}
+        <div class="row isotope-grid">
+            {{ portfolio_grid('funny_dog', 'photography') }}
+            {{ portfolio_grid('sport_today', 'photography') }}
+            {{ portfolio_grid('watch_design', 'design') }}
+            {{ portfolio_grid('identity_design', 'design') }}
+            {{ portfolio_grid('package_design', 'design') }}
+            {{ portfolio_grid('brand_design', 'branding') }}
+            {{ portfolio_grid('bag_design', 'branding') }}
+            {{ portfolio_grid('app_design', 'design') }}
+            {{ portfolio_grid('gobe_mockup', 'marketing') }}
+            {{ portfolio_grid('boxed_water', 'branding') }}
+            {{ portfolio_grid('happy_moments', 'photography') }}
+            {{ portfolio_grid('creative_socks', 'branding') }}
+        </div>
+    </div>
+
+    <div class="text-center mt-100 mb-160">
+        <a href="#" class="btn btn-circle btn-light btn-lg">more</a>
+    </div>
+</div>
+{% endblock %}

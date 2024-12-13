@@ -1,0 +1,72 @@
+{% include "layouts/_head.html" %}
+
+
+{% from 'macros/card.html' import card_project, card_project_horizontal, card_project_overlay, card_service_overlay, card_blog, card_person %}
+{% from 'macros/feature.html' import feature %}
+
+
+{% macro card_project_global(name="", image_size="", classes="", data="") %}
+    {{ card_project(portfolio[name].href, portfolio[name].image[image_size], portfolio[name].title, portfolio[name].category, classes, data=data) }}
+{% endmacro %}
+
+{% macro card_project_overlay_global(name="", image_size="", title_size="", swiper_parallax="", classes="", style="", bg="") %}
+    {{ card_project_overlay(
+        portfolio[name].href, portfolio[name].image[image_size], portfolio[name].title, portfolio[name].category, portfolio[name].logo,
+        swiper_parallax=swiper_parallax, title_size=title_size, classes=classes, style=style, bg=bg
+    ) }}
+{% endmacro %}
+
+{% macro card_project_horizontal_global(name="", image_size="", swap="", classes="") %}
+    {{ card_project_horizontal(portfolio[name].href, portfolio[name].image[image_size], portfolio[name].title, portfolio[name].category, portfolio[name].text, portfolio[name].button, portfolio[name].button_icon, swap, classes) }}
+{% endmacro %}
+
+{% macro feature_global(name="", button=features[name].button, classes="", data="") %}
+    {{ feature( features[name].href, features.icon_frame, features[name].icon, features[name].title, features[name].text, button, features[name].button_icon, classes=classes, data=data ) }}
+{% endmacro %}
+
+{% macro card_service_overlay_global(name="", classes="", bg="") %}
+    {{ card_service_overlay(
+        href=service[name].href, image=service[name].image, icon=service[name].icon, title=service[name].title,
+        button=service[name].button, button_icon=service[name].button_icon, classes=classes, title_size='h5', bg=bg
+    ) }}
+{% endmacro %}
+
+{% macro card_blog_global(name="", classes="", data="", style="") %}
+    {{ card_blog(
+        href=blog[name].href, image=blog[name].image, title=blog[name].title, date=blog[name].date,
+        button=blog[name].button, button_icon=blog[name].button_icon, text=blog[name].text, classes=classes, data=data, style=style
+    ) }}
+{% endmacro %}
+
+{% macro card_person_global(name="", title_size="h4", classes="") %}
+    {{ card_person(
+        href=person[name].href, image=person[name].image, title=person[name].title, subtitle=person[name].subtitle, social=person[name].social, title_size=title_size, classes=classes
+    ) }}
+{% endmacro %}
+
+
+<body{% if body_class %} class="{{ body_class }}"{% endif %}>
+    {% include "shared/navbar.html" %}
+
+    {% block banner %}{% endblock %}
+
+    <div class="content-wrap">
+        {% block before_content %}{% endblock %}
+
+        {% block content %}{% endblock %}
+        {% if footer_show %}
+            {% include "shared/footer.html" %}
+        {% endif %}
+    </div>
+
+    {% if footer == false %}{% else %}
+        {% include "shared/footer.html" %}
+    {% endif %}
+
+    {% block after_content %}{% endblock %}
+
+    {% include "layouts/_foot.html" %}
+
+    {% block javascript %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,68 @@
+.card-demo {
+    .card-img {
+        position: relative;
+        border: 1px solid #e2e2e2;
+        border-radius: 3px 3px 0 0;
+        will-change: transform;
+        transition: transform .7s cubic-bezier(.2, 1, .2, 1);
+        transform: translateY(0);
+
+        img {
+            width: 100%;
+        }
+
+        &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 14px;
+            background-color: #f1f1f1;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 8px;
+            width: 4px;
+            height: 4px;
+            color: #cecece;
+            background-color: #cecece;
+            border-radius: 2px;
+            box-shadow: 7px 0 0 currentColor, 14px 0 0 currentColor;
+        }
+    }
+
+    .card-body {
+        padding: 0;
+    }
+
+    .card-title {
+        display: block;
+        margin-top: 28px;
+        margin-bottom: -7px;
+    }
+
+    &.text-white {
+        .card-img {
+            border-color: #242424;
+
+            &::before {
+                background-color: #202020;
+            }
+
+            &::after {
+                color: #3e3e3e;
+                background-color: #3e3e3e;
+            }
+        }
+    }
+
+    &:hover .card-img,
+    &:focus .card-img {
+        transform: translateY(-20px);
+    }
+}
+
+// Bootstrap 5 migration fixes
+a.card-demo { text-decoration: none; }

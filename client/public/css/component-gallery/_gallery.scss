@@ -1,0 +1,82 @@
+.gallery-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 100%;
+        will-change: transform;
+        transition: transform 1.8s cubic-bezier(.2, 1, .2, 1);
+    }
+
+    .btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .gallery-item-icon {
+        position: absolute;
+        top: 50%;
+        opacity: 0;
+        will-change: transform, opacity;
+        transition: transform .25s ease-in-out, opacity .25s ease-in-out;
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    .background-color {
+        opacity: 0;
+        will-change: opacity;
+        transition: opacity .3s ease-in-out;
+    }
+
+    &:hover,
+    &:focus {
+        img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item-icon {
+            opacity: 1;
+            transform: translateY(-50%) scale(1);
+        }
+
+        .background-color {
+            opacity: 1;
+        }
+    }
+}
+
+.gallery-item-sm,
+.gallery-item-md,
+.gallery-item-lg,
+.gallery-item-xl {
+    position: relative;
+    overflow: hidden;
+
+    @include media-breakpoint-down(sm) {
+        min-height: 300px;
+    }
+
+    img {
+        @extend .object-fit-image;
+    }
+
+    &::before {
+        content: "";
+        display: block;
+    }
+}
+
+.gallery-item-sm::before {
+    padding-top: 50%;
+}
+.gallery-item-md::before {
+    padding-top: 65%;
+}
+.gallery-item-lg::before {
+    padding-top: 100%;
+}
+.gallery-item-xl::before {
+    padding-top: 130%;
+}

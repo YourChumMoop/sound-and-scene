@@ -1,0 +1,36 @@
+.navbar-collapse {
+    flex: 0 0 auto;
+    flex-direction: column;
+    max-width: 100%;
+
+    .nav-link {
+        flex: 0 0 100%;
+        width: 100%;
+    }
+
+    .navbar-nav {
+        margin: -12px 0;
+
+        .nav-link {
+            padding: 12px 0;
+        }
+    }
+}
+
+.navbar-nav.navbar-nav-collapse {
+    flex-wrap: nowrap;
+    margin: -12px 0;
+
+    .nav-link {
+        padding: 12px 0;
+    }
+}
+
+.navbar-collapse-menu {
+    width: 100%;
+
+    > .navbar-nav {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}

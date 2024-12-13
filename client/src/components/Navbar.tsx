@@ -19,7 +19,7 @@ const Navbar = () => {
   }, [loginCheck]);  // Dependency array ensures useEffect runs when loginCheck changes
 
   return (
-    <div className="display-flex justify-space-between align-center py-2 px-5 mint-green">
+    <div className="display-flex justify-space-between align-center py-2 px-5 mint-green banner-dark">
       <h1>
         Authentication Review
       </h1>
@@ -29,7 +29,7 @@ const Navbar = () => {
           !loginCheck ? (
             // Render login button if user is not logged in
             <button className="btn" type='button'>
-              <Link to='/login'>Login</Link>
+              <Link to='/login' className='nav-link'>Login</Link>
             </button>
           ) : (
             // Render logout button if user is logged in

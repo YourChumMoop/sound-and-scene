@@ -1,97 +1,97 @@
-import { Request, Response } from 'express';
-import { Event } from '../models/event.js';
-import { fetchEventsByZipcode, fetchEventDetailsById } from '../service/eventService.js';
+// import { Request, Response } from 'express';
+// import { Event } from '../models/event.js';
+// import { fetchEventsByZipcode, fetchEventDetailsById } from '../service/eventService.js';
 
-// GET /api/events?postalCode=ZIPCODE
-export const getEventsByZipcode = async (req: Request, res: Response) => {
-  const { postalCode } = req.query;
+// // GET /api/events?postalCode=ZIPCODE
+// export const getEventsByZipcode = async (req: Request, res: Response) => {
+//   const { postalCode } = req.query;
 
-  if (!postalCode) {
-    return res.status(400).json({ message: 'Postal code is required' });
-  }
+//   if (!postalCode) {
+//     return res.status(400).json({ message: 'Postal code is required' });
+//   }
 
-  try {
-    const events = await fetchEventsByZipcode(postalCode as string);
-    return res.json(events);
-  } catch (error: any) {
-    console.error('Error fetching events by zip code:', error);
-    return res.status(500).json({ message: error.message });
-  }
-};
+//   try {
+//     const events = await fetchEventsByZipcode(postalCode as string);
+//     return res.json(events);
+//   } catch (error: any) {
+//     console.error('Error fetching events by zip code:', error);
+//     return res.status(500).json({ message: error.message });
+//   }
+// };
 
-// GET /api/events/:id
-export const getEventDetailsById = async (req: Request, res: Response) => {
-  const { id } = req.params;
+// // GET /api/events/:id
+// export const getEventDetailsById = async (req: Request, res: Response) => {
+//   const { id } = req.params;
 
-  try {
-    const eventDetails = await fetchEventDetailsById(id);
-    res.json(eventDetails);
-  } catch (error: any) {
-    console.error('Error fetching event details:', error);
-    res.status(500).json({ message: error.message });
-  }
-};
+//   try {
+//     const eventDetails = await fetchEventDetailsById(id);
+//     res.json(eventDetails);
+//   } catch (error: any) {
+//     console.error('Error fetching event details:', error);
+//     res.status(500).json({ message: error.message });
+//   }
+// };
 
-// POST /api/events/favorites – Add event to favorites
-export const addEventToFavorites = async (req: Request, res: Response) => {
-  const {
-    id,
-    name,
-    date,
-    time,
-    city,
-    state,
-    country,
-    latitude,
-    longitude,
-    url,
-    imageUrl,
-    placeId,
-  } = req.body;
+// // POST /api/events/favorites – Add event to favorites
+// export const addEventToFavorites = async (req: Request, res: Response) => {
+//   const {
+//     id,
+//     name,
+//     date,
+//     time,
+//     city,
+//     state,
+//     country,
+//     latitude,
+//     longitude,
+//     url,
+//     imageUrl,
+//     placeId,
+//   } = req.body;
 
-  try {
-    // Check if the event already exists in the database
-    const existingEvent = await Event.findByPk(id);
-    if (existingEvent) {
-      return res.status(409).json({ message: 'Event is already in favorites.' });
-    }
+//   try {
+//     // Check if the event already exists in the database
+//     const existingEvent = await Event.findByPk(id);
+//     if (existingEvent) {
+//       return res.status(409).json({ message: 'Event is already in favorites.' });
+//     }
 
-    const newEvent = await Event.create({
-      id,
-      name,
-      date,
-      time,
-      city,
-      state,
-      country,
-      latitude,
-      longitude,
-      url,
-      imageUrl,
-      placeId,
-    });
+//     const newEvent = await Event.create({
+//       id,
+//       name,
+//       date,
+//       time,
+//       city,
+//       state,
+//       country,
+//       latitude,
+//       longitude,
+//       url,
+//       imageUrl,
+//       placeId,
+//     });
 
-    return res.status(201).json({ message: 'Event added to favorites.', event: newEvent });
-  } catch (error: any) {
-    console.error('Error adding event to favorites:', error);
-    return res.status(500).json({ message: error.message });
-  }
-};
+//     return res.status(201).json({ message: 'Event added to favorites.', event: newEvent });
+//   } catch (error: any) {
+//     console.error('Error adding event to favorites:', error);
+//     return res.status(500).json({ message: error.message });
+//   }
+// };
 
-// DELETE /api/events/favorites/:id – Remove event from favorites
-export const removeEventFromFavorites = async (req: Request, res: Response) => {
-  const { id } = req.params;
+// // DELETE /api/events/favorites/:id – Remove event from favorites
+// export const removeEventFromFavorites = async (req: Request, res: Response) => {
+//   const { id } = req.params;
 
-  try {
-    const event = await Event.findByPk(id);
-    if (!event) {
-      return res.status(404).json({ message: 'Event not found in favorites.' });
-    }
+//   try {
+//     const event = await Event.findByPk(id);
+//     if (!event) {
+//       return res.status(404).json({ message: 'Event not found in favorites.' });
+//     }
 
-    await event.destroy();
-    return res.json({ message: 'Event removed from favorites.' });
-  } catch (error: any) {
-    console.error('Error removing event from favorites:', error);
-    return res.status(500).json({ message: error.message });
-  }
-};
+//     await event.destroy();
+//     return res.json({ message: 'Event removed from favorites.' });
+//   } catch (error: any) {
+//     console.error('Error removing event from favorites:', error);
+//     return res.status(500).json({ message: error.message });
+//   }
+// };

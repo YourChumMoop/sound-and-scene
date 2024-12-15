@@ -1,65 +1,27 @@
-import dotenv from 'dotenv';
-dotenv.config();
-
 import express from 'express';
-import cors from 'cors';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import routes from './routes/index.js';
-import { sequelize } from './models/index.js';
-import { UserFactory } from './models/user.js';
+
+import apiRoutes from './routes/api/index.js';
 
 const app = express();
-const PORT = process.env.PORT || 3001;
-const forceDatabaseRefresh = false;
+const PORT = process.env.PORT || 3000;
 
-// Initialize User model
-const User = UserFactory(sequelize);
-
-// Create __dirname equivalent for ES Modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Logging environment variables to verify they are loaded
-console.log(`Ticketmaster API Base URL: ${process.env.TM_API_BASE_URL}`);
-console.log(`Foursquare API Base URL: ${process.env.FS_API_BASE_URL}`);
-
-// Middleware for parsing JSON and URL-encoded form data
+// Middleware to parse JSON
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// Enable CORS for cross-origin requests
-app.use(cors());
-console.log('CORS middleware registered.');
+// API Routes
+app.use('/api', apiRoutes);
 
-// Serve static files from the client's dist folder
-const clientDistPath = path.join(__dirname, '../client/dist');
-app.use(express.static(clientDistPath));
-console.log(`Serving static files from: ${clientDistPath}`);
-
-// Logging middleware to log incoming requests
-app.use((req, _res, next) => {
-  console.log(`Incoming request: ${req.method} ${req.url}`);
-  next();
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-// Use defined routes
-console.log('Registering API routes...');
-app.use('/api', routes);
+// env file setup:
+// TM_API_BASE_URL=https://app.ticketmaster.com/discovery/v2
+// TM_API_KEY=your_api_key
+// FS_API_BASE_URL=https://api.foursquare.com/v3/places
+// FS_API_KEY=your_api_key
 
-// Sync database and start the server
-sequelize
-  .sync({ force: forceDatabaseRefresh })
-  .then(() => {
-    console.log('Database synchronized successfully.');
-    app.listen(PORT, () => {
-      console.log(`Server is listening on port ${PORT}`);
-    });
-  })
-  .catch((err: unknown) => {
-    console.error('Database sync failed. Exiting...', err);
-    process.exit(1);
-  });
-
-// Export User and sequelize for potential use in other parts of the app
-export { User, sequelize };
+// example api requests
+// http://localhost:3000/api/events?postalCode=10001
+// http://localhost:3000/api/places?ll=40.7128,-74.0060&radius=1000&limit=5

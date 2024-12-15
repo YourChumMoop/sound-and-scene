@@ -1,12 +1,10 @@
 import { Router } from 'express';
-import { userRouter } from './user-routes.js';
-import eventRoutes from './eventRoutes.js';
-import venueRoutes from './venuesRoutes.js';
+import { eventRouter } from './event-routes.js';
+import { placesRouter } from './places-routes.js';
 
 const router = Router();
 
-router.use('/users', userRouter);
-router.use('/events', eventRoutes);
-router.use('/venues', venueRoutes);
+router.use('/events', eventRouter);     // Mount the event routes at /api/events
+router.use('/places', placesRouter);    // Mount the places routes at /api/places
 
 export default router;

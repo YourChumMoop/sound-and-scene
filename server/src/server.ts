@@ -13,34 +13,45 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const forceDatabaseRefresh = false;
 
-// Load API keys from environment variables
-const TM_API_KEY = process.env.TICKETMASTER_API_KEY || '';
-const FS_API_KEY = process.env.FOURSQUARE_API_KEY || '';
-
-if (!TM_API_KEY) console.warn('Warning: Ticketmaster API key is not set.');
-if (!FS_API_KEY) console.warn('Warning: Foursquare API key is not set.');
-
+// Initialize User model
 const User = UserFactory(sequelize);
 
 // Create __dirname equivalent for ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Middleware for parsing JSON
-app.use(express.json());
+// Logging environment variables to verify they are loaded
+console.log(`Ticketmaster API Base URL: ${process.env.TM_API_BASE_URL}`);
+console.log(`Foursquare API Base URL: ${process.env.FS_API_BASE_URL}`);
 
-// Enable CORS (if your client is served from a different origin)
+// Middleware for parsing JSON and URL-encoded form data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Enable CORS for cross-origin requests
 app.use(cors());
+console.log('CORS middleware registered.');
 
 // Serve static files from the client's dist folder
-app.use(express.static(path.join(__dirname, '../client/dist')));
+const clientDistPath = path.join(__dirname, '../client/dist');
+app.use(express.static(clientDistPath));
+console.log(`Serving static files from: ${clientDistPath}`);
+
+// Logging middleware to log incoming requests
+app.use((req, _res, next) => {
+  console.log(`Incoming request: ${req.method} ${req.url}`);
+  next();
+});
 
 // Use defined routes
+console.log('Registering API routes...');
 app.use('/api', routes);
 
 // Sync database and start the server
-sequelize.sync({ force: forceDatabaseRefresh })
+sequelize
+  .sync({ force: forceDatabaseRefresh })
   .then(() => {
+    console.log('Database synchronized successfully.');
     app.listen(PORT, () => {
       console.log(`Server is listening on port ${PORT}`);
     });
@@ -50,4 +61,5 @@ sequelize.sync({ force: forceDatabaseRefresh })
     process.exit(1);
   });
 
+// Export User and sequelize for potential use in other parts of the app
 export { User, sequelize };

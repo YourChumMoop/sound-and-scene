@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Event } from '../interfaces/Event';
 
 const TM_BASE_URL = 'https://app.ticketmaster.com/discovery/v2/events.json';
-const TM_API_KEY = import.meta.env.VITE_TICKETMASTER_API_KEY;
+const TM_API_KEY = import.meta.env.VITE_TM_API_KEY;
 
 export const fetchEventsByZipcode = async (zipcode: string): Promise<Event[]> => {
   try {

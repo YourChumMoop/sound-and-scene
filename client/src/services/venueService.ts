@@ -1,9 +1,9 @@
 // src/services/venueService.ts
 import axios from 'axios';
-import { Venue } from '../interfaces/Venue';
+import { Venue } from '../interfaces/Place';
 
 const FS_BASE_URL = 'https://api.foursquare.com/v3/places/search';
-const FS_API_KEY = import.meta.env.VITE_FOURSQUARE_API_KEY;
+const FS_API_KEY = import.meta.env.VITE_FS_API_KEY;
 
 export const fetchVenuesByLocation = async (latitude: string, longitude: string): Promise<Venue[]> => {
   try {

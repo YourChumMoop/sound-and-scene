@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import Venues from '../components/Venues';
+import Venues from '../components/Places';
 import { useEffect } from 'react';
 
 // Define the type for the state passed via `useNavigate`

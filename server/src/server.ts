@@ -1,5 +1,4 @@
-import dotenv from 'dotenv';
-dotenv.config();
+console.log('****starting server/src/server.ts****')
 
 import express from 'express';
 import cors from 'cors';
@@ -13,6 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const forceDatabaseRefresh = false;
 
+
 // Initialize User model
 const User = UserFactory(sequelize);
 
@@ -21,8 +21,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Logging environment variables to verify they are loaded
-console.log(`Ticketmaster API Base URL: ${process.env.TM_API_BASE_URL}`);
-console.log(`Foursquare API Base URL: ${process.env.FS_API_BASE_URL}`);
+console.log(`server.ts_TM_API_BASE_URL: ${process.env.TM_API_BASE_URL}`);
+console.log('server.ts_TM_API_KEY:', process.env.TM_API_KEY);
+console.log(`server.ts_FS_API_BASE_URL ${process.env.FS_API_BASE_URL}`);
+console.log('server.ts_FS_API_KEY:', process.env.FS_API_KEY);
 
 // Middleware for parsing JSON and URL-encoded form data
 app.use(express.json());
@@ -51,7 +53,7 @@ app.use('/api', routes);
 sequelize
   .sync({ force: forceDatabaseRefresh })
   .then(() => {
-    console.log('Database synchronized successfully.');
+    console.log('Database synchronized successfully from server.ts.');
     app.listen(PORT, () => {
       console.log(`Server is listening on port ${PORT}`);
     });

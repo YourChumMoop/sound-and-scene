@@ -1,8 +1,11 @@
+console.log('****starting server/src/routes/api/user-routes.ts****')
+
 import express from 'express';
 import type { Request, Response } from 'express';
 import { User } from '../../models/index.js';
 
 const router = express.Router();
+
 
 // GET /users - Get all users
 router.get('/', async (_req: Request, res: Response) => {

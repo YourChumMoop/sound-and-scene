@@ -1,18 +1,14 @@
+console.log('****starting server/src/routes/api/places-routes.ts****');
+
 import { Router } from 'express';
-import {
-  getAllPlaces,
-  getPlaceById,
-  createPlace,
-  updatePlace,
-  deletePlace,
-} from '../../controllers/places-controller.js';
+import { getVenuesByCoordinates } from '../../controllers/places-controller.js';
 
 const router = Router();
 
-router.get('/', getAllPlaces);          // GET /api/places
-router.get('/:id', getPlaceById);       // GET /api/places/:id
-router.post('/', createPlace);          // POST /api/places
-router.put('/:id', updatePlace);        // PUT /api/places/:id
-router.delete('/:id', deletePlace);     // DELETE /api/places/:id
+// GET /api/places?lat=LATITUDE&lng=LONGITUDE
+router.get('/', (req, res) => {
+  console.log(`GET /api/places hit with query: ${JSON.stringify(req.query)}`);
+  getVenuesByCoordinates(req, res);
+});
 
 export { router as placesRouter };

@@ -1,5 +1,8 @@
+console.log('****starting server/src/controllers/user-controllers.ts****')
+
 import { Request, Response } from 'express';
 import { User } from '../models/user.js';
+
 
 // GET /users - Get all users
 export const getAllUsers = async (_req: Request, res: Response) => {

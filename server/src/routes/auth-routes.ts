@@ -1,7 +1,10 @@
+console.log('****starting server/src/routes/auth-routes.ts****')
+
 import { Router, Request, Response } from 'express';
 import { User } from '../models/user.js';  // Import the User model
 import jwt from 'jsonwebtoken';  // Import the JSON Web Token library
 import bcrypt from 'bcrypt';  // Import the bcrypt library for password hashing
+
 
 // Login function to authenticate a user
 export const login = async (req: Request, res: Response) => {

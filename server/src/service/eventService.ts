@@ -1,6 +1,8 @@
-import dotenv from 'dotenv';
+console.log('****starting server/src/service/eventService.ts****')
+
+import '../config/connection.js';
 import axios, { AxiosResponse } from 'axios';
-dotenv.config();
+
 
 class EventService {
   private baseURL: string;
@@ -9,13 +11,15 @@ class EventService {
   constructor() {
     this.baseURL = process.env.TM_API_BASE_URL || '';
     this.apiKey = process.env.TM_API_KEY || '';
+    console.log('eventService.ts_TM_API_BASE_URL:', this.baseURL);
+    console.log('eventService.ts_TM_API_KEY:', this.apiKey);
 
     if (!this.baseURL || !this.apiKey) {
       throw new Error('Ticketmaster API base URL or API key is missing in environment variables.');
     }
   }
 
-  // Build the Ticketmaster event query URL
+  // Build the Ticketmaster event query URL for fetching events by zipcode
   private buildEventQuery(zipcode: string): string {
     const url = `${this.baseURL}/events.json?apikey=${this.apiKey}&postalCode=${zipcode}&classificationName=music`;
     console.log(`Event query URL: ${url}`);
@@ -43,6 +47,35 @@ class EventService {
       }
     }
   }
+
+  // Build the Ticketmaster event details query URL for fetching event by ID
+  private buildEventDetailsQuery(eventId: string): string {
+    const url = `${this.baseURL}/events/${eventId}.json?apikey=${this.apiKey}`;
+    console.log(`Event details query URL: ${url}`);
+    return url;
+  }
+
+  // Fetch event details by ID
+  async fetchEventDetailsById(eventId: string): Promise<any> {
+    try {
+      console.log(`Fetching event details for event ID: ${eventId}`);
+      const url = this.buildEventDetailsQuery(eventId);
+
+      const response: AxiosResponse = await axios.get(url);
+      console.log('Ticketmaster API event details response:', response.data);
+
+      return response.data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error('Axios error fetching event details:', error.response?.data || error.message);
+        throw new Error(`Error fetching event details: ${error.response?.data?.message || error.message}`);
+      } else {
+        console.error('Unexpected error fetching event details:', error);
+        throw new Error('Unexpected error fetching event details from Ticketmaster');
+      }
+    }
+  }
 }
 
+// Export an instance of EventService
 export default new EventService();

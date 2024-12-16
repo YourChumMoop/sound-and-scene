@@ -1,5 +1,11 @@
-import dotenv from 'dotenv';
-dotenv.config();
+console.log('****starting server/src/models/index.ts****')
+
+import '../config/connection.js'
+
+console.log(`models/index.ts_TM_API_BASE_URL: ${process.env.TM_API_BASE_URL}`);
+console.log('models/index.ts_TM_API_KEY:', process.env.TM_API_KEY);
+console.log(`models/index.ts_FS_API_BASE_URL ${process.env.FS_API_BASE_URL}`);
+console.log('models/index.ts_FS_API_KEY:', process.env.FS_API_KEY);
 
 import { Sequelize } from 'sequelize';
 import { UserFactory } from './user.js';
@@ -8,7 +14,7 @@ import { PlaceFactory } from './places.js';
 
 // Initialize the Sequelize instance
 const sequelize = process.env.DB_URL
-  ? new Sequelize(process.env.DB_URL)
+  ? new Sequelize(process.env.DB_URL, { logging: false })  // Disable logging for URL-based connection
   : new Sequelize(
       process.env.DB_NAME || '',
       process.env.DB_USER || '',
@@ -19,7 +25,7 @@ const sequelize = process.env.DB_URL
         dialectOptions: {
           decimalNumbers: true,
         },
-        logging: console.log, // Add logging to debug SQL queries
+        logging: false, // Disable logging here
       }
     );
 
@@ -40,7 +46,7 @@ Place.belongsTo(Event, { foreignKey: 'eventId', as: 'event' });
 
 // Sync all models with the database
 sequelize.sync({ alter: true }).then(() => {
-  console.log('Database synchronized successfully.');
+  console.log('Database synchronized successfully from models.ts.');
 }).catch((err) => {
   console.error('Database sync failed. Exiting...', err);
   process.exit(1);

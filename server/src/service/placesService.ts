@@ -1,6 +1,7 @@
-import dotenv from 'dotenv';
+console.log('****starting server/src/service/placesService.ts****')
+
+import '../config/connection.js'
 import axios from 'axios';
-dotenv.config();
 
 class VenueService {
   private baseURL: string;

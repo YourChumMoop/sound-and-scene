@@ -1,20 +1,28 @@
+console.log('****starting server/src/controllers/event-controllers.ts****')
+
 import { Request, Response } from 'express';
 import { Event } from '../models/event.js';
-import { fetchEventsByZipcode, fetchEventDetailsById } from '../service/eventService.js';
+import EventService from '../service/eventService.js';
+
 
 // GET /api/events?postalCode=ZIPCODE
 export const getEventsByZipcode = async (req: Request, res: Response) => {
+  console.log('Inside getEventsByZipcode controller');
+  console.log(`Request query parameters: ${JSON.stringify(req.query)}`);
+
   const { postalCode } = req.query;
 
   if (!postalCode) {
+    console.warn('Postal code is missing in the request');
     return res.status(400).json({ message: 'Postal code is required' });
   }
 
   try {
-    const events = await fetchEventsByZipcode(postalCode as string);
+    const events = await EventService.fetchEventsByZipcode(postalCode as string);
+    console.log('Events fetched successfully:', events);
     return res.json(events);
   } catch (error: any) {
-    console.error('Error fetching events by zip code:', error);
+    console.error('Error fetching events by zip code:', error.message);
     return res.status(500).json({ message: error.message });
   }
 };
@@ -24,7 +32,7 @@ export const getEventDetailsById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    const eventDetails = await fetchEventDetailsById(id);
+    const eventDetails = await EventService.fetchEventDetailsById(id);
     res.json(eventDetails);
   } catch (error: any) {
     console.error('Error fetching event details:', error);

@@ -1,5 +1,8 @@
+console.log('****starting server/src/middleware/auth.ts****')
+
 import { Request, Response, NextFunction } from 'express';
 import jwt, { JwtPayload as DefaultJwtPayload } from 'jsonwebtoken';
+
 
 // Extend the Request type to include the user property
 interface CustomRequest extends Request {

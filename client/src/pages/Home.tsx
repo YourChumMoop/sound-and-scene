@@ -7,9 +7,11 @@ import auth from '../utils/auth';
 
 const Home = () => {
 
+  const [loginCheck, setLoginCheck] = useState(false);
+
 
    // const [error, setError] = useState(false);
-    const [loginCheck, setLoginCheck] = useState(false);
+
 
     /*useEffect(() => {
         if (loginCheck) {
@@ -56,6 +58,6 @@ const Home = () => {
                 )}
         </>
     );
-};
+  };
 
 export default Home;

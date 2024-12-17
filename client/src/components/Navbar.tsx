@@ -1,46 +1,70 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../utils/auth';
 
 const Navbar = () => {
   // State to track the login status
   const [loginCheck, setLoginCheck] = useState(false);
+  const navigate = useNavigate();
 
   // Function to check if the user is logged in using auth.loggedIn() method
   const checkLogin = () => {
-    if (auth.loggedIn()) {
-      setLoginCheck(true);  // Set loginCheck to true if user is logged in
-    }
+    setLoginCheck(!!auth.loggedIn());
   };
 
-  // useEffect hook to run checkLogin() on component mount and when loginCheck state changes
+  // useEffect hook to run checkLogin() on component mount
   useEffect(() => {
-    checkLogin();  // Call checkLogin() function to update loginCheck state
-  }, [loginCheck]);  // Dependency array ensures useEffect runs when loginCheck changes
+    checkLogin();
+  }, []);
+
+  // Handle logout and navigate to the home page
+  const handleLogout = () => {
+    auth.logout();
+    setLoginCheck(false);
+    navigate('/');
+  };
 
   return (
-    <div className="display-flex justify-space-between align-center py-2 px-5 mint-green">
-      <h1>
-        Sound and Scene
-      </h1>
-      <div>
-        {
-          // Conditional rendering based on loginCheck state
-          !loginCheck ? (
-            // Render login button if user is not logged in
-            <button className="btn" type='button'>
-              <Link to='/login'>Login</Link>
-            </button>
+    <nav className="navbar navbar-expand-lg mint-green py-3 px-4">
+      <div className="container-fluid">
+        <Link to="/" className="navbar-brand text-dark mb-0">
+          Sound and Scene
+        </Link>
+
+        <div className="collapse navbar-collapse">
+          <ul className="navbar-nav me-auto">
+            <li className="nav-item">
+              <Link to="/" className="nav-link">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/events" className="nav-link">
+                Events
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/event-details" className="nav-link">
+                Event Details
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          {!loginCheck ? (
+            <Link to="/login" className="btn btn-primary">
+              Login
+            </Link>
           ) : (
-            // Render logout button if user is logged in
-            <button className="btn" type='button' onClick={() => {
-              auth.logout();  // Call logout() method from auth utility on button click
-            }}>Logout</button>
-          )
-        }
+            <button className="btn btn-danger" type="button" onClick={handleLogout}>
+              Logout
+            </button>
+          )}
+        </div>
       </div>
-    </div>
-  )
-}
+    </nav>
+  );
+};
 
 export default Navbar;

@@ -34,38 +34,45 @@ const Login = () => {
   };
 
   return (
-    <div className='form-container'>
+    <div className='login-container'>
       <form className='form login-form' onSubmit={handleSubmit}>
-        <h1>Login</h1>
+        <h1 className='text-center mb-4'>Login</h1>
+        
         {/* Username input field */}
-        <div className="form-group">
-          <label>Username</label>
+        <div className="form-group mb-3">
+          <label className="form-label">Username</label>
           <input 
-            className="form-input"
+            className="form-input w-100"
             type='text'
             name='username'
             value={loginData.username || ''}
             onChange={handleChange}
+            placeholder='Enter your username'
+            required
           />
         </div>
+
         {/* Password input field */}
-        <div className="form-group">
-          <label>Password</label>
+        <div className="form-group mb-4">
+          <label className="form-label">Password</label>
           <input 
-            className="form-input"
+            className="form-input w-100"
             type='password'
             name='password'
             value={loginData.password || ''}
             onChange={handleChange}
+            placeholder='Enter your password'
+            required
           />
         </div>
+
         {/* Submit button for the login form */}
-        <div className="form-group">
-          <button className="btn btn-primary" type='submit'>Login</button>
+        <div className="form-group text-center">
+          <button className="btn btn-primary btn-block" type='submit'>Login</button>
         </div>
       </form>
     </div>
-  )
+  );
 };
 
 export default Login;

@@ -9,8 +9,8 @@ interface PlacesProps {
 }
 
 const Places = ({ lat, lng }: PlacesProps) => {
-  // State to store the list of places and error status
-  const [places, setPlaces] = useState<any[]>([]);
+  // State to store the list of places and error/loading status
+  const [places, setPlaces] = useState<Place[]>([]);
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -52,19 +52,22 @@ const Places = ({ lat, lng }: PlacesProps) => {
       {places.map((place) => (
         <div key={place.fsq_id} className="col-md-4 mb-4">
           <div className="card place-card h-100">
+            <img
+              src={place.photoUrl || 'https://via.placeholder.com/400x200'}
+              className="card-img-top"
+              alt={place.name}
+            />
             <div className="card-body d-flex flex-column justify-content-between">
               <h5 className="card-title">{place.name}</h5>
-              <p className="card-text">
-                <strong>Category:</strong>{' '}
-                {place.categories?.[0]?.name || 'No category available'}
-              </p>
-              <p className="card-text">
-                <strong>Address:</strong>{' '}
-                {place.location?.formatted_address || 'Address not available'}
-              </p>
-              <p className="card-text">
-                <strong>Distance:</strong> {place.distance} meters away
-              </p>
+              <p className="card-text"><strong>Category:</strong> {place.categories?.[0]?.name || 'No category available'}</p>
+              <p className="card-text"><strong>Address:</strong> {place.location?.formatted_address || 'Address not available'}</p>
+              <p className="card-text"><strong>Distance:</strong> {place.distance} meters away</p>
+              {place.rating && <p className="card-text"><strong>Rating:</strong> {place.rating} / 10</p>}
+              {place.link && (
+                <a href={place.link} className="btn btn-primary mt-auto" target="_blank" rel="noopener noreferrer">
+                  Visit Website
+                </a>
+              )}
             </div>
           </div>
         </div>

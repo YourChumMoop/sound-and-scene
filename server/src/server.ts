@@ -47,7 +47,7 @@ app.use((req, _res, next) => {
 
 // Use defined routes
 console.log('Registering API routes...');
-app.use('/api', routes);
+app.use(routes);
 
 // Sync database and start the server
 sequelize

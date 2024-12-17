@@ -20,8 +20,9 @@ const login = async (userInfo: UserLogin) => {
 
     // Parse the response body as JSON
     const data = await response.json();
-
+    console.log(data);
     return data;  // Return the data received from the server
+
   } catch (err) {
     console.log('Error from user login: ', err);  // Log any errors that occur during fetch
     return Promise.reject('Could not fetch user info');  // Return a rejected promise with an error message

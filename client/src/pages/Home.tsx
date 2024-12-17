@@ -1,21 +1,21 @@
-import { useState, useEffect, useLayoutEffect } from "react";
-import { retrieveUsers } from "../api/userAPI";
-import type { UserData } from "../interfaces/UserData";
-import ErrorPage from "./ErrorPage";
-import UserList from '../components/Users';
+import { useState, useLayoutEffect } from "react";
+//import { retrieveUsers } from "../api/userAPI";
+//import type { UserData } from "../interfaces/UserData";
+//import ErrorPage from "./ErrorPage";
+/*import UserList from '../components/Users';*/
 import auth from '../utils/auth';
 
 const Home = () => {
 
-    const [users, setUsers] = useState<UserData[]>([]);
-    const [error, setError] = useState(false);
+
+   // const [error, setError] = useState(false);
     const [loginCheck, setLoginCheck] = useState(false);
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (loginCheck) {
             fetchUsers();
         }
-    }, [loginCheck]);
+    }, [loginCheck]);*/
 
     useLayoutEffect(() => {
         checkLogin();
@@ -27,7 +27,7 @@ const Home = () => {
         }
     };
 
-    const fetchUsers = async () => {
+    /*const fetchUsers = async () => {
         try {
             const data = await retrieveUsers();
             setUsers(data)
@@ -35,11 +35,11 @@ const Home = () => {
             console.error('Failed to retrieve tickets:', err);
             setError(true);
         }
-    }
+    }*/
 
-    if (error) {
+    /*if (error) {
         return <ErrorPage />;
-    }
+    }*/
 
     return (
         <>
@@ -51,7 +51,8 @@ const Home = () => {
                         </h1>
                     </div>
                 ) : (
-                    <UserList users={users} />
+                    /*<UserList users={users} />*/
+                    <h1>You are logged in</h1>
                 )}
         </>
     );

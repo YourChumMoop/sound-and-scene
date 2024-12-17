@@ -1,11 +1,4 @@
-console.log('****starting server/src/models/index.ts****')
-
 import '../config/connection.js'
-
-console.log(`models/index.ts_TM_API_BASE_URL: ${process.env.TM_API_BASE_URL}`);
-console.log('models/index.ts_TM_API_KEY:', process.env.TM_API_KEY);
-console.log(`models/index.ts_FS_API_BASE_URL ${process.env.FS_API_BASE_URL}`);
-console.log('models/index.ts_FS_API_KEY:', process.env.FS_API_KEY);
 
 import { Sequelize } from 'sequelize';
 import { UserFactory } from './user.js';

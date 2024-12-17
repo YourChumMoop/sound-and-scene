@@ -1,5 +1,3 @@
-console.log('****starting server/src/routes/api/index.ts****')
-
 import { Router } from 'express';
 import { eventRouter } from './event-routes.js';
 import { placesRouter } from './places-routes.js';

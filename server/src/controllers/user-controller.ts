@@ -1,5 +1,3 @@
-console.log('****starting server/src/controllers/user-controllers.ts****')
-
 import { Request, Response } from 'express';
 import { User } from '../models/user.js';
 

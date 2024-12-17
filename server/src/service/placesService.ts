@@ -1,5 +1,3 @@
-console.log('****starting server/src/service/placesService.ts****')
-
 import '../config/connection.js'
 import axios from 'axios';
 

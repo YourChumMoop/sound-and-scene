@@ -1,5 +1,3 @@
-console.log('****starting server/src/routes/auth-routes.ts****')
-
 import { Router, Request, Response } from 'express';
 import { User } from '../models/user.js';  // Import the User model
 import jwt from 'jsonwebtoken';  // Import the JSON Web Token library

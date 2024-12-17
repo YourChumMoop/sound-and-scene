@@ -1,12 +1,5 @@
-console.log('****starting server/src/config/connection.ts****')
-
 import dotenv from 'dotenv';
 dotenv.config();
-
-console.log(`connection.ts_TM_API_BASE_URL: ${process.env.TM_API_BASE_URL}`);
-console.log('connection.ts_TM_API_KEY:', process.env.TM_API_KEY);
-console.log(`connection.ts_FS_API_BASE_URL ${process.env.FS_API_BASE_URL}`);
-console.log('connection.ts_FS_API_KEY:', process.env.FS_API_KEY);
 
 import { Sequelize } from 'sequelize';
 

@@ -1,5 +1,3 @@
-console.log('****starting server/src/service/eventService.ts****')
-
 import '../config/connection.js';
 import axios, { AxiosResponse } from 'axios';
 
@@ -11,8 +9,6 @@ class EventService {
   constructor() {
     this.baseURL = process.env.TM_API_BASE_URL || '';
     this.apiKey = process.env.TM_API_KEY || '';
-    console.log('eventService.ts_TM_API_BASE_URL:', this.baseURL);
-    console.log('eventService.ts_TM_API_KEY:', this.apiKey);
 
     if (!this.baseURL || !this.apiKey) {
       throw new Error('Ticketmaster API base URL or API key is missing in environment variables.');

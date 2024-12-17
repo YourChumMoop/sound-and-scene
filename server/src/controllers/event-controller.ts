@@ -1,5 +1,3 @@
-console.log('****starting server/src/controllers/event-controllers.ts****')
-
 import { Request, Response } from 'express';
 import { Event } from '../models/event.js';
 import EventService from '../service/eventService.js';

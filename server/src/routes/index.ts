@@ -1,5 +1,3 @@
-console.log('****starting server/src/routes/index.ts****')
-
 import { Router } from 'express';
 import authRoutes from './auth-routes.js';
 import apiRoutes from './api/index.js';

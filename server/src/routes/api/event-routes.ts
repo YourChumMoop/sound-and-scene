@@ -1,5 +1,3 @@
-console.log('****starting server/src/routes/api/event-routes.ts****')
-
 import { Router } from 'express';
 import {
   getEventsByZipcode,

@@ -1,5 +1,3 @@
-console.log('****starting server/src/routes/api/places-routes.ts****');
-
 import { Router } from 'express';
 import { getVenuesByCoordinates } from '../../controllers/places-controller.js';
 

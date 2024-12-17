@@ -1,5 +1,3 @@
-console.log('****starting server/src/server.ts****')
-
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
@@ -19,12 +17,6 @@ const User = UserFactory(sequelize);
 // Create __dirname equivalent for ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-// Logging environment variables to verify they are loaded
-console.log(`server.ts_TM_API_BASE_URL: ${process.env.TM_API_BASE_URL}`);
-console.log('server.ts_TM_API_KEY:', process.env.TM_API_KEY);
-console.log(`server.ts_FS_API_BASE_URL ${process.env.FS_API_BASE_URL}`);
-console.log('server.ts_FS_API_KEY:', process.env.FS_API_KEY);
 
 // Middleware for parsing JSON and URL-encoded form data
 app.use(express.json());

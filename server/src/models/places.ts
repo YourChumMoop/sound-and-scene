@@ -1,5 +1,3 @@
-console.log('****starting server/src/models/places.ts****')
-
 import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
 import { Event } from './event.js'; // Import Event model for associations
 

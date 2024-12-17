@@ -1,5 +1,3 @@
-console.log('****starting server/src/models/user.ts****')
-
 import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
 import bcrypt from 'bcrypt';
 

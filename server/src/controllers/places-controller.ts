@@ -1,5 +1,3 @@
-console.log('****starting server/src/controllers/places-controller.ts****');
-
 import { Request, Response } from 'express';
 import PlacesService from '../service/placesService.js';
 

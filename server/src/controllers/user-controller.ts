@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { User } from '../models/user.js';
 
-
 // GET /users - Get all users
 export const getAllUsers = async (_req: Request, res: Response) => {
   try {
@@ -35,9 +34,9 @@ export const getUserById = async (req: Request, res: Response) => {
 
 // POST /users - Create a new user
 export const createUser = async (req: Request, res: Response) => {
-  const { username, email, password } = req.body;
+  const { username, password } = req.body;
   try {
-    const newUser = await User.create({ username, email, password });
+    const newUser = await User.create({ username, password });
     res.status(201).json(newUser);
   } catch (error: unknown) {
     console.error('Error creating user:', error);
@@ -48,12 +47,11 @@ export const createUser = async (req: Request, res: Response) => {
 // PUT /users/:id - Update a user by ID
 export const updateUser = async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { username, email, password } = req.body;
+  const { username, password } = req.body;
   try {
     const user = await User.findByPk(id);
     if (user) {
       user.username = username || user.username;
-      user.email = email || user.email;
       user.password = password || user.password;
       await user.save();
       res.json(user);

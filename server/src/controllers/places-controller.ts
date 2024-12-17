@@ -3,20 +3,28 @@ console.log('****starting server/src/controllers/places-controller.ts****');
 import { Request, Response } from 'express';
 import PlacesService from '../service/placesService.js';
 
-// GET /api/places?lat=LATITUDE&lng=LONGITUDE
+// GET /api/places?ll=latitude,longitude&radius=1000&limit=5
 export const getVenuesByCoordinates = async (req: Request, res: Response) => {
   console.log('Inside getVenuesByCoordinates controller');
   console.log(`Request query parameters: ${JSON.stringify(req.query)}`);
 
-  const { lat, lng } = req.query;
+  const { ll } = req.query;
 
-  if (!lat || !lng) {
-    console.warn('Latitude or longitude is missing in the request');
+  if (!ll) {
+    console.warn('Latitude and longitude are missing in the request');
     return res.status(400).json({ message: 'Latitude and longitude are required' });
   }
 
+  // Split the 'll' parameter into latitude and longitude
+  const [latitude, longitude] = (ll as string).split(',');
+
+  if (!latitude || !longitude) {
+    console.warn('Latitude or longitude is missing in the request');
+    return res.status(400).json({ message: 'Both latitude and longitude are required' });
+  }
+
   try {
-    const venues = await PlacesService.fetchVenuesByCoordinates(lat as string, lng as string);
+    const venues = await PlacesService.fetchVenuesByCoordinates(latitude, longitude);
     console.log('Venues fetched successfully:', venues);
     return res.json(venues);
   } catch (error: any) {

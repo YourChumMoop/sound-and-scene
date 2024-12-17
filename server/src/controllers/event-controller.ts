@@ -52,7 +52,6 @@ export const addEventToFavorites = async (req: Request, res: Response) => {
     longitude,
     url,
     imageUrl,
-    placeId,
   } = req.body;
 
   try {
@@ -74,7 +73,6 @@ export const addEventToFavorites = async (req: Request, res: Response) => {
       longitude,
       url,
       imageUrl,
-      placeId,
     });
 
     return res.status(201).json({ message: 'Event added to favorites.', event: newEvent });

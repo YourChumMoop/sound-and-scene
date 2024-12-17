@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { User } from '../models/user';
+import { User } from '../models/index.js';
 
 // GET /users - Get all users
 export const getAllUsers = async (_req: Request, res: Response) => {
@@ -10,7 +10,7 @@ export const getAllUsers = async (_req: Request, res: Response) => {
     res.json(users);
   } catch (error: unknown) {
     console.error('Error fetching users:', error);
-    res.status(500).json({ message: (error as Error).message });
+    res.status(500).json({ message: 'Failed to fetch users.' });
   }
 };
 
@@ -28,7 +28,7 @@ export const getUserById = async (req: Request, res: Response) => {
     }
   } catch (error: unknown) {
     console.error(`Error fetching user with ID ${id}:`, error);
-    res.status(500).json({ message: (error as Error).message });
+    res.status(500).json({ message: 'Failed to fetch user.' });
   }
 };
 
@@ -36,11 +36,17 @@ export const getUserById = async (req: Request, res: Response) => {
 export const createUser = async (req: Request, res: Response) => {
   const { username, password } = req.body;
   try {
+    if (!username || !password) {
+      return res.status(400).json({ message: 'Username and password are required.' });
+    }
+
     const newUser = await User.create({ username, password });
-    res.status(201).json(newUser);
+    // Exclude password from response
+    const { password: _, ...userWithoutPassword } = newUser.toJSON();
+    return res.status(201).json(userWithoutPassword);
   } catch (error: unknown) {
     console.error('Error creating user:', error);
-    res.status(400).json({ message: (error as Error).message });
+    return res.status(400).json({ message: 'Failed to create user.' });
   }
 };
 
@@ -52,15 +58,19 @@ export const updateUser = async (req: Request, res: Response) => {
     const user = await User.findByPk(id);
     if (user) {
       user.username = username || user.username;
-      user.password = password || user.password;
+      if (password) {
+        await user.setPassword(password); // Hash the new password if provided
+      }
       await user.save();
-      res.json(user);
+      // Exclude password from response
+      const { password: _, ...userWithoutPassword } = user.toJSON();
+      res.json(userWithoutPassword);
     } else {
       res.status(404).json({ message: 'User not found' });
     }
   } catch (error: unknown) {
     console.error(`Error updating user with ID ${id}:`, error);
-    res.status(400).json({ message: (error as Error).message });
+    res.status(400).json({ message: 'Failed to update user.' });
   }
 };
 
@@ -71,12 +81,12 @@ export const deleteUser = async (req: Request, res: Response) => {
     const user = await User.findByPk(id);
     if (user) {
       await user.destroy();
-      res.json({ message: 'User deleted successfully' });
+      res.json({ message: 'User deleted successfully.' });
     } else {
       res.status(404).json({ message: 'User not found' });
     }
   } catch (error: unknown) {
     console.error(`Error deleting user with ID ${id}:`, error);
-    res.status(500).json({ message: (error as Error).message });
+    res.status(500).json({ message: 'Failed to delete user.' });
   }
 };

@@ -1,27 +1,23 @@
 import axios from 'axios';
 import { Place } from '../interfaces/Place';
 
-const FS_BASE_URL = 'https://api.foursquare.com/v3/places/search';
-const FS_API_KEY = import.meta.env.VITE_FS_API_KEY;
+const BASE_URL = '/api/places';
 
-// Fetch places by location (latitude and longitude)
 export const fetchPlacesByLocation = async (latitude: string, longitude: string): Promise<Place[]> => {
   try {
-    const response = await axios.get(FS_BASE_URL, {
-      headers: {
-        Authorization: FS_API_KEY,
-      },
+    console.log(`Fetching places for latitude: ${latitude}, longitude: ${longitude}`);
+    const response = await axios.get(BASE_URL, {
       params: {
-        ll: `${latitude},${longitude}`,
-        categories: '13065,13003', // Restaurants and bars
+        lat: latitude,
+        lng: longitude,
         radius: 1000,
         limit: 10,
       },
     });
 
-    return response.data.results || [];
+    return response.data || [];
   } catch (error) {
-    console.error('Error fetching places from Foursquare:', error);
+    console.error('Error fetching places from backend:', error);
     throw new Error('Failed to fetch places');
   }
 };

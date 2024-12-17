@@ -1,23 +1,50 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
+import axios from 'axios';
 import {
-  getEventsByZipcode,
   getEventDetailsById,
   addEventToFavorites,
   removeEventFromFavorites,
 } from '../../controllers/event-controller.js';
 
-
 const router = Router();
 
-router.get('/', (req, res) => {                     // GET /api/events?postalCode=ZIPCODE
+const TM_API_BASE_URL = 'https://app.ticketmaster.com/discovery/v2/events.json';
+const TM_API_KEY = process.env.TM_API_KEY || '';
+
+// Server-side proxy to fetch events by zipcode
+router.get('/', async (req: Request, res: Response) => {
+  const { postalCode, classificationName = 'Music', size = 10 } = req.query;
+
   console.log(`GET /api/events hit with query: ${JSON.stringify(req.query)}`);
-  getEventsByZipcode(req, res);
-});                
-router.get('/:id', (req, res) => {                  // GET /api/events/:id
+
+  try {
+    const response = await axios.get(TM_API_BASE_URL, {
+      params: {
+        apikey: TM_API_KEY,
+        postalCode,
+        classificationName,
+        size,
+      },
+    });
+
+    console.log('Ticketmaster API response:', response.data);
+    res.json(response.data._embedded?.events || []);
+  } catch (error: any) {
+    console.error('Error fetching events from Ticketmaster:', error.message);
+    res.status(500).json({ message: 'Failed to fetch events from Ticketmaster' });
+  }
+});
+
+// GET /api/events/:id
+router.get('/:id', (req, res) => {
   console.log(`GET /api/events/${req.params.id} hit`);
   getEventDetailsById(req, res);
-});           
-router.post('/favorites', addEventToFavorites);     // POST /api/events/favorites
-router.delete('/favorites/:id', removeEventFromFavorites); // DELETE /api/events/favorites/:id
+});
+
+// POST /api/events/favorites
+router.post('/favorites', addEventToFavorites);
+
+// DELETE /api/events/favorites/:id
+router.delete('/favorites/:id', removeEventFromFavorites);
 
 export { router as eventRouter };

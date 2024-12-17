@@ -1,6 +1,6 @@
 import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
 import bcrypt from 'bcrypt';
-
+import { Event } from './event.js'; // Import Event model
 
 // Define the attributes for the User model
 interface UserAttributes {
@@ -26,6 +26,9 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
     const saltRounds = 10;
     this.password = await bcrypt.hash(password, saltRounds);
   }
+
+  // Association with Event
+  public readonly events?: Event[];
 }
 
 // Define the UserFactory function to initialize the User model
@@ -47,14 +50,12 @@ export function UserFactory(sequelize: Sequelize): typeof User {
       },
     },
     {
-      tableName: 'users',     // Name of the table in PostgreSQL
-      sequelize,              // The Sequelize instance that connects to PostgreSQL
+      tableName: 'users',
+      sequelize,
       hooks: {
-        // Before creating a new user, hash and set the password
         beforeCreate: async (user: User) => {
           await user.setPassword(user.password);
         },
-        // Before updating a user, hash and set the new password if it has changed
         beforeUpdate: async (user: User) => {
           if (user.changed('password')) {
             await user.setPassword(user.password);
@@ -64,5 +65,5 @@ export function UserFactory(sequelize: Sequelize): typeof User {
     }
   );
 
-  return User;  // Return the initialized User model
+  return User;
 }

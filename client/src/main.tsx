@@ -8,6 +8,8 @@ import App from './App.tsx';
 import ErrorPage from './pages/ErrorPage.tsx';
 import Home from './pages/Home.tsx';
 import Login from './pages/Login.tsx';
+import Events from './pages/Events.tsx';
+import EventDetails from './pages/EventDetails.tsx';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +24,15 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />
-      }, 
+      },
+      {
+        path: '/events',
+        element: <Events />,
+      },
+      {
+        path: '/event-details',
+        element: <EventDetails />
+      }
     ]
   }
 ])

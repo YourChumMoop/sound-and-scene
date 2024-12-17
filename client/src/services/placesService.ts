@@ -1,11 +1,11 @@
-// src/services/venueService.ts
 import axios from 'axios';
-import { Venue } from '../interfaces/Place';
+import { Place } from '../interfaces/Place';
 
 const FS_BASE_URL = 'https://api.foursquare.com/v3/places/search';
 const FS_API_KEY = import.meta.env.VITE_FS_API_KEY;
 
-export const fetchVenuesByLocation = async (latitude: string, longitude: string): Promise<Venue[]> => {
+// Fetch places by location (latitude and longitude)
+export const fetchPlacesByLocation = async (latitude: string, longitude: string): Promise<Place[]> => {
   try {
     const response = await axios.get(FS_BASE_URL, {
       headers: {
@@ -21,7 +21,7 @@ export const fetchVenuesByLocation = async (latitude: string, longitude: string)
 
     return response.data.results || [];
   } catch (error) {
-    console.error('Error fetching venues from Foursquare:', error);
-    throw new Error('Failed to fetch venues');
+    console.error('Error fetching places from Foursquare:', error);
+    throw new Error('Failed to fetch places');
   }
 };

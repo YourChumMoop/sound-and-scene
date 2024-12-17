@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import Venues from '../components/Places';
+import Places from '../components/Places'; // Updated import to refer to Places
 import { useEffect } from 'react';
 
 // Define the type for the state passed via `useNavigate`
@@ -49,7 +49,7 @@ const EventDetails = () => {
       </div>
 
       <h3 className="text-center mb-3">Nearby Food & Drink Options</h3>
-      <Venues lat={latitude} lng={longitude} />
+      <Places lat={latitude} lng={longitude} />
     </div>
   );
 };

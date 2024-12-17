@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchPlacesByLocation } from '../services/placeService';
+import { fetchPlacesByLocation } from '../services/placesService';
 import { Place } from '../interfaces/Place';
 
 // Define the props for the Places component

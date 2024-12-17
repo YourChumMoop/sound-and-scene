@@ -1,4 +1,5 @@
-import React from 'react';
+/*import React from 'react';
+
 import type { UserData } from "../interfaces/UserData";
 import auth from '../utils/auth';
 
@@ -31,4 +32,4 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
   );
 };
 
-export default UserList;
+export default UserList;*/

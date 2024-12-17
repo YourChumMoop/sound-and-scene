@@ -1,5 +1,5 @@
 -- DROP DATABASE
-DROP DATABASE IF EXISTS kanban_db;
+DROP DATABASE IF EXISTS sound_and_scene_db;
 
 -- CREATE DATABASE
-CREATE DATABASE kanban_db;
+CREATE DATABASE sound_and_scene_db;

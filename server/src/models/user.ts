@@ -1,10 +1,12 @@
 import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
 import bcrypt from 'bcrypt';
 
+
 // Define the attributes for the User model
 interface UserAttributes {
   id: number;
   username: string;
+  email: string;      // Added email field
   password: string;
 }
 
@@ -15,6 +17,7 @@ interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
 export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
   public id!: number;
   public username!: string;
+  public email!: string;     // Added email field
   public password!: string;
 
   public readonly createdAt!: Date;
@@ -40,14 +43,21 @@ export function UserFactory(sequelize: Sequelize): typeof User {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      email: {                
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isEmail: true,      // Ensure the email is a valid email format
+        },
+      },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
       },
     },
     {
-      tableName: 'users',  // Name of the table in PostgreSQL
-      sequelize,            // The Sequelize instance that connects to PostgreSQL
+      tableName: 'users',     // Name of the table in PostgreSQL
+      sequelize,              // The Sequelize instance that connects to PostgreSQL
       hooks: {
         // Before creating a new user, hash and set the password
         beforeCreate: async (user: User) => {
@@ -59,7 +69,7 @@ export function UserFactory(sequelize: Sequelize): typeof User {
             await user.setPassword(user.password);
           }
         },
-      }
+      },
     }
   );
 

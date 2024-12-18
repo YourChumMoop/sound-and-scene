@@ -6,7 +6,7 @@ import EventService from '../service/eventService.js';
 const TM_API_BASE_URL = 'https://app.ticketmaster.com/discovery/v2/events.json';
 const TM_API_KEY = process.env.TM_API_KEY || '';
 
-// GET /api/events?postalCode=ZIPCODE (server side proxy)
+// GET /api/events?postalCode=ZIPCODE (server side)
 export const getEventsByZipcode = async (req: Request, res: Response) => {
   const { postalCode, classificationName = 'Music', size = 10 } = req.query;
 

@@ -1,8 +1,5 @@
 import { useState, useLayoutEffect } from "react";
-//import { retrieveUsers } from "../api/userAPI";
-//import type { UserData } from "../interfaces/UserData";
-//import ErrorPage from "./ErrorPage";
-/*import UserList from '../components/Users';*/
+
 import auth from '../utils/auth';
 
 const Home = () => {
@@ -48,13 +45,21 @@ const Home = () => {
             {
                 !loginCheck ? (
                     <div className='login-notice'>
-                        <h1>
-                            Login to view all your friends!
-                        </h1>
+                        <div className="home-splash">
+                            <img src="\pexels-wendywei-1540406.jpg" className="left-splash"/>
+                            <h1>
+                                Plan your concert night right!
+                            </h1>
+                            <p>
+                                It's 2am after a concert, do you have your late night munchies planned?<br/>
+                                Sound and Scene is determined to take your music venue outing and turn
+                                it into a full-course experience! <br/>From point A to B, from the opener to 
+                                closing time.
+                            </p>
+                        </div>
                     </div>
                 ) : (
-                    /*<UserList users={users} />*/
-                    <h1>You are logged in</h1>
+                    <h1>Welcome back, {localStorage.getItem('username')}!</h1>
                 )}
         </>
     );

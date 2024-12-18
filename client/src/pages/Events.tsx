@@ -9,13 +9,14 @@ const ErrorMessage = () => <p className="text-danger text-center">Failed to fetc
 
 // EventCard component for better readability
 const EventCard = ({ event, handleViewDetails }: { event: Event; handleViewDetails: (event: Event) => void }) => {
-  const venueName = event._embedded?.venues[0]?.name || 'Venue Not Available';
+  const venue = event._embedded?.venues[0];
+  const venueName = venue?.name || 'Venue Not Available';
 
   return (
     <div className="col-md-4 mb-4">
       <div className="card event-card h-100">
         <img
-          src={event.images[0]?.url || 'https://via.placeholder.com/400x200'}
+          src={event.images?.[0]?.url || 'https://via.placeholder.com/400x200'}
           className="card-img-top"
           alt={event.name || 'Event Image'}
         />
@@ -30,6 +31,11 @@ const EventCard = ({ event, handleViewDetails }: { event: Event; handleViewDetai
           <button className="btn btn-primary mt-auto" onClick={() => handleViewDetails(event)}>
             View Details
           </button>
+          {event.url && (
+            <a href={event.url} className="btn btn-secondary mt-2" target="_blank" rel="noopener noreferrer">
+              View on Ticketmaster
+            </a>
+          )}
         </div>
       </div>
     </div>
@@ -37,7 +43,6 @@ const EventCard = ({ event, handleViewDetails }: { event: Event; handleViewDetai
 };
 
 const Events = () => {
-  // State to manage the zipcode input, events data, loading status, and error status
   const [zipcode, setZipcode] = useState<string>('');
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -45,32 +50,29 @@ const Events = () => {
 
   const navigate = useNavigate();
 
-  // Handle changes to the zipcode input field
   const handleZipcodeChange = (e: ChangeEvent<HTMLInputElement>) => {
     setZipcode(e.target.value);
   };
 
-  // Handle search for events by zipcode with validation
   const handleSearch = async () => {
     if (!zipcode.match(/^\d{5}$/)) {
       setError(true);
       console.error('Invalid zipcode format');
       return;
     }
-  
+
     setLoading(true);
     setError(false);
-  
+
     try {
       const data = await fetchEventsByZipcode(zipcode);
-  
-      // Sort the events by date, handling missing 'dates.start' gracefully
+
       const sortedEvents = data.sort((a, b) => {
         const dateA = a.dates?.start?.localDate ? new Date(a.dates.start.localDate).getTime() : Infinity;
         const dateB = b.dates?.start?.localDate ? new Date(b.dates.start.localDate).getTime() : Infinity;
         return dateA - dateB;
       });
-  
+
       setEvents(sortedEvents);
     } catch (err) {
       console.error('Error fetching events:', err);
@@ -80,7 +82,6 @@ const Events = () => {
     }
   };
 
-  // Handle navigation to event details page
   const handleViewDetails = (event: Event) => {
     const venue = event._embedded?.venues[0];
 
@@ -90,22 +91,33 @@ const Events = () => {
       return;
     }
 
-    navigate('/event-details', {
-      state: {
-        eventName: event.name,
-        date: event.dates.start.localDate,
-        venueName: venue.name,
-        latitude: venue.location.latitude,
-        longitude: venue.location.longitude,
-      },
-    });
+    const state = {
+      eventName: event.name,
+      date: event.dates.start.localDate,
+      time: event.dates.start.localTime,
+      venueName: venue.name,
+      venueAddress: venue.location.formatted_address || `${venue.address.line1}, ${venue.city.name}, ${venue.state.stateCode} ${venue.postalCode}`,
+      latitude: venue.location.latitude,
+      longitude: venue.location.longitude,
+      imageUrl: event.images?.[0]?.url,
+      classification: event.classifications?.[0]?.genre?.name || event.classifications?.[0]?.segment?.name,
+      attractions: event._embedded?.attractions?.map((attraction) => attraction.name),
+      priceRanges: event.priceRanges?.map((range) => `${range.currency} ${range.min} - ${range.max}`),
+      ticketUrl: event.url,
+      info: event.info,
+      pleaseNote: event.pleaseNote,
+    };
+
+    // Add console.log to debug the state
+    console.log('Navigating with state:', state);
+
+    navigate('/event-details', { state });
   };
 
   return (
     <div className="container mt-5">
       <h2 className="text-center mb-4">Find Music Events</h2>
 
-      {/* Search Bar */}
       <div className="search-bar input-group mb-4">
         <input
           type="text"
@@ -119,13 +131,9 @@ const Events = () => {
         </button>
       </div>
 
-      {/* Loading Message */}
       {loading && <LoadingMessage />}
-
-      {/* Error Message */}
       {error && <ErrorMessage />}
 
-      {/* Events List */}
       <div className="row">
         {events.length > 0 ? (
           events.map((event) => <EventCard key={event.id} event={event} handleViewDetails={handleViewDetails} />)

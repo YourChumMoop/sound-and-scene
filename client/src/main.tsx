@@ -16,6 +16,8 @@ import Home from './pages/Home.tsx';
 import Events from './pages/Events.tsx';
 import EventDetails from './pages/EventDetails.tsx';
 import Login from './pages/Login.tsx';
+import Events from './pages/Events.tsx';
+import EventDetails from './pages/EventDetails.tsx';
 
 // Routes
 const router = createBrowserRouter([

@@ -14,25 +14,31 @@ const EventCard = ({ event, handleViewDetails }: { event: Event; handleViewDetai
 
   return (
     <div className="col-md-4 mb-4">
-      <div className="card event-card h-100">
+      <div className="card event-card h-100 shadow-lg border-0 rounded-3">
         <img
           src={event.images?.[0]?.url || 'https://via.placeholder.com/400x200'}
           className="card-img-top"
           alt={event.name || 'Event Image'}
+          style={{ objectFit: 'cover', height: '200px' }}
         />
-        <div className="card-body d-flex flex-column justify-content-between">
-          <h5 className="card-title">{event.name || 'Event Name Not Available'}</h5>
-          <p className="card-text">
+        <div className="card-body p-4 d-flex flex-column">
+          <h5 className="card-title fw-bold">{event.name || 'Event Name Not Available'}</h5>
+          <p className="card-text mb-2">
             <strong>Date:</strong> {event.dates.start.localDate || 'Date Not Available'}
           </p>
-          <p className="card-text">
+          <p className="card-text mb-2">
             <strong>Venue:</strong> {venueName}
           </p>
-          <button className="btn btn-primary mt-auto" onClick={() => handleViewDetails(event)}>
+          <button className="btn btn-primary mt-auto rounded-pill" onClick={() => handleViewDetails(event)}>
             View Details
           </button>
           {event.url && (
-            <a href={event.url} className="btn btn-secondary mt-2" target="_blank" rel="noopener noreferrer">
+            <a
+              href={event.url}
+              className="btn btn-outline-secondary mt-2 rounded-pill"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               View on Ticketmaster
             </a>
           )}
@@ -96,7 +102,9 @@ const Events = () => {
       date: event.dates.start.localDate,
       time: event.dates.start.localTime,
       venueName: venue.name,
-      venueAddress: venue.location.formatted_address || `${venue.address.line1}, ${venue.city.name}, ${venue.state.stateCode} ${venue.postalCode}`,
+      venueAddress:
+        venue.location.formatted_address ||
+        `${venue.address.line1}, ${venue.city.name}, ${venue.state.stateCode} ${venue.postalCode}`,
       latitude: venue.location.latitude,
       longitude: venue.location.longitude,
       imageUrl: event.images?.[0]?.url,
@@ -104,7 +112,6 @@ const Events = () => {
       attractions: event._embedded?.attractions?.map((attraction) => attraction.name),
       priceRanges: event.priceRanges?.map((range) => `${range.currency} ${range.min} - ${range.max}`),
       ticketUrl: event.url,
-      info: event.info,
       pleaseNote: event.pleaseNote,
     };
 
@@ -126,7 +133,7 @@ const Events = () => {
           value={zipcode}
           onChange={handleZipcodeChange}
         />
-        <button className="btn btn-primary" onClick={handleSearch}>
+        <button className="btn btn-primary rounded-pill" onClick={handleSearch}>
           Search
         </button>
       </div>

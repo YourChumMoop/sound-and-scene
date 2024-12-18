@@ -1,14 +1,14 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 
-import Auth from '../utils/auth';  // Import the Auth utility for managing authentication state
-import { login } from "../api/authAPI";  // Import the login function from the API
-import { UserLogin } from "../interfaces/UserLogin";  // Import the interface for UserLogin
+import Auth from "../utils/auth"; // Import the Auth utility for managing authentication state
+import { login } from "../api/authAPI"; // Import the login function from the API
+import { UserLogin } from "../interfaces/UserLogin"; // Import the interface for UserLogin
 
 const Login = () => {
   // State to manage the login form data
   const [loginData, setLoginData] = useState<UserLogin>({
-    username: '',
-    password: ''
+    username: "",
+    password: "",
   });
 
   // Handle changes in the input fields
@@ -16,7 +16,7 @@ const Login = () => {
     const { name, value } = e.target;
     setLoginData({
       ...loginData,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -29,48 +29,54 @@ const Login = () => {
       // If login is successful, call Auth.login to store the token in localStorage
       Auth.login(data.token);
     } catch (err) {
-      console.error('Failed to login', err);  // Log any errors that occur during login
+      console.error("Failed to login", err); // Log any errors that occur during login
     }
   };
 
   return (
-    <div className='login-container'>
-      <form className='form login-form' onSubmit={handleSubmit}>
-        <h1 className='text-center mb-4'>Login</h1>
-        
-        {/* Username input field */}
-        <div className="form-group mb-3">
-          <label className="form-label">Username</label>
-          <input 
-            className="form-input w-100"
-            type='text'
-            name='username'
-            value={loginData.username || ''}
-            onChange={handleChange}
-            placeholder='Enter your username'
-            required
-          />
-        </div>
+    <div className="container mt-5 d-flex justify-content-center">
+      <div className="card shadow-lg border-0 rounded-3" style={{ maxWidth: "400px", width: "100%" }}>
+        <div className="card-body p-4">
+          <h1 className="text-center mb-4 fw-bold">Login</h1>
 
-        {/* Password input field */}
-        <div className="form-group mb-4">
-          <label className="form-label">Password</label>
-          <input 
-            className="form-input w-100"
-            type='password'
-            name='password'
-            value={loginData.password || ''}
-            onChange={handleChange}
-            placeholder='Enter your password'
-            required
-          />
-        </div>
+          <form className="login-form" onSubmit={handleSubmit}>
+            {/* Username input field */}
+            <div className="form-group mb-3">
+              <label className="form-label fw-bold">Username</label>
+              <input
+                className="form-control"
+                type="text"
+                name="username"
+                value={loginData.username || ""}
+                onChange={handleChange}
+                placeholder="Enter your username"
+                required
+              />
+            </div>
 
-        {/* Submit button for the login form */}
-        <div className="form-group text-center">
-          <button className="btn btn-primary btn-block" type='submit'>Login</button>
+            {/* Password input field */}
+            <div className="form-group mb-4">
+              <label className="form-label fw-bold">Password</label>
+              <input
+                className="form-control"
+                type="password"
+                name="password"
+                value={loginData.password || ""}
+                onChange={handleChange}
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+
+            {/* Submit button for the login form */}
+            <div className="form-group text-center">
+              <button className="btn btn-primary w-100 rounded-pill fw-bold" type="submit">
+                Login
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

@@ -4,12 +4,10 @@ import { fetchEventDetailsById } from "../services/eventService";
 import { Event } from "../interfaces/Event";
 import Places from "../components/Places";
 
-// Define the type for the state passed via `useNavigate`
 interface LocationState {
   eventName: string;
   date: string;
   time?: string;
-  timezone?: string;
   venueName: string;
   venueAddress: string;
   latitude: string;
@@ -30,10 +28,7 @@ const EventDetails = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // Safely destructure state with a fallback
   const state = location.state as LocationState | null;
-
-  console.log("Received state in EventDetails:", state);
 
   useEffect(() => {
     const getEventDetails = async () => {
@@ -55,19 +50,15 @@ const EventDetails = () => {
     if (!state) {
       getEventDetails();
     } else {
-      // If state is provided, set event data directly from state
       setEvent({
         id: id || "",
         name: state.eventName,
-        images: [
-          { url: state.imageUrl || "https://via.placeholder.com/400x200" },
-        ],
+        images: [{ url: state.imageUrl || "https://via.placeholder.com/400x200" }],
         dates: {
           start: {
             localDate: state.date,
             localTime: state.time,
           },
-          timezone: state.timezone,
         },
         _embedded: {
           venues: [
@@ -76,8 +67,7 @@ const EventDetails = () => {
               location: {
                 latitude: state.latitude,
                 longitude: state.longitude,
-                formatted_address:
-                  state.venueAddress || "Address not available",
+                formatted_address: state.venueAddress || "Address not available",
               },
               address: { line1: "" },
               city: { name: "" },
@@ -115,91 +105,73 @@ const EventDetails = () => {
   }
 
   const venue = event._embedded?.venues[0];
-  const timezone = event.dates.timezone;
 
   return (
-    <div className="container mt-5">
-      <h2 className="text-center mb-4">{event.name}</h2>
+    <div className="container my-5">
+      <h2 className="text-center mb-4 display-3 fw-bold">{event.name}</h2>
 
-      <div className="card mb-4">
-        <img
-          src={event.images[0]?.url || "https://via.placeholder.com/400x200"}
-          className="card-img-top"
-          alt={event.name}
-        />
-        <div className="card-body">
-          <h5 className="card-title">Event Details</h5>
+      <div className="card mb-5 shadow-lg border-0 rounded" style={{ overflow: "hidden" }}>
+        <div className="position-relative">
+          <img
+            src={event.images[0]?.url || "https://via.placeholder.com/400x200"}
+            className="card-img-top"
+            alt={event.name}
+            style={{ maxHeight: "400px", objectFit: "cover", filter: "brightness(90%)" }}
+          />
+          <div className="position-absolute top-0 start-0 w-100 h-100" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.8))" }}></div>
+        </div>
+
+        <div className="card-body p-4">
+          <h5 className="card-title mb-4 fs-4 text-primary">Event Details</h5>
 
           {state?.attractions && state.attractions.length > 0 && (
-            <div className="mb-3">
-              <strong>Performers:</strong>
-              <ul className="list-unstyled mt-2">
-                {state.attractions.map((attraction, index) => (
-                  <li key={index}>{attraction}</li>
-                ))}
-              </ul>
+            <div className="mb-4">
+              <h6 className="fw-bold">Performers:</h6>
+              <p className="fs-5">{state.attractions.join(", ")}</p>
             </div>
           )}
 
-          <p className="card-text">
+          <p className="card-text mb-2">
             <strong>Date:</strong> {event.dates.start.localDate}
           </p>
           {event.dates.start.localTime && (
-            <p className="card-text">
-              <strong>Time:</strong> {event.dates.start.localTime}{" "}
-              {timezone && `(${timezone})`}
+            <p className="card-text mb-2">
+              <strong>Time:</strong> {event.dates.start.localTime}
             </p>
           )}
-          <p className="card-text">
+          <p className="card-text mb-2">
             <strong>Venue:</strong> {venue?.name}
           </p>
-          <p className="card-text">
-            <strong>Location:</strong>{" "}
-            {venue?.location.formatted_address || "Address not available"}
+          <p className="card-text mb-4">
+            <strong>Location:</strong> {venue?.location.formatted_address || "Address not available"}
           </p>
+
           {event.priceRanges && event.priceRanges.length > 0 && (
             <p className="card-text">
-              <strong>Price Range:</strong>{" "}
-              {event.priceRanges.map((range, index) => {
-                const formatter = new Intl.NumberFormat(undefined, {
-                  style: "currency",
-                  currency: range.currency,
-                });
-                return (
-                  <span key={index}>
-                    {formatter.format(range.min)} -{" "}
-                    {formatter.format(range.max)}
-                    {event.priceRanges &&
-                      index < event.priceRanges.length - 1 &&
-                      ", "}
-                  </span>
-                );
-              })}
+              <span className="badge bg-success fs-5">
+                {event.priceRanges
+                  .map((range) => `${new Intl.NumberFormat(undefined, { style: "currency", currency: range.currency }).format(range.min)} - ${new Intl.NumberFormat(undefined, { style: "currency", currency: range.currency }).format(range.max)}`)
+                  .join(", ")}
+              </span>
             </p>
           )}
+
           {event.url && (
-            <a
-              href={event.url}
-              className="btn btn-primary mt-2"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={event.url} className="btn btn-primary mt-4" target="_blank" rel="noopener noreferrer">
               Buy Tickets on Ticketmaster
             </a>
           )}
+
           {state?.pleaseNote && (
-            <div className="alert alert-warning mt-3">
+            <div className="alert alert-warning mt-4">
               <strong>Note:</strong> {state.pleaseNote}
             </div>
           )}
         </div>
       </div>
 
-      <h3 className="text-center mb-3">Nearby Food & Drink Options</h3>
-      <Places
-        lat={venue?.location.latitude || ""}
-        lng={venue?.location.longitude || ""}
-      />
+      <h3 className="text-center mb-4">Nearby Food & Drink Options</h3>
+      <Places lat={venue?.location.latitude || ""} lng={venue?.location.longitude || ""} />
     </div>
   );
 };

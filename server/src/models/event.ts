@@ -1,21 +1,20 @@
 import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
-import { Place } from './places.js'; // Updated import to reference places.ts
-
+import { User } from './user.js'; // Import User model
 
 // Define the attributes for the Event model
 interface EventAttributes {
-  id: string;          // Ticketmaster Event ID (string-based)
-  name: string;        // Event name/title
-  date: string;        // Event date in ISO format (2024-06-15)
-  time: string;        // Event time (optional)
-  city: string;        // City where the event is held
-  state: string;       // State where the event is held
-  country: string;     // Country where the event is held
-  latitude: number;    // Latitude of the event
-  longitude: number;   // Longitude of the event
-  url: string;         // Ticketmaster event URL
-  imageUrl: string;    // URL for the event image
-  placeId?: string;    // Foreign key to the Place model
+  id: string;
+  name: string;
+  date: string;
+  time: string;
+  city: string;
+  state: string;
+  country: string;
+  latitude: number;
+  longitude: number;
+  url: string;
+  imageUrl: string;
+  userId?: number; // Foreign key to the User model
 }
 
 // Define the optional attributes for creating a new Event
@@ -34,13 +33,13 @@ export class Event extends Model<EventAttributes, EventCreationAttributes> imple
   public longitude!: number;
   public url!: string;
   public imageUrl!: string;
-  public placeId?: string;
-
-  // Association to the Place model
-  public readonly place?: Place;
+  public userId?: number;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
+
+  // Association with User
+  public readonly user?: User;
 }
 
 // Define the EventFactory function to initialize the Event model
@@ -91,11 +90,11 @@ export function EventFactory(sequelize: Sequelize): typeof Event {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      placeId: {
-        type: DataTypes.STRING,
+      userId: {
+        type: DataTypes.INTEGER,
         allowNull: true,
         references: {
-          model: 'places', // Refers to the 'places' table
+          model: 'users',
           key: 'id',
         },
       },

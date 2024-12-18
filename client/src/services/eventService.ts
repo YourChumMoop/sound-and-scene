@@ -1,24 +1,39 @@
-// src/services/eventService.ts
 import axios from 'axios';
 import { Event } from '../interfaces/Event';
 
-const TM_BASE_URL = 'https://app.ticketmaster.com/discovery/v2/events.json';
-const TM_API_KEY = import.meta.env.VITE_TM_API_KEY;
+const BASE_URL = 'http://localhost:3001/api/events';
 
+
+// Fetch events by zipcode from the server-side proxy.
 export const fetchEventsByZipcode = async (zipcode: string): Promise<Event[]> => {
   try {
-    const response = await axios.get(TM_BASE_URL, {
-      params: {
-        apikey: TM_API_KEY,
-        postalCode: zipcode,
-        classificationName: 'Music',
-        size: 10,
-      },
+    const response = await axios.get(BASE_URL, {
+      params: { postalCode: zipcode },
     });
 
-    return response.data._embedded?.events || [];
+    // Ensure that the response data is an array of events
+    const events = response.data;
+    if (!Array.isArray(events)) {
+      throw new Error('Invalid data format: Expected an array of events');
+    }
+
+    return events;
   } catch (error) {
-    console.error('Error fetching events from Ticketmaster:', error);
+    console.error('Error fetching events:', error);
     throw new Error('Failed to fetch events');
+  }
+};
+
+
+// Fetch event details by event ID.
+
+export const fetchEventDetailsById = async (eventId: string): Promise<Event> => {
+  try {
+    const response = await axios.get(`${BASE_URL}/${eventId}`);
+
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching event details for ID ${eventId}:`, error);
+    throw new Error('Failed to fetch event details');
   }
 };

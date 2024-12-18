@@ -6,18 +6,30 @@ import {
   removeEventFromFavorites,
 } from '../../controllers/event-controller.js';
 
-
 const router = Router();
 
-router.get('/', (req, res) => {                     // GET /api/events?postalCode=ZIPCODE
+// GET /api/events?postalCode=ZIPCODE - Fetch events by zipcode (server-side proxy)
+router.get('/', (req, res) => {
   console.log(`GET /api/events hit with query: ${JSON.stringify(req.query)}`);
   getEventsByZipcode(req, res);
-});                
-router.get('/:id', (req, res) => {                  // GET /api/events/:id
+});
+
+// GET /api/events/:id - Fetch event details by ID
+router.get('/:id', (req, res) => {
   console.log(`GET /api/events/${req.params.id} hit`);
   getEventDetailsById(req, res);
-});           
-router.post('/favorites', addEventToFavorites);     // POST /api/events/favorites
-router.delete('/favorites/:id', removeEventFromFavorites); // DELETE /api/events/favorites/:id
+});
+
+// POST /api/events/favorites - Add event to favorites
+router.post('/favorites', (req, res) => {
+  console.log(`POST /api/events/favorites hit with data: ${JSON.stringify(req.body)}`);
+  addEventToFavorites(req, res);
+});
+
+// DELETE /api/events/favorites/:id - Remove event from favorites
+router.delete('/favorites/:id', (req, res) => {
+  console.log(`DELETE /api/events/favorites/${req.params.id} hit`);
+  removeEventFromFavorites(req, res);
+});
 
 export { router as eventRouter };

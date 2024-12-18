@@ -4,7 +4,6 @@ import { User } from '../../models/index.js';
 
 const router = express.Router();
 
-
 // GET /users - Get all users
 router.get('/', async (_req: Request, res: Response) => {
   try {
@@ -18,7 +17,7 @@ router.get('/', async (_req: Request, res: Response) => {
   }
 });
 
-// GET /users/:id - Get a user by id
+// GET /users/:id - Get a user by ID
 router.get('/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
@@ -31,16 +30,16 @@ router.get('/:id', async (req: Request, res: Response) => {
       res.status(404).json({ message: 'User not found' });
     }
   } catch (error: unknown) {
-    console.error(`Error fetching user with id ${id}:`, error);
+    console.error(`Error fetching user with ID ${id}:`, error);
     res.status(500).json({ message: 'Failed to fetch user.' });
   }
 });
 
 // POST /users - Create a new user
 router.post('/', async (req: Request, res: Response) => {
-  const { username, email, password } = req.body;
+  const { username, password } = req.body;
   try {
-    const newUser = await User.create({ username, email, password });
+    const newUser = await User.create({ username, password });
     res.status(201).json(newUser);
   } catch (error: unknown) {
     console.error('Error creating user:', error);
@@ -48,7 +47,7 @@ router.post('/', async (req: Request, res: Response) => {
   }
 });
 
-// PUT /users/:id - Update a user by id
+// PUT /users/:id - Update a user by ID
 router.put('/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
   const { username, password } = req.body;
@@ -63,12 +62,12 @@ router.put('/:id', async (req: Request, res: Response) => {
       res.status(404).json({ message: 'User not found' });
     }
   } catch (error: unknown) {
-    console.error(`Error updating user with id ${id}:`, error);
+    console.error(`Error updating user with ID ${id}:`, error);
     res.status(400).json({ message: 'Failed to update user.' });
   }
 });
 
-// DELETE /users/:id - Delete a user by id
+// DELETE /users/:id - Delete a user by ID
 router.delete('/:id', async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
@@ -80,7 +79,7 @@ router.delete('/:id', async (req: Request, res: Response) => {
       res.status(404).json({ message: 'User not found' });
     }
   } catch (error: unknown) {
-    console.error(`Error deleting user with id ${id}:`, error);
+    console.error(`Error deleting user with ID ${id}:`, error);
     res.status(500).json({ message: 'Failed to delete user.' });
   }
 });

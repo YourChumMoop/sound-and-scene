@@ -31,7 +31,21 @@ const Navbar = () => {
           Sound and Scene
         </Link>
 
-        <div className="collapse navbar-collapse">
+        {/* Toggle button for smaller screens */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        {/* Collapsible navigation links */}
+        <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
               <Link to="/" className="nav-link">
@@ -44,18 +58,19 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-        </div>
 
-        <div>
-          {!loginCheck ? (
-            <Link to="/login" className="btn btn-primary">
-              Login
-            </Link>
-          ) : (
-            <button className="btn btn-danger" type="button" onClick={handleLogout}>
-              Logout
-            </button>
-          )}
+          {/* Login/Logout button aligned to the right */}
+          <div>
+            {!loginCheck ? (
+              <Link to="/login" className="btn btn-primary">
+                Login
+              </Link>
+            ) : (
+              <button className="btn btn-danger" type="button" onClick={handleLogout}>
+                Logout
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </nav>

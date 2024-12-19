@@ -47,6 +47,10 @@ export function UserFactory(sequelize: Sequelize): typeof User {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          len: [8, 100],
+        }
+
       },
     },
     {

@@ -1,6 +1,5 @@
 import sequelize from "../config/connection.js";
 
-import { Sequelize } from 'sequelize';
 import { UserFactory } from './user.js';
 import { EventFactory } from './event.js';
 

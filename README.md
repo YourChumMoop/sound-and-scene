@@ -6,7 +6,8 @@
 
 **Sound and Scene** is a web application designed to help users discover **music events** and nearby **food and drink options**. Using data from the **Ticketmaster API** for events and the **Foursquare API** for venue recommendations, our platform provides a seamless way to plan a night out. The app features an intuitive interface, efficient search functionality, and real-time data to simplify event discovery while promoting local businesses. A direct link to the deployed application is provided in the "Questions" section below.
 
-![Sound-and-Scene-img](https://via.placeholder.com/600x400)
+![Sound-and-Scene-img](https://github.com/user-attachments/assets/6d2196a0-37f3-49ed-bbb6-80e87995b1a5)
+
 
 ## Table of Contents
 

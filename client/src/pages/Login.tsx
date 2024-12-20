@@ -29,6 +29,7 @@ const Login = () => {
       // Call the login API endpoint with loginData
       const data = await login(loginData);
       // If login is successful, call Auth.login to store the token in localStorage
+      localStorage.setItem('username',loginData.username as string);
       Auth.login(data.token);
     } catch (err) {
       console.error("Failed to login", err);

@@ -27,6 +27,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg mint-green py-3 px-4">
       <div className="container-fluid">
+        <img src='./SandS_logo.svg' className='logo'/>
         <Link to="/" className="navbar-brand text-dark mb-0">
           Sound and Scene
         </Link>
@@ -48,9 +49,6 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <Link to="/" className="nav-link">
-                Home
-              </Link>
             </li>
             <li className="nav-item">
               <Link to="/events" className="nav-link">

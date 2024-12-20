@@ -1,8 +1,8 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-import { Link } from "react-router-dom";  // Import the Link component from React Router
-import Auth from '../utils/auth';  // Import the Auth utility for managing authentication state
-import { login } from "../api/authAPI";  // Import the login function from the API
-import { UserLogin } from "../interfaces/UserLogin";  // Import the interface for UserLogin
+import { Link } from "react-router-dom"; // Import the Link component from React Router
+import Auth from "../utils/auth"; // Import the Auth utility for managing authentication state
+import { login } from "../api/authAPI"; // Import the login function from the API
+import { UserLogin } from "../interfaces/UserLogin"; // Import the interface for UserLogin
 
 const Login = () => {
   // State to manage the login form data
@@ -12,7 +12,9 @@ const Login = () => {
   });
 
   // Handle changes in the input fields
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setLoginData({
       ...loginData,
@@ -29,15 +31,18 @@ const Login = () => {
       // If login is successful, call Auth.login to store the token in localStorage
       Auth.login(data.token);
     } catch (err) {
-      console.error('Failed to login', err);
-      alert("Wrong username or password")  // Log any errors that occur during login
+      console.error("Failed to login", err);
+      alert("Wrong username or password"); // Log any errors that occur during login
     }
   };
 
 
   return (
     <div className="container mt-5 d-flex justify-content-center">
-      <div className="card shadow-lg border-0 rounded-3" style={{ maxWidth: "400px", width: "100%" }}>
+      <div
+        className="card shadow-lg border-0 rounded-3"
+        style={{ maxWidth: "400px", width: "100%" }}
+      >
         <div className="card-body p-4">
           <h1 className="text-center mb-4 fw-bold">Login</h1>
 
@@ -69,12 +74,21 @@ const Login = () => {
                 required
               />
             </div>
-
             {/* Submit button for the login form */}
             <div className="form-group text-center">
-              <button className="btn btn-primary w-100 rounded-pill fw-bold" type='submit'>Login</button>
+              <button
+                className="btn btn-primary w-100 rounded-pill fw-bold"
+                type="submit"
+              >
+                Login
+              </button>
               <Link to="/new-login">
-                <button className="btn btn-secondary w-100 rounded-pill fw-bold" type='button'>Create New Account</button>
+                <button
+                  className="btn btn-secondary w-100 rounded-pill fw-bold"
+                  type="button"
+                >
+                  Create New Account
+                </button>
               </Link>
             </div>
           </form>
@@ -83,5 +97,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;

@@ -26,10 +26,8 @@ const Login = () => {
     try {
       // Call the login API endpoint with loginData
       const data = await login(loginData);
-      console.log(data);
       // If login is successful, call Auth.login to store the token in localStorage
       Auth.login(data.token);
-      localStorage.setItem('username', loginData.username as string);
     } catch (err) {
       console.error('Failed to login', err);
       alert("Wrong username or password")  // Log any errors that occur during login
@@ -72,12 +70,14 @@ const Login = () => {
               />
             </div>
 
-        {/* Submit button for the login form */}
-        <div className="form-group text-center">
-          <button className="btn btn-primary w-100 rounded-pill fw-bold" type='submit'>Login</button>
-          <Link to="/new-login">
-            <button className="btn btn-secondary w-100 rounded-pill fw-bold" type='button'>Create New Account</button>
-          </Link>
+            {/* Submit button for the login form */}
+            <div className="form-group text-center">
+              <button className="btn btn-primary w-100 rounded-pill fw-bold" type='submit'>Login</button>
+              <Link to="/new-login">
+                <button className="btn btn-secondary w-100 rounded-pill fw-bold" type='button'>Create New Account</button>
+              </Link>
+            </div>
+          </form>
         </div>
       </div>
     </div>

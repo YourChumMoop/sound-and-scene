@@ -1,8 +1,10 @@
 /* Global Styles */
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #685168;
   color: #222931;
+}
+.no-scroll {
+  overflow: hidden;
 }
 
 a {
@@ -19,29 +21,51 @@ a:hover {
   padding-right: 15px;
 }
 .home-splash {
-  display: block;
-  width: fit-content;
+  /* background-image: url(/pexels-wendywei-1540406.jpg);
+  background-size: cover;
+  background-position: 50%; */
+  display: flex;
+  width: auto;
+  height: auto;
+  
+}
+.home-splash img {
+  position: absolute;
+  z-index: -1;
+  top: -165%;
+  left: 0px;
+  width: 100%;
+}
+.home-splash .logged-in-img{
+  top: 40px;
 }
 .home-splash h1 {
+  color: #ffc107;
   font-style: italic;
   text-align: left;
-  font-weight: bolder;
-  background-color: #8b8b8b;
+  font-size: 60px;
+  font-weight: 900;
   border-radius: 15px;
   padding: 15px 25px 15px 25px;
   margin: 15px;
 }
 .home-splash p {
+  
   line-height: 3;
   color: whitesmoke;
+  background-color: #050505c9;
   position: relative;
-  left: 10%;
-  margin-left: 30%;
+  text-align: center;
   font-weight: bold;
   white-space: pre-line;
-
+  font-size: larger;
   padding: 15px;
 }
+.home-splash .side-text {
+  padding-top: 4%;
+  padding-right: 15px;
+}
+
 .left-splash {
   position: absolute;
   padding-right: 5%;

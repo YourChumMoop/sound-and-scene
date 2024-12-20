@@ -122,7 +122,7 @@ const Events = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div>
       <h2 className="text-center mb-4">Find Music Events</h2>
 
       <div className="search-bar input-group mb-4">
@@ -133,7 +133,7 @@ const Events = () => {
           value={zipcode}
           onChange={handleZipcodeChange}
         />
-        <button className="btn btn-primary rounded-pill" onClick={handleSearch}>
+        <button style={{marginLeft:'10px'}} className="btn btn-primary rounded-pill" onClick={handleSearch}>
           Search
         </button>
       </div>

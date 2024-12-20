@@ -1,13 +1,12 @@
 import '../config/connection.js';
 import axios, { AxiosResponse } from 'axios';
 
-
 class EventService {
   private baseURL: string;
   private apiKey: string;
 
   constructor() {
-    this.baseURL = process.env.TM_API_BASE_URL || '';
+    this.baseURL = process.env.TM_API_BASE_URL || 'https://app.ticketmaster.com/discovery/v2';
     this.apiKey = process.env.TM_API_KEY || '';
 
     if (!this.baseURL || !this.apiKey) {
@@ -16,17 +15,17 @@ class EventService {
   }
 
   // Build the Ticketmaster event query URL for fetching events by zipcode
-  private buildEventQuery(zipcode: string): string {
-    const url = `${this.baseURL}/events.json?apikey=${this.apiKey}&postalCode=${zipcode}&classificationName=music`;
+  private buildEventQuery(zipcode: string, classificationName = 'Music', size = 10): string {
+    const url = `${this.baseURL}/events.json?apikey=${this.apiKey}&postalCode=${zipcode}&classificationName=${classificationName}&size=${size}`;
     console.log(`Event query URL: ${url}`);
     return url;
   }
 
   // Fetch events by zipcode
-  async fetchEventsByZipcode(zipcode: string): Promise<any[]> {
+  async fetchEventsByZipcode(zipcode: string, classificationName = 'Music', size = 10): Promise<any[]> {
     try {
       console.log(`Fetching events for zipcode: ${zipcode}`);
-      const url = this.buildEventQuery(zipcode);
+      const url = this.buildEventQuery(zipcode, classificationName, size);
 
       const response: AxiosResponse = await axios.get(url);
       console.log('Ticketmaster API response:', response.data);

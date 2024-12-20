@@ -8,7 +8,7 @@ import { UserFactory } from './models/user.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const forceDatabaseRefresh = false;
+const forceDatabaseRefresh = true;
 
 
 // Initialize User model

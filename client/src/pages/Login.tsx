@@ -1,8 +1,8 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-
-import Auth from "../utils/auth"; // Import the Auth utility for managing authentication state
-import { login } from "../api/authAPI"; // Import the login function from the API
-import { UserLogin } from "../interfaces/UserLogin"; // Import the interface for UserLogin
+import { Link } from "react-router-dom";  // Import the Link component from React Router
+import Auth from '../utils/auth';  // Import the Auth utility for managing authentication state
+import { login } from "../api/authAPI";  // Import the login function from the API
+import { UserLogin } from "../interfaces/UserLogin";  // Import the interface for UserLogin
 
 const Login = () => {
   // State to manage the login form data
@@ -29,9 +29,11 @@ const Login = () => {
       // If login is successful, call Auth.login to store the token in localStorage
       Auth.login(data.token);
     } catch (err) {
-      console.error("Failed to login", err); // Log any errors that occur during login
+      console.error('Failed to login', err);
+      alert("Wrong username or password")  // Log any errors that occur during login
     }
   };
+
 
   return (
     <div className="container mt-5 d-flex justify-content-center">
@@ -68,13 +70,12 @@ const Login = () => {
               />
             </div>
 
-            {/* Submit button for the login form */}
-            <div className="form-group text-center">
-              <button className="btn btn-primary w-100 rounded-pill fw-bold" type="submit">
-                Login
-              </button>
-            </div>
-          </form>
+        {/* Submit button for the login form */}
+        <div className="form-group text-center">
+          <button className="btn btn-primary w-100 rounded-pill fw-bold" type='submit'>Login</button>
+          <Link to="/new-login">
+            <button className="btn btn-secondary w-100 rounded-pill fw-bold" type='button'>Create New Account</button>
+          </Link>
         </div>
       </div>
     </div>

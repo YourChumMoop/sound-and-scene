@@ -35,7 +35,7 @@ const Places = ({ lat, lng }: PlacesProps) => {
     const icon = place.categories?.[0]?.icon;
     return icon
       ? `${icon.prefix}64${icon.suffix}`
-      : "https://via.placeholder.com/400x200";
+      : "https://via.placeholder.com/64";
   };
 
   if (error) {
@@ -55,35 +55,36 @@ const Places = ({ lat, lng }: PlacesProps) => {
   }
 
   return (
-    <div className="row">
+    <div className="row g-4">
       {places.map((place) => (
-        <div key={place.fsq_id} className="col-md-4 mb-4">
-          <div className="card place-card h-100">
-            <div className="icon-wrapper" style={{ textAlign: "center", padding: "10px" }}>
+        <div key={place.fsq_id} className="col-md-4">
+          <div className="card h-100 shadow-lg border-0 rounded-3">
+            <div className="icon-wrapper text-center p-3">
               <img
                 src={getIconUrl(place)}
-                className="card-img-top"
+                className="img-fluid"
                 alt={place.name}
                 style={{
                   maxWidth: "64px",
                   maxHeight: "64px",
-                  filter: "invert(0%) sepia(100%) saturate(0%) brightness(0%) contrast(100%)",
+                  filter: "brightness(0%) saturate(100%)", // Converts the icon to black
                 }}
               />
             </div>
-            <div className="card-body d-flex flex-column justify-content-between">
-              <h5 className="card-title">{place.name}</h5>
-              <p className="card-text">
+            <div className="card-body d-flex flex-column p-4">
+              <h5 className="card-title fw-bold mb-2">{place.name}</h5>
+              <p className="card-text mb-1">
                 <strong>Category:</strong>{" "}
                 {place.categories?.[0]?.name || "No category available"}
               </p>
-              <p className="card-text">
+              <p className="card-text mb-1">
                 <strong>Address:</strong>{" "}
                 {place.location?.formatted_address || "Address not available"}
               </p>
               {place.distance !== undefined && (
-                <p className="card-text">
-                  <strong>Distance from event:</strong> {place.distance} meters away
+                <p className="card-text mt-auto">
+                  <strong>Distance from event:</strong> {place.distance} meters
+                  away
                 </p>
               )}
             </div>

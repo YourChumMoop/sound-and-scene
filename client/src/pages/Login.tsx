@@ -1,5 +1,5 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-
+import { Link } from "react-router-dom";  // Import the Link component from React Router
 import Auth from '../utils/auth';  // Import the Auth utility for managing authentication state
 import { login } from "../api/authAPI";  // Import the login function from the API
 import { UserLogin } from "../interfaces/UserLogin";  // Import the interface for UserLogin
@@ -29,9 +29,11 @@ const Login = () => {
       // If login is successful, call Auth.login to store the token in localStorage
       Auth.login(data.token);
     } catch (err) {
-      console.error('Failed to login', err);  // Log any errors that occur during login
+      console.error('Failed to login', err);
+      alert("Wrong username or password")  // Log any errors that occur during login
     }
   };
+
 
   return (
     <div className='login-container'>
@@ -69,6 +71,9 @@ const Login = () => {
         {/* Submit button for the login form */}
         <div className="form-group text-center">
           <button className="btn btn-primary btn-block" type='submit'>Login</button>
+          <Link to="/new-login">
+            <button className="btn btn-secondary btn-block mt-1" type='button'>Create New Account</button>
+          </Link>
         </div>
       </form>
     </div>

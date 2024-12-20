@@ -16,7 +16,7 @@ import Home from './pages/Home.tsx';
 import Login from './pages/Login.tsx';
 import Events from './pages/Events.tsx';
 import EventDetails from './pages/EventDetails.tsx';
-
+import NewLogin from './pages/NewLogin.tsx';
 // Routes
 const router = createBrowserRouter([
   {
@@ -39,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login />
+      },
+      {
+        path: 'new-login',
+        element: < NewLogin />
       },
       {
         path: '*', // Route for undefined paths

@@ -24,11 +24,11 @@
 
 To install this project locally, clone it from the GitHub repository linked in the "Questions" section below.
 
-\`\`\`bash
+```bash
 git clone https://github.com/Sinnema1/sound-and-scene.git
 cd sound-and-scene
 npm install
-\`\`\`
+```
 
 ## Usage
 
@@ -36,13 +36,13 @@ npm install
 
 Create a \`.env\` file in the \`server\` directory and provide the necessary API keys:
 
-\`\`\`plaintext
+```plaintext
 TM_API_BASE_URL=https://app.ticketmaster.com/discovery/v2
 TM_API_KEY=your_api_key
 FS_API_BASE_URL=https://api.foursquare.com/v3/places
 FS_API_KEY=your_api_key
 JWT_SECRET=your_jwt_secret
-\`\`\`
+```
 
 ### Run the Application
 
@@ -50,18 +50,18 @@ To run the project locally, use the following commands:
 
 1. **Build the Client**:
 
-   \`\`\`bash
+   ```bash
    cd client
    npm run build
    cd ..
-   \`\`\`
+   ```
 
 2. **Start the Client and Server conurrently**:
 
-   \`\`\`bash
+  ```bash
    cd ..
    npm run start:dev
-   \`\`\`
+   ```
 
 4. **Access the Application**:  
    Open [http://localhost:3000](http://localhost:3000) in your browser.
@@ -76,14 +76,14 @@ This project is deployed on **Render**. The deployment process includes:
 - **Copy Internal Database URL**
 - **Create a New Web Service**
   - **Create Environment Variable**:
-    - **Name**: \`DB_URL`
+    - **Name**: `DB_URL`
     - **Value**: copied internal database URL
-  - **Build Command**: \`npm install`
-  - **Start Command**: \`npm start\`
+  - **Build Command**: `npm install`
+  - **Start Command**: `npm start\`
 
 ### Common Deployment Issues
 
-If you encounter issues like \`Database sync failed\` or \`Cannot GET /\`, refer to the [Render Troubleshooting Guide](https://render.com/docs/troubleshooting-deploys).
+If you encounter issues like `Database sync failed` or `Cannot GET /`, refer to the [Render Troubleshooting Guide](https://render.com/docs/troubleshooting-deploys).
 
 ## License
 
@@ -103,15 +103,15 @@ To verify the application works as expected, follow these steps:
 
 1. **Install Dependencies**:
 
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 2. **Run the Development Server**:
 
-   \`\`\`bash
+   ```bash
    npm run start:dev
-   \`\`\`
+   ```
 
 3. **Navigate to** [http://localhost:3000](http://localhost:3000) and test the application’s functionality.
 

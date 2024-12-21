@@ -1,15 +1,16 @@
-import express from 'express';
-import cors from 'cors';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import routes from './routes/index.js';
-import { sequelize } from './models/index.js';
-import { UserFactory } from './models/user.js';
+import express from "express";
+import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
+import routes from "./routes/index.js";
+import { sequelize } from "./models/index.js";
+import { UserFactory } from "./models/user.js";
+
+console.log("JWT_SECRET_KEY:", process.env.JWT_SECRET_KEY);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 const forceDatabaseRefresh = false;
-
 
 // Initialize User model
 const User = UserFactory(sequelize);
@@ -24,10 +25,10 @@ app.use(express.urlencoded({ extended: true }));
 
 // Enable CORS for cross-origin requests
 app.use(cors());
-console.log('CORS middleware registered.');
+console.log("CORS middleware registered.");
 
 // Serve static files from the client's dist folder
-const clientDistPath = path.join(__dirname, '../client/dist');
+const clientDistPath = path.join(__dirname, "../../client/dist");
 app.use(express.static(clientDistPath));
 console.log(`Serving static files from: ${clientDistPath}`);
 
@@ -38,20 +39,25 @@ app.use((req, _res, next) => {
 });
 
 // Use defined routes
-console.log('Registering API routes...');
+console.log("Registering API routes...");
 app.use(routes);
+
+// Catch-all route for serving index.html in SPAs
+app.get('*', (_req, res) => {
+  res.sendFile(path.join(clientDistPath, 'index.html'));
+});
 
 // Sync database and start the server
 sequelize
   .sync({ force: forceDatabaseRefresh })
   .then(() => {
-    console.log('Database synchronized successfully from server.ts.');
+    console.log("Database synchronized successfully from server.ts.");
     app.listen(PORT, () => {
       console.log(`Server is listening on port ${PORT}`);
     });
   })
-  .catch((err: unknown) => {
-    console.error('Database sync failed. Exiting...', err);
+  .catch((err) => {
+    console.error("Database sync failed. Exiting...", err);
     process.exit(1);
   });
 

@@ -29,8 +29,6 @@ export const authenticateToken = (req: CustomRequest, res: Response, next: NextF
   // Get the secret key from the environment variables
   const secretKey = process.env.JWT_SECRET_KEY;
 
-  console.log("JWT_SECRET_KEY:", secretKey); // Debug log
-
   if (!secretKey) {
     res.status(500).json({ message: 'JWT secret key is not set in the environment variables' });
     return;

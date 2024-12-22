@@ -76,8 +76,8 @@ This project is deployed on **Render**. The deployment process includes:
 - **Copy Internal Database URL**
 - **Create a New Web Service**
   - **Create Environment Variable**:
-    - **Name**: `DB_URL`
-    - **Value**: copied internal database URL
+    - **Name**: `DB_URL` **Value**: copied internal database URL
+    - Include API URLs and Keys from `.env` as well.
   - **Build Command**: `npm install`
   - **Start Command**: `npm start\`
 

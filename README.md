@@ -117,6 +117,6 @@ To verify the application works as expected, follow these steps:
 
 ## Questions
 
-- **Project Link**: [Sound and Scene Deployment](https://sound-and-scene.onrender.com)
-- **GitHub**: [Sinnema1](https://github.com/Sinnema1)
+- **Project Link**: [Sound and Scene Deployment](https://sound-and-scene-2.onrender.com/)
+- **GitHub**: [Sinnema1](https://github.com/YourChumMoop/sound-and-scene)
 - **Contact**: For questions or feedback, email me at [test@test.com](mailto:test@test.com).

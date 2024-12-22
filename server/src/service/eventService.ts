@@ -17,7 +17,6 @@ class EventService {
   // Build the Ticketmaster event query URL for fetching events by zipcode
   private buildEventQuery(zipcode: string, classificationName = 'Music', size = 10): string {
     const url = `${this.baseURL}/events.json?apikey=${this.apiKey}&postalCode=${zipcode}&classificationName=${classificationName}&size=${size}`;
-    console.log(`Event query URL: ${url}`);
     return url;
   }
 
@@ -46,7 +45,6 @@ class EventService {
   // Build the Ticketmaster event details query URL for fetching event by ID
   private buildEventDetailsQuery(eventId: string): string {
     const url = `${this.baseURL}/events/${eventId}.json?apikey=${this.apiKey}`;
-    console.log(`Event details query URL: ${url}`);
     return url;
   }
 

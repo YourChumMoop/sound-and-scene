@@ -32,7 +32,7 @@ a:hover {
 .home-splash img {
   position: absolute;
   z-index: -1;
-  top: -165%;
+  bottom: -100px;
   left: 0px;
   width: 100%;
 }
@@ -183,9 +183,19 @@ a:hover {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .home-banner {
     height: 300px;
+  }
+  .home-splash img {
+    bottom: 0;
+    width:1000px;
+  }
+  .home-splash p {
+    font-size: medium;
+  }
+  .home-splash h1 {
+    font-size: xx-large;
   }
 }
 

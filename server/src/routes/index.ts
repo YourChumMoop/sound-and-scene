@@ -19,10 +19,4 @@ router.use('/api', (req, _res, next) => {
   next();
 }, apiRoutes);
 
-// Catch-all for invalid routes
-router.use((req, res) => {
-  console.error(`Invalid route: ${req.method} ${req.url}`);
-  res.status(404).json({ message: 'Route not found' });
-});
-
 export default router;

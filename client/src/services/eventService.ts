@@ -1,13 +1,16 @@
 import axios from 'axios';
 import { Event } from '../interfaces/Event';
 
-const BASE_URL = 'https://sound-and-scene-1.onrender.com/api/events'; // --production
-// const BASE_URL = 'http://localhost:3001/api/events'; -- development
-
+// redirect URL. Prod is Render and Dev is localhost:3001
+const BASE_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:3001/api/events';
+console.log('eventService.ts redirect proxy:', BASE_URL);
 
 // Fetch events by zipcode from the server-side proxy.
 export const fetchEventsByZipcode = async (zipcode: string): Promise<Event[]> => {
   try {
+    if (!BASE_URL) {
+      throw new Error('BASE_URL is not defined');
+    }
     const response = await axios.get(BASE_URL, {
       params: { postalCode: zipcode },
     });

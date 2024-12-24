@@ -2,7 +2,8 @@ import axios from 'axios';
 import { Event } from '../interfaces/Event';
 
 // redirect URL. Prod is Render and Dev is localhost:3001
-const BASE_URL = process.env.BASE_URL || 'http://localhost:3001';
+const BASE_URL = import.meta.env.VITE_BASE_URL || 'http://localhost:3001/api/events';
+console.log('eventService.ts redirect proxy:', BASE_URL);
 
 // Fetch events by zipcode from the server-side proxy.
 export const fetchEventsByZipcode = async (zipcode: string): Promise<Event[]> => {
